@@ -17,72 +17,108 @@ void sumBottomButtons() {
     //.setValue(1)
     .setPosition(0, height-buttonH)
     .setSize(buttonW, buttonH)
+    .setColorBackground(deepBlue)
+    .setColorForeground(lightBlue)
+    .setColorActive(lighterBlue)
     ;
 
   cp5.addButton("sum2")
     .setCaptionLabel(" ")
     .setPosition(width/12, height-buttonH)
     .setSize(buttonW, buttonH)
+        .setColorBackground(deepBlue)
+    .setColorForeground(lightBlue)
+    .setColorActive(lighterBlue)
     ;
 
   cp5.addButton("sum3")
     .setCaptionLabel(" ")
     .setPosition((width/12)*2, height-buttonH)
     .setSize(buttonW, buttonH)
+        .setColorBackground(deepBlue)
+    .setColorForeground(lightBlue)
+    .setColorActive(lighterBlue)
     ;
 
   cp5.addButton("sum4")
     .setCaptionLabel(" ")
     .setPosition((width/12)*3, height-buttonH)
     .setSize(buttonW, buttonH)
+        .setColorBackground(deepBlue)
+    .setColorForeground(lightBlue)
+    .setColorActive(lighterBlue)
     ;
 
   cp5.addButton("sum5")
     .setCaptionLabel(" ")
     .setPosition((width/12)*4, height-buttonH)
     .setSize(buttonW, buttonH)
+        .setColorBackground(deepBlue)
+    .setColorForeground(lightBlue)
+    .setColorActive(lighterBlue)
     ;
 
   cp5.addButton("sum6")
     .setCaptionLabel(" ")
     .setPosition((width/12)*5, height-buttonH)
     .setSize(buttonW, buttonH)
+        .setColorBackground(deepBlue)
+    .setColorForeground(lightBlue)
+    .setColorActive(lighterBlue)
     ;
 
   cp5.addButton("sum7")
     .setCaptionLabel(" ")
     .setPosition((width/12)*6, height-buttonH)
     .setSize(buttonW, buttonH)
+        .setColorBackground(deepBlue)
+    .setColorForeground(lightBlue)
+    .setColorActive(lighterBlue)
     ;
 
   cp5.addButton("sum8")
     .setCaptionLabel(" ")
     .setPosition((width/12)*7, height-buttonH)
     .setSize(buttonW, buttonH)
+        .setColorBackground(deepBlue)
+    .setColorForeground(lightBlue)
+    .setColorActive(lighterBlue)
     ;
 
   cp5.addButton("sum9")
     .setCaptionLabel(" ")
     .setPosition((width/12)*8, height-buttonH)
     .setSize(buttonW, buttonH)
+        .setColorBackground(deepBlue)
+    .setColorForeground(lightBlue)
+    .setColorActive(lighterBlue)
     ;
 
   cp5.addButton("sum10")
     .setCaptionLabel(" ")
     .setPosition((width/12)*9, height-buttonH)
     .setSize(buttonW, buttonH)
+        .setColorBackground(deepBlue)
+    .setColorForeground(lightBlue)
+    .setColorActive(lighterBlue)
     ;
 
   cp5.addButton("sum11")
     .setCaptionLabel(" ")
     .setPosition((width/12)*10, height-buttonH)
     .setSize(buttonW, buttonH)
+        .setColorBackground(deepBlue)
+    .setColorForeground(lightBlue)
+    .setColorActive(lighterBlue)
     ;
 
   cp5.addButton("sum12")
     .setCaptionLabel(" ")
     .setPosition((width/12)*11, height-buttonH)
     .setSize(buttonW, buttonH)
+        .setColorBackground(deepBlue)
+    .setColorForeground(lightBlue)
+    .setColorActive(lighterBlue)
     ;
 }
 
@@ -95,72 +131,108 @@ void autBottomButtons() {
     //.setValue(0)
     .setPosition(0, height-buttonH)
     .setSize(buttonW, buttonH)
+        .setColorBackground(deepBlue)
+    .setColorForeground(lightBlue)
+    .setColorActive(lighterBlue)
     ;
 
   cp5.addButton("aut2")
     .setCaptionLabel(" ")
     .setPosition(width/12, height-buttonH)
     .setSize(buttonW, buttonH)
+        .setColorBackground(deepBlue)
+    .setColorForeground(lightBlue)
+    .setColorActive(lighterBlue)
     ;
 
   cp5.addButton("aut3")
     .setCaptionLabel(" ")
     .setPosition((width/12)*2, height-buttonH)
     .setSize(buttonW, buttonH)
+        .setColorBackground(deepBlue)
+    .setColorForeground(lightBlue)
+    .setColorActive(lighterBlue)
     ;
 
   cp5.addButton("aut4")
     .setCaptionLabel(" ")
     .setPosition((width/12)*3, height-buttonH)
     .setSize(buttonW, buttonH)
+        .setColorBackground(deepBlue)
+    .setColorForeground(lightBlue)
+    .setColorActive(lighterBlue)
     ;
 
   cp5.addButton("aut5")
     .setCaptionLabel(" ")
     .setPosition((width/12)*4, height-buttonH)
     .setSize(buttonW, buttonH)
+        .setColorBackground(deepBlue)
+    .setColorForeground(lightBlue)
+    .setColorActive(lighterBlue)
     ;
 
   cp5.addButton("aut6")
     .setCaptionLabel(" ")
     .setPosition((width/12)*5, height-buttonH)
     .setSize(buttonW, buttonH)
+        .setColorBackground(deepBlue)
+    .setColorForeground(lightBlue)
+    .setColorActive(lighterBlue)
     ;
 
   cp5.addButton("aut7")
     .setCaptionLabel(" ")
     .setPosition((width/12)*6, height-buttonH)
     .setSize(buttonW, buttonH)
+        .setColorBackground(deepBlue)
+    .setColorForeground(lightBlue)
+    .setColorActive(lighterBlue)
     ;
 
   cp5.addButton("aut8")
     .setCaptionLabel(" ")
     .setPosition((width/12)*7, height-buttonH)
     .setSize(buttonW, buttonH)
+        .setColorBackground(deepBlue)
+    .setColorForeground(lightBlue)
+    .setColorActive(lighterBlue)
     ;
 
   cp5.addButton("aut9")
     .setCaptionLabel(" ")
     .setPosition((width/12)*8, height-buttonH)
     .setSize(buttonW, buttonH)
+        .setColorBackground(deepBlue)
+    .setColorForeground(lightBlue)
+    .setColorActive(lighterBlue)
     ;
 
   cp5.addButton("aut10")
     .setCaptionLabel(" ")
     .setPosition((width/12)*9, height-buttonH)
     .setSize(buttonW, buttonH)
+        .setColorBackground(deepBlue)
+    .setColorForeground(lightBlue)
+    .setColorActive(lighterBlue)
     ;
 
   cp5.addButton("aut11")
     .setCaptionLabel(" ")
     .setPosition((width/12)*10, height-buttonH)
     .setSize(buttonW, buttonH)
+        .setColorBackground(deepBlue)
+    .setColorForeground(lightBlue)
+    .setColorActive(lighterBlue)
     ;
 
   cp5.addButton("aut12")
     .setCaptionLabel(" ")
     .setPosition((width/12)*11, height-buttonH)
     .setSize(buttonW, buttonH)
+        .setColorBackground(deepBlue)
+    .setColorForeground(lightBlue)
+    .setColorActive(lighterBlue)
     ;
 }
 
@@ -173,72 +245,108 @@ void winBottomButtons() {
     //.setValue(0)
     .setPosition(0, height-buttonH)
     .setSize(buttonW, buttonH)
+        .setColorBackground(deepBlue)
+    .setColorForeground(lightBlue)
+    .setColorActive(lighterBlue)
     ;
 
   cp5.addButton("win2")
     .setCaptionLabel(" ")
     .setPosition(width/12, height-buttonH)
     .setSize(buttonW, buttonH)
+        .setColorBackground(deepBlue)
+    .setColorForeground(lightBlue)
+    .setColorActive(lighterBlue)
     ;
 
   cp5.addButton("win3")
     .setCaptionLabel(" ")
     .setPosition((width/12)*2, height-buttonH)
     .setSize(buttonW, buttonH)
+        .setColorBackground(deepBlue)
+    .setColorForeground(lightBlue)
+    .setColorActive(lighterBlue)
     ;
 
   cp5.addButton("win4")
     .setCaptionLabel(" ")
     .setPosition((width/12)*3, height-buttonH)
     .setSize(buttonW, buttonH)
+        .setColorBackground(deepBlue)
+    .setColorForeground(lightBlue)
+    .setColorActive(lighterBlue)
     ;
 
   cp5.addButton("win5")
     .setCaptionLabel(" ")
     .setPosition((width/12)*4, height-buttonH)
     .setSize(buttonW, buttonH)
+        .setColorBackground(deepBlue)
+    .setColorForeground(lightBlue)
+    .setColorActive(lighterBlue)
     ;
 
   cp5.addButton("win6")
     .setCaptionLabel(" ")
     .setPosition((width/12)*5, height-buttonH)
     .setSize(buttonW, buttonH)
+        .setColorBackground(deepBlue)
+    .setColorForeground(lightBlue)
+    .setColorActive(lighterBlue)
     ;
 
   cp5.addButton("win7")
     .setCaptionLabel(" ")
     .setPosition((width/12)*6, height-buttonH)
     .setSize(buttonW, buttonH)
+        .setColorBackground(deepBlue)
+    .setColorForeground(lightBlue)
+    .setColorActive(lighterBlue)
     ;
 
   cp5.addButton("win8")
     .setCaptionLabel(" ")
     .setPosition((width/12)*7, height-buttonH)
     .setSize(buttonW, buttonH)
+        .setColorBackground(deepBlue)
+    .setColorForeground(lightBlue)
+    .setColorActive(lighterBlue)
     ;
 
   cp5.addButton("win9")
     .setCaptionLabel(" ")
     .setPosition((width/12)*8, height-buttonH)
     .setSize(buttonW, buttonH)
+        .setColorBackground(deepBlue)
+    .setColorForeground(lightBlue)
+    .setColorActive(lighterBlue)
     ;
 
   cp5.addButton("win10")
     .setCaptionLabel(" ")
     .setPosition((width/12)*9, height-buttonH)
     .setSize(buttonW, buttonH)
+        .setColorBackground(deepBlue)
+    .setColorForeground(lightBlue)
+    .setColorActive(lighterBlue)
     ;
 
   cp5.addButton("win11")
     .setCaptionLabel(" ")
     .setPosition((width/12)*10, height-buttonH)
     .setSize(buttonW, buttonH)
+        .setColorBackground(deepBlue)
+    .setColorForeground(lightBlue)
+    .setColorActive(lighterBlue)
     ;
 
   cp5.addButton("win12")
     .setCaptionLabel(" ")
     .setPosition((width/12)*11, height-buttonH)
     .setSize(buttonW, buttonH)
+        .setColorBackground(deepBlue)
+    .setColorForeground(lightBlue)
+    .setColorActive(lighterBlue)
     ;
 }
 
@@ -251,72 +359,108 @@ void sprBottomButtons() {
     //.setValue(0)
     .setPosition(0, height-buttonH)
     .setSize(buttonW, buttonH)
+        .setColorBackground(deepBlue)
+    .setColorForeground(lightBlue)
+    .setColorActive(lighterBlue)
     ;
 
   cp5.addButton("spr2")
     .setCaptionLabel(" ")
     .setPosition(width/12, height-buttonH)
     .setSize(buttonW, buttonH)
+        .setColorBackground(deepBlue)
+    .setColorForeground(lightBlue)
+    .setColorActive(lighterBlue)
     ;
 
   cp5.addButton("spr3")
     .setCaptionLabel(" ")
     .setPosition((width/12)*2, height-buttonH)
     .setSize(buttonW, buttonH)
+        .setColorBackground(deepBlue)
+    .setColorForeground(lightBlue)
+    .setColorActive(lighterBlue)
     ;
 
   cp5.addButton("spr4")
     .setCaptionLabel(" ")
     .setPosition((width/12)*3, height-buttonH)
     .setSize(buttonW, buttonH)
+        .setColorBackground(deepBlue)
+    .setColorForeground(lightBlue)
+    .setColorActive(lighterBlue)
     ;
 
   cp5.addButton("spr5")
     .setCaptionLabel(" ")
     .setPosition((width/12)*4, height-buttonH)
     .setSize(buttonW, buttonH)
+        .setColorBackground(deepBlue)
+    .setColorForeground(lightBlue)
+    .setColorActive(lighterBlue)
     ;
 
   cp5.addButton("spr6")
     .setCaptionLabel(" ")
     .setPosition((width/12)*5, height-buttonH)
     .setSize(buttonW, buttonH)
+        .setColorBackground(deepBlue)
+    .setColorForeground(lightBlue)
+    .setColorActive(lighterBlue)
     ;
 
   cp5.addButton("spr7")
     .setCaptionLabel(" ")
     .setPosition((width/12)*6, height-buttonH)
     .setSize(buttonW, buttonH)
+        .setColorBackground(deepBlue)
+    .setColorForeground(lightBlue)
+    .setColorActive(lighterBlue)
     ;
 
   cp5.addButton("spr8")
     .setCaptionLabel(" ")
     .setPosition((width/12)*7, height-buttonH)
     .setSize(buttonW, buttonH)
+        .setColorBackground(deepBlue)
+    .setColorForeground(lightBlue)
+    .setColorActive(lighterBlue)
     ;
 
   cp5.addButton("spr9")
     .setCaptionLabel(" ")
     .setPosition((width/12)*8, height-buttonH)
     .setSize(buttonW, buttonH)
+        .setColorBackground(deepBlue)
+    .setColorForeground(lightBlue)
+    .setColorActive(lighterBlue)
     ;
 
   cp5.addButton("spr10")
     .setCaptionLabel(" ")
     .setPosition((width/12)*9, height-buttonH)
     .setSize(buttonW, buttonH)
+        .setColorBackground(deepBlue)
+    .setColorForeground(lightBlue)
+    .setColorActive(lighterBlue)
     ;
 
   cp5.addButton("spr11")
     .setCaptionLabel(" ")
     .setPosition((width/12)*10, height-buttonH)
     .setSize(buttonW, buttonH)
+        .setColorBackground(deepBlue)
+    .setColorForeground(lightBlue)
+    .setColorActive(lighterBlue)
     ;
 
   cp5.addButton("spr12")
     .setCaptionLabel(" ")
     .setPosition((width/12)*11, height-buttonH)
     .setSize(buttonW, buttonH)
+        .setColorBackground(deepBlue)
+    .setColorForeground(lightBlue)
+    .setColorActive(lighterBlue)
     ;
 }
 //=== END CREATE BUTTONS ===

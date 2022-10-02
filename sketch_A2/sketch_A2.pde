@@ -56,6 +56,10 @@ boolean is_night;
 //Colours
 color peach = color(245, 101, 101);
 color lightPeach = color(245, 163, 163);
+color deepBlue = color(31, 38, 54);
+color lightBlue = color(34, 229, 253);
+color lighterBlue = color(34, 229, 253, 50);
+color nightSky = color(0,90, 119);
 
 //Sounds
 SoundFile sum_sound;
@@ -175,7 +179,7 @@ void setup() {
 }
 
 void draw() {
-  background(0);
+  background(nightSky);
   if (is_welcome == true) {
     welcome(); //have a function/method that creates the welcome screen
     hideTimeSliders();
@@ -184,18 +188,22 @@ void draw() {
     summer();
     showSumSlid();
     showSumBut();
+    soundRect();
   } else if (is_autumn == true) {
     autumn();
     showAutSlid();
     showAutBut();
+    soundRect();
   } else if (is_winter == true) {
     winter();
     showWinSlid();
     showWinBut();
+    soundRect();
   } else if (is_spring == true) {
     spring();
     showSprSlid();
     showSprBut();
+    soundRect();
   } 
 
   //=== KEEP ALL OF THESE AT THE BOTTOM OF THE draw() FUNCTION ===
@@ -264,7 +272,7 @@ void keyPressed() {
   } else if (key == 'd') {
     is_night = false;
     is_day = true;
-    println("it's night! ", is_day);
+    println("it's daylight! ", is_day);
   } else {
     bar(0);
   }

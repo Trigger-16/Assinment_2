@@ -1,7 +1,10 @@
 //slider colours
-color foreground = color(79, 48, 131);
-color foregroundActive = color(185, 153, 237);
-color background = color(97, 87, 113, 80);
+//color foreground = color(79, 48, 131);
+//color foregroundActive = color(185, 153, 237);
+//color background = color(97, 87, 113, 80);
+color foreground = color(255, 90);
+color foregroundActive = color(255);
+color background = color(255, 60);
 //slider settings
 int sliderHeight = 100;
 int sliderWidth = 1300;
