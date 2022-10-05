@@ -2,7 +2,7 @@ void summer() {
   //clockBackground();
   readSumSolarxy();
   readSumTempxy();
-  
+  //DEBUG //readSumHumidDay();
   
   //if (index < sum_solar_xy.getRowCount()) {
   //  //=== DO SOMETHING WITH DATA ===

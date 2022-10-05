@@ -4,8 +4,6 @@
  * Zijia Zhu (13473778)
  * Carmen Ly (13547599)
  * Adriel Carino (13931908)
- // hello world
- // test
  * 
  * === Image sources ===
  * - spring tree: https://static.vecteezy.com/system/resources/previews/011/027/775/non_2x/hand-drawn-tree-watercolor-illustration-free-png.png
@@ -31,10 +29,6 @@ AudioContext ac;
 ControlP5 cp5;
 
 //Data
-//Table summer_xy;
-//Table autumn_xy;
-//Table winter_xy;
-//Table spring_xy;
 Table sum_solar_xy;
 Table aut_solar_xy;
 Table win_solar_xy;
@@ -59,7 +53,7 @@ color lightPeach = color(245, 163, 163);
 color deepBlue = color(31, 38, 54);
 color lightBlue = color(34, 229, 253);
 color lighterBlue = color(34, 229, 253, 50);
-color nightSky = color(0,90, 119);
+color nightSky = color(0, 90, 119);
 
 //Sounds
 SoundFile sum_sound;
@@ -123,6 +117,14 @@ void setup() {
   aut_temp_xy = loadTable("AirTemp_Autumn.csv", "csv");
   win_temp_xy = loadTable("AirTemp_Winter.csv", "csv");
   spr_temp_xy = loadTable("AirTemp_Spring.csv", "csv");
+  sum_humid_day = loadTable("Humidity_Summer_Day.csv", "csv");
+  sum_humid_night = loadTable("Humidity_Summer_Night.csv", "csv");
+  aut_humid_day = loadTable("Humidity_Autumn_Day.csv", "csv");
+  aut_humid_night = loadTable("Humidity_Autumn_Night.csv", "csv");
+  win_humid_day = loadTable("Humidity_Winter_Day.csv", "csv");
+  win_humid_night = loadTable("Humidity_Winter_Night.csv", "csv");
+  spr_humid_day = loadTable("Humidity_Spring_Day.csv", "csv");
+  spr_humid_night = loadTable("Humidity_Spring_Night.csv", "csv");
   //=== END LOAD TABLES ===
 
   //=== LOAD IMAGES ===
@@ -176,6 +178,7 @@ void setup() {
   createBottomButtons();
   //=== END BOTTOM STRIP BUTTONS ===
   //debug(b); //checks
+  readHumidity();
 }
 
 void draw() {

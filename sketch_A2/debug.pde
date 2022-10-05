@@ -35,3 +35,14 @@ void debug(ButtonBar b) {
   }
   );
 }
+
+
+void readSumHumidDay() {
+  if (index < sum_humid_day.getRowCount()) {
+    //=== DO SOMETHING WITH DATA ===
+
+    //=== END SOMETHING WITH DATA ===
+    println("humidity data point: ", index, " | ", sum_humid_day.getFloat(index, 1));
+    index++;
+  }
+}
