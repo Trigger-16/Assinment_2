@@ -48,13 +48,13 @@ boolean is_welcome = true;
 boolean is_day = true;
 boolean is_night;
 //Colours
-color peach = color(245, 101, 101);
-color lightPeach = color(245, 163, 163);
+color peach = color(255, 155, 155);
+color lightPeach = color(245, 191, 191);
 color deepBlue = color(31, 38, 54);
 color lightBlue = color(34, 229, 253);
 color lighterBlue = color(34, 229, 253, 50);
 color nightSky = color(0, 90, 119);
-
+color daySky = color(158, 217, 237);
 //Sounds
 SoundFile sum_sound;
 SoundFile aut_sound;
@@ -125,6 +125,8 @@ void setup() {
   win_humid_night = loadTable("Humidity_Winter_Night.csv", "csv");
   spr_humid_day = loadTable("Humidity_Spring_Day.csv", "csv");
   spr_humid_night = loadTable("Humidity_Spring_Night.csv", "csv");
+
+  readHumidity(); //this must be very early in the code. do not remove this line
   //=== END LOAD TABLES ===
 
   //=== LOAD IMAGES ===
@@ -174,15 +176,23 @@ void setup() {
   timeSprSlider();
   //=== END SLIDERS ===
 
-  //=== BOTTOM STRIP BUTTONS (AIR TEMP DATA[?]) ==
+  //=== BOTTOM STRIP BUTTONS (HUMIDITY) ==
+  sumDayCols(); //the starting value of is_day = true && is_night = false, so use day colours first
+  autDayCols();
+  winDayCols();
+  sprDayCols();
   createBottomButtons();
   //=== END BOTTOM STRIP BUTTONS ===
   //debug(b); //checks
-  readHumidity();
 }
 
 void draw() {
-  background(nightSky);
+  if (is_night == true) {
+    background(nightSky);
+  } else if (is_day == true) {
+    background(daySky);
+  }
+
   if (is_welcome == true) {
     welcome(); //have a function/method that creates the welcome screen
     hideTimeSliders();
@@ -232,30 +242,45 @@ void draw() {
     text("6am", pmX, pmY-50);
     text("12am", cx, cy+20);
   }
-}
 
-
-void clockBackground() {
-  fill(80);
-  noStroke();
-  ellipse(cx, cy, clockDiameter, clockDiameter);
-  //pie chart
-  stroke (255);
-  strokeWeight (0.5);
-  int numberOfElements = rVals.length;
-  float angleSteps = TWO_PI / total;
-  int i = 0;
-  float currentAngle = 0;
-  float startAngle = 0;
-
-  while (i < numberOfElements) {
-    currentAngle= angleSteps * rVals [i];
-    arc (cx, cy, clockDiameter, clockDiameter, startAngle, startAngle+currentAngle);
-    line (cx, cy, cx + cos(startAngle)*283, cy + sin(startAngle)*283);
-    startAngle = startAngle + currentAngle;
-    i += 1;
+  //=== CHANGES COLOUR OF BOTTOM BUTTONS===
+  if (is_night == true) {
+    sumNightCols();
+    autNightCols();
+    winNightCols();
+    sprNightCols();
+    setButCols();
+  } else if (is_day == true) {
+    sumDayCols();
+    autDayCols();
+    winDayCols();
+    sprDayCols();
+    setButCols();
   }
 }
+
+
+//void clockBackground() {
+//  fill(80);
+//  noStroke();
+//  ellipse(cx, cy, clockDiameter, clockDiameter);
+//  //pie chart
+//  stroke (255);
+//  strokeWeight (0.5);
+//  int numberOfElements = rVals.length;
+//  float angleSteps = TWO_PI / total;
+//  int i = 0;
+//  float currentAngle = 0;
+//  float startAngle = 0;
+
+//  while (i < numberOfElements) {
+//    currentAngle= angleSteps * rVals [i];
+//    arc (cx, cy, clockDiameter, clockDiameter, startAngle, startAngle+currentAngle);
+//    line (cx, cy, cx + cos(startAngle)*283, cy + sin(startAngle)*283);
+//    startAngle = startAngle + currentAngle;
+//    i += 1;
+//  }
+//}
 
 //Just keep these for now; alternative to pressing the buttons 
 //It just doesn't change the active color

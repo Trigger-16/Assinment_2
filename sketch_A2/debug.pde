@@ -10,6 +10,16 @@ void debug(ButtonBar b) {
   println("winter temp data: ", win_temp_xy.getRowCount());
   println("spring temp data: ", spr_temp_xy.getRowCount());
 
+  //=== STORING HUMIDITY VALUES CORRECTLY ===
+  //println("Summer day: ", sumHumidDay);//       use: sumHumidDay.get(0) to get SPECIFIC values
+  //println("Summer night: ", sumHumidNight);
+  //println("Autumn day: ", autHumidDay);
+  //println("Autumn night: ", autHumidNight);
+  //println("Winter day: ", winHumidDay);
+  //println("Winter night: ", winHumidNight);
+  //println("Spring day: ", sprHumidDay);
+  //println("Spring night: ", sprHumidNight);
+
   //=== BUTTON BAR ===
   //println(b.getItem("a"));
   //b.changeItem("a", "text", "WELCOME");
