@@ -59,7 +59,7 @@ boolean is_night;
 //Colours
 color peach = color(255, 155, 155);
 color lightPeach = color(245, 191, 191);
-color taro = color(#d2afff);
+color taro = #d2afff;
 color deepBlue = color(31, 38, 54);
 color lightBlue = color(34, 229, 253);
 color lighterBlue = color(34, 229, 253, 50);
