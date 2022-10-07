@@ -33,10 +33,18 @@ Table sum_solar_xy;
 Table aut_solar_xy;
 Table win_solar_xy;
 Table spr_solar_xy;
-Table sum_temp_xy;
-Table aut_temp_xy;
-Table win_temp_xy;
-Table spr_temp_xy;
+//Table sum_temp_xy;
+//Table aut_temp_xy;
+//Table win_temp_xy;
+//Table spr_temp_xy;
+Table sum_temp_day;
+Table sum_temp_night;
+Table aut_temp_day;
+Table aut_temp_night;
+Table win_temp_day;
+Table win_temp_night;
+Table spr_temp_day;
+Table spr_temp_night;
 //Images
 PImage sun_img;
 PImage leaf_img;
@@ -50,6 +58,7 @@ boolean is_night;
 //Colours
 color peach = color(255, 155, 155);
 color lightPeach = color(245, 191, 191);
+color taro = color(#d2afff);
 color deepBlue = color(31, 38, 54);
 color lightBlue = color(34, 229, 253);
 color lighterBlue = color(34, 229, 253, 50);
@@ -105,19 +114,23 @@ void setup() {
   //===END SETTINGS ===
 
   //=== LOAD TABLES ===
-  //the eif-research.feit.uts.edu.au websites are down right now so no data can be retrieved
-  //summer_xy = loadTable("https://eif-research.feit.uts.edu.au/graph/?rFromDate=2022-01-14T08%3A00&rToDate=2022-01-16T20%3A00&rFamily=wasp&rSensor=ES_B_04_415_7BD1&rSubSensor=HUMA#collapseOne", "csv");
-  //spring_xy = loadTable("https://eif-research.feit.uts.edu.au/graph/?rFromDate=2021-10-15T08%3A00&rToDate=2021-10-17T20%3A00&rFamily=wasp&rSensor=ES_B_04_415_7BD1&rSubSensor=HUMA#collapseOne", "csv");
-  //autumn_xy = loadTable("https://eif-research.feit.uts.edu.au/graph/?rFromDate=2022-04-15T08%3A00&rToDate=2022-04-17T20%3A00&rFamily=wasp&rSensor=ES_B_04_415_7BD1&rSubSensor=HUMA#collapseOne", "csv");
-  //winter_xy = loadTable("https://eif-research.feit.uts.edu.au/graph/?rFromDate=2022-07-15T08%3A00&rToDate=2022-07-17T20%3A00&rFamily=wasp&rSensor=ES_B_04_415_7BD1&rSubSensor=HUMA#collapseOne", "csv");
   sum_solar_xy = loadTable("SolarRadiation_Summer.csv", "csv");
   aut_solar_xy = loadTable("SolarRadiation_Autumn.csv", "csv");
   win_solar_xy = loadTable("SolarRadiation_Winter.csv", "csv");
   spr_solar_xy = loadTable("SolarRadiation_Spring.csv", "csv");
-  sum_temp_xy = loadTable("AirTemp_Summer.csv", "csv");
-  aut_temp_xy = loadTable("AirTemp_Autumn.csv", "csv");
-  win_temp_xy = loadTable("AirTemp_Winter.csv", "csv");
-  spr_temp_xy = loadTable("AirTemp_Spring.csv", "csv");
+  //sum_temp_xy = loadTable("AirTemp_Summer.csv", "csv");
+  //aut_temp_xy = loadTable("AirTemp_Autumn.csv", "csv");
+  //win_temp_xy = loadTable("AirTemp_Winter.csv", "csv");
+  //spr_temp_xy = loadTable("AirTemp_Spring.csv", "csv");
+  sum_temp_day = loadTable("AirTemp_Summer_Day.csv", "csv");
+  sum_temp_night = loadTable("AirTemp_Summer_Night.csv", "csv");
+  aut_temp_day = loadTable("AirTemp_Autumn_Day.csv", "csv");
+  aut_temp_night = loadTable("AirTemp_Autumn_Night.csv", "csv");
+  win_temp_day = loadTable("AirTemp_Winter_Day.csv", "csv");
+  win_temp_night = loadTable("AirTemp_Winter_Night.csv", "csv");
+  spr_temp_day = loadTable("AirTemp_Spring_Day.csv", "csv");
+  spr_temp_night = loadTable("AirTemp_Spring_Night.csv", "csv");
+  
   sum_humid_day = loadTable("Humidity_Summer_Day.csv", "csv");
   sum_humid_night = loadTable("Humidity_Summer_Night.csv", "csv");
   aut_humid_day = loadTable("Humidity_Autumn_Day.csv", "csv");
