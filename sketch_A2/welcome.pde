@@ -51,11 +51,19 @@ void createWelcomeBut() {
 void hideWelcomeBut() {
   // HIDE WELCOME BUTTONS
   // when you click on summer and the buttons disappear
+  cp5.getController("home").hide();
+  cp5.getController("solar radiation").hide();
+  cp5.getController("humidity").hide();
+  cp5.getController("air temperature").hide();
 }
 
 void showWelcomeBut() {
   // SHOW WELCOME BUTTONS
   // when you click on welcome and the buttons reappear
+  cp5.getController("home").show();
+  cp5.getController("solar radiation").show();
+  cp5.getController("humidity").show();
+  cp5.getController("air temperature").show();
 }
 
 void welcome() {
