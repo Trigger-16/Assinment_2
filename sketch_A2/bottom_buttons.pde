@@ -1,5 +1,5 @@
-//Tables //<>// //<>//
-Table sum_humid_day ; //<>// //<>//
+//Tables //<>//
+Table sum_humid_day ; //<>//
 Table sum_humid_night;
 Table aut_humid_day;
 Table aut_humid_night;
@@ -241,7 +241,7 @@ void sumBottomButtons() {
   cp5.addButton("sum12")
     .setCaptionLabel(" ")
     .setPosition((width/12)*11, height-buttonH)
-    .setSize(buttonW, buttonH)
+    .setSize(buttonW+15, buttonH)
     .setColorBackground(col_s12)
     //.setColorBackground(deepBlue)
     .setColorForeground(lightBlue)
@@ -366,7 +366,7 @@ void autBottomButtons() {
   cp5.addButton("aut12")
     .setCaptionLabel(" ")
     .setPosition((width/12)*11, height-buttonH)
-    .setSize(buttonW, buttonH)
+    .setSize(buttonW+15, buttonH)
     .setColorBackground(col_a12)
     //.setColorBackground(deepBlue)
     .setColorForeground(lightBlue)
@@ -492,7 +492,7 @@ void winBottomButtons() {
   cp5.addButton("win12")
     .setCaptionLabel(" ")
     .setPosition((width/12)*11, height-buttonH)
-    .setSize(buttonW, buttonH)
+    .setSize(buttonW+15, buttonH)
     .setColorBackground(col_w12)
     //.setColorBackground(deepBlue)
     .setColorForeground(lightBlue)
@@ -618,7 +618,7 @@ void sprBottomButtons() {
   cp5.addButton("spr12")
     .setCaptionLabel(" ")
     .setPosition((width/12)*11, height-buttonH)
-    .setSize(buttonW, buttonH)
+    .setSize(buttonW+15, buttonH)
     .setColorBackground(col_sp12)
     //.setColorBackground(deepBlue)
     .setColorForeground(lightBlue)
