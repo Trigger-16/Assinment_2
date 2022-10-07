@@ -1,10 +1,10 @@
-/* 31080 Interactive Media, Spring 2022 
+/* 31080 Interactive Media, Spring 2022
  * === Contributors ===
  * Rebecca Lu [13560560]
  * Zijia Zhu (13473778)
  * Carmen Ly (13547599)
  * Adriel Carino (13931908)
- * 
+ *
  * === Image sources ===
  * - spring tree: https://static.vecteezy.com/system/resources/previews/011/027/775/non_2x/hand-drawn-tree-watercolor-illustration-free-png.png
  * - autumn tree: https://static.vecteezy.com/system/resources/previews/011/027/801/non_2x/autumn-tree-watercolor-illustration-free-png.png
@@ -22,7 +22,7 @@
 //=== INITIALISE GLOBAL VARIABLES ===
 import beads.*;
 import processing.sound.*;
-import java.util.Arrays; 
+import java.util.Arrays;
 import controlP5.*;
 
 AudioContext ac;
@@ -52,7 +52,8 @@ PImage snowflake_img;
 PImage flower_img;
 //Flags
 boolean is_summer, is_autumn, is_winter, is_spring;
-boolean is_welcome = true; 
+boolean is_welcome = true;
+boolean is_welcome1, is_welcome2, is_welcome3;
 boolean is_day = true;
 boolean is_night;
 //Colours
@@ -76,14 +77,14 @@ ButtonBar b;
 int cx, cy; //centre x, y
 int top_cx, top_cy; //top section, centre x, y
 int amX = 50; //x & y position for time slider labels
-int pmX, amY, pmY; 
+int pmX, amY, pmY;
 //Clock
 //float secondsRadius;
 //float minutesRadius;
 //float hoursRadius;
 float clockDiameter;
 //Pie Chart
-float [] rVals = new float [12]; 
+float [] rVals = new float [12];
 float total = 0;
 //Loading CSV/data
 int index = 0; //this is the index to iterate through datasets
@@ -97,12 +98,12 @@ void setup() {
 
   //===INITIALISE SETTINGS ===
   //== font ==
-  PFont p = createFont("Lato-Regular.ttf", 36); 
+  PFont p = createFont("Lato-Regular.ttf", 36);
   ControlFont font = new ControlFont(p); // Initialise Font Settings
   cp5.setFont(font);
   textFont(p);
   textAlign(CENTER, CENTER);
-  
+
   //== variables ==
   cx = width / 2;
   cy = (height+height/11) / 2;
@@ -168,7 +169,7 @@ void setup() {
   //minutesRadius = radius * 0.60;
   //hoursRadius = radius * 0.50;
   clockDiameter = radius * 1.8;
-  //== pie chart == 
+  //== pie chart ==
   smooth();
   int i = 0;
   total = 0;
@@ -213,6 +214,18 @@ void draw() {
     showWelcomeBut();
     hideTimeSliders();
     hideAllButtons();
+  } else if (is_welcome1 == true) {
+    welcome1();
+    hideTimeSliders();
+    hideAllButtons();
+  } else if (is_welcome2 == true) {
+    welcome2();
+    hideTimeSliders();
+    hideAllButtons();
+  } else if (is_welcome3 == true) {
+    welcome3();
+    hideTimeSliders();
+    hideAllButtons();
   } else if (is_summer == true) {
     summer();
     showSumSlid();
@@ -237,7 +250,7 @@ void draw() {
     showSprBut();
     hideWelcomeBut();
     soundRect();
-  } 
+  }
 
   //=== KEEP ALL OF THESE AT THE BOTTOM OF THE draw() FUNCTION ===
   //=== IMGS ===
@@ -254,12 +267,12 @@ void draw() {
 
   if (is_welcome) {
   } else if (is_welcome == false && is_day == true) {
-    fill(0,0,0);
+    fill(0, 0, 0);
     text("6am", amX, amY); //these will be just below the time sliders
     text("6pm", pmX, pmY);
     text("12pm", cx, cy + 70);
   } else if (is_welcome == false && is_night == true) {
-    fill(255,255,255);
+    fill(255, 255, 255);
     text("6pm", amX, amY-50); //swap these values for nightime
     text("6am", pmX, pmY-50);
     text("12am", cx, cy+20);
@@ -304,7 +317,7 @@ void draw() {
 //  }
 //}
 
-//Just keep these for now; alternative to pressing the buttons 
+//Just keep these for now; alternative to pressing the buttons
 //It just doesn't change the active color
 void keyPressed() {
   if (key == '1') {
