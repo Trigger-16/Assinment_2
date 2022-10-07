@@ -93,6 +93,7 @@ void setup() {
   cp5.setFont(font);
   textFont(p);
   textAlign(CENTER, CENTER);
+  
   //== variables ==
   cx = width / 2;
   cy = (height+height/11) / 2;
@@ -240,10 +241,12 @@ void draw() {
 
   if (is_welcome) {
   } else if (is_welcome == false && is_day == true) {
+    fill(0,0,0);
     text("6am", amX, amY); //these will be just below the time sliders
     text("6pm", pmX, pmY);
     text("12pm", cx, cy + 70);
   } else if (is_welcome == false && is_night == true) {
+    fill(255,255,255);
     text("6pm", amX, amY-50); //swap these values for nightime
     text("6am", pmX, pmY-50);
     text("12am", cx, cy+20);
