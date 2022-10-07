@@ -165,9 +165,10 @@ void setup() {
   }
   //=== END CLOCK / PIE CHART SETTINGS ===
 
-  //=== BUTTON BAR ===
+  //=== BUTTON BAR & WELCOME BUTTONS ===
   createButtonBar();
-  //=== END BUTTON BAR ===
+  createWelcomeBut();
+  //=== END BUTTON BAR & WELCOME BUTTONS ===
 
   //=== SLIDERS ===
   timeSumSlider();
@@ -195,27 +196,32 @@ void draw() {
 
   if (is_welcome == true) {
     welcome(); //have a function/method that creates the welcome screen
+    showWelcomeBut();
     hideTimeSliders();
     hideAllButtons();
   } else if (is_summer == true) {
     summer();
     showSumSlid();
     showSumBut();
+    hideWelcomeBut();
     soundRect();
   } else if (is_autumn == true) {
     autumn();
     showAutSlid();
     showAutBut();
+    hideWelcomeBut();
     soundRect();
   } else if (is_winter == true) {
     winter();
     showWinSlid();
     showWinBut();
+    hideWelcomeBut();
     soundRect();
   } else if (is_spring == true) {
     spring();
     showSprSlid();
     showSprBut();
+    hideWelcomeBut();
     soundRect();
   } 
 
