@@ -28,28 +28,20 @@ import controlP5.*;
 AudioContext ac;
 ControlP5 cp5;
 
-//Data
+//Tables
 Table sum_solar_xy;
 Table aut_solar_xy;
 Table win_solar_xy;
 Table spr_solar_xy;
-//Table sum_temp_xy;
-//Table aut_temp_xy;
-//Table win_temp_xy;
-//Table spr_temp_xy;
-Table sum_temp_day;
-Table sum_temp_night;
-Table aut_temp_day;
-Table aut_temp_night;
-Table win_temp_day;
-Table win_temp_night;
-Table spr_temp_day;
-Table spr_temp_night;
 //Images
 PImage sun_img;
 PImage leaf_img;
 PImage snowflake_img;
 PImage flower_img;
+//Fonts
+PFont font1;
+PFont font2;
+PFont font3;
 //Flags
 boolean is_summer, is_autumn, is_winter, is_spring;
 boolean is_welcome = true;
@@ -58,8 +50,10 @@ boolean is_day = true;
 boolean is_night;
 //Colours
 color peach = color(255, 155, 155);
-color lightPeach = color(245, 191, 191);
-color taro = #d2afff;
+color lightPeach = color(255, 191, 191);
+color lighterPeach = color(255, 217, 217);
+color taro = color(210, 175, 255); // #d2afff;
+color lightTaro = color(225, 204, 252);
 color deepBlue = color(31, 38, 54);
 color lightBlue = color(34, 229, 253);
 color lighterBlue = color(34, 229, 253, 50);
@@ -78,14 +72,6 @@ int cx, cy; //centre x, y
 int top_cx, top_cy; //top section, centre x, y
 int amX = 50; //x & y position for time slider labels
 int pmX, amY, pmY;
-//Clock
-//float secondsRadius;
-//float minutesRadius;
-//float hoursRadius;
-float clockDiameter;
-//Pie Chart
-float [] rVals = new float [12];
-float total = 0;
 //Loading CSV/data
 int index = 0; //this is the index to iterate through datasets
 
@@ -93,22 +79,21 @@ int index = 0; //this is the index to iterate through datasets
 
 void setup() {
   size(1300, 900);
-  ac = new AudioContext();
-  cp5 = new ControlP5(this);
-
   //===INITIALISE SETTINGS ===
-  //== font ==
-  PFont p = createFont("Lato-Regular.ttf", 36);
-  ControlFont font = new ControlFont(p); // Initialise Font Settings
-  cp5.setFont(font);
-  textFont(p);
-  textAlign(CENTER, CENTER);
-
+  ac = new AudioContext();
+  cp5 = new ControlP5(this);   //ControlFont font = new ControlFont(font1); // Initialise Font Settings
+  cp5_1 = new ControlP5(this);  //ControlP5 used in welcome. changed the name of this so it doesn't get confused with the other cp5
+  //== fonts ==
+  font1 = createFont("Lato-Regular.ttf", 36);
+  font2 = createFont("Lato-Regular.ttf", 20);
+  font3 = createFont("Lato-Regular.ttf", 30);
+  cp5.setFont(font1);
+  cp5_1.setFont(font2);
   //== variables ==
-  cx = width / 2;
-  cy = (height+height/11) / 2;
-  top_cx = cx;
-  top_cy = cy/2;
+  cx = width / 2; //centre x pos
+  cy = (height+height/11) / 2; //centre y pos
+  top_cx = cx; //centre x pos of the top rectangle
+  top_cy = cy/2; //centre y pos of the top rectangle
   pmX = width - 50; //x position for time slider labels
   amY = cy + 70; //y position for time slider labels
   pmY = cy + 70;
@@ -119,10 +104,7 @@ void setup() {
   aut_solar_xy = loadTable("SolarRadiation_Autumn.csv", "csv");
   win_solar_xy = loadTable("SolarRadiation_Winter.csv", "csv");
   spr_solar_xy = loadTable("SolarRadiation_Spring.csv", "csv");
-  //sum_temp_xy = loadTable("AirTemp_Summer.csv", "csv");
-  //aut_temp_xy = loadTable("AirTemp_Autumn.csv", "csv");
-  //win_temp_xy = loadTable("AirTemp_Winter.csv", "csv");
-  //spr_temp_xy = loadTable("AirTemp_Spring.csv", "csv");
+
   sum_temp_day = loadTable("AirTemp_Summer_Day.csv", "csv");
   sum_temp_night = loadTable("AirTemp_Summer_Night.csv", "csv");
   aut_temp_day = loadTable("AirTemp_Autumn_Day.csv", "csv");
@@ -131,7 +113,7 @@ void setup() {
   win_temp_night = loadTable("AirTemp_Winter_Night.csv", "csv");
   spr_temp_day = loadTable("AirTemp_Spring_Day.csv", "csv");
   spr_temp_night = loadTable("AirTemp_Spring_Night.csv", "csv");
-  
+
   sum_humid_day = loadTable("Humidity_Summer_Day.csv", "csv");
   sum_humid_night = loadTable("Humidity_Summer_Night.csv", "csv");
   aut_humid_day = loadTable("Humidity_Autumn_Day.csv", "csv");
@@ -161,25 +143,6 @@ void setup() {
   spr_sound.amp(0.3);
   //=== END SOUND FILES ===
 
-  //=== CLOCK / PIE CHART SETTINGS ===
-  //== clock ==
-  stroke(255);
-  int radius = min(width, height-height/10) / 2;
-  //secondsRadius = radius * 0.72;
-  //minutesRadius = radius * 0.60;
-  //hoursRadius = radius * 0.50;
-  clockDiameter = radius * 1.8;
-  //== pie chart ==
-  smooth();
-  int i = 0;
-  total = 0;
-  while (i < rVals.length) {
-    rVals [i] = 1;//random (5, 200);
-    total = total + rVals [i];
-    i += 1;
-  }
-  //=== END CLOCK / PIE CHART SETTINGS ===
-
   //=== BUTTON BAR & WELCOME BUTTONS ===
   createButtonBar();
   createWelcomeBut();
@@ -200,6 +163,13 @@ void setup() {
   createBottomButtons();
   //=== END BOTTOM STRIP BUTTONS ===
   //debug(b); //checks
+
+  //=== ACTIVATE WELCOME BUTTONS ===
+  home.activateBy(ControlP5.RELEASED);
+  solar.activateBy(ControlP5.RELEASED);
+  humid.activateBy(ControlP5.RELEASED);
+  temp.activateBy(ControlP5.RELEASED);
+  //=== END ACTIVATE WELCOME BUTTONS ===
 }
 
 void draw() {
@@ -209,47 +179,47 @@ void draw() {
     background(daySky);
   }
 
-  if (is_welcome == true) {
-    welcome(); //have a function/method that creates the welcome screen
+  if (is_welcome == true) { //HOME
+    welcome(); //function/method that creates the welcome screen
     showWelcomeBut();
     hideTimeSliders();
     hideAllButtons();
-  } else if (is_welcome1 == true) {
+  } else if (is_welcome1 == true) { //SOLAR RADIATION
     welcome1();
     hideTimeSliders();
     hideAllButtons();
-  } else if (is_welcome2 == true) {
+  } else if (is_welcome2 == true) { //HUMIDITY
     welcome2();
     hideTimeSliders();
     hideAllButtons();
-  } else if (is_welcome3 == true) {
+  } else if (is_welcome3 == true) { //AIR TEMPERATURE
     welcome3();
     hideTimeSliders();
     hideAllButtons();
   } else if (is_summer == true) {
-    summer();
     showSumSlid();
     showSumBut();
     hideWelcomeBut();
     soundRect();
+    summer();
   } else if (is_autumn == true) {
-    autumn();
     showAutSlid();
     showAutBut();
     hideWelcomeBut();
     soundRect();
+    autumn();
   } else if (is_winter == true) {
-    winter();
     showWinSlid();
     showWinBut();
     hideWelcomeBut();
     soundRect();
+    winter();
   } else if (is_spring == true) {
-    spring();
     showSprSlid();
     showSprBut();
     hideWelcomeBut();
     soundRect();
+    spring();
   }
 
   //=== KEEP ALL OF THESE AT THE BOTTOM OF THE draw() FUNCTION ===
@@ -264,17 +234,20 @@ void draw() {
     image(flower_img, width-100, height/10+80, width/10, height/8); //image(flower_img, cx, cy, width/5, height/4);
   }
   //=== END IMGS ===
-
   if (is_welcome) {
-  } else if (is_welcome == false && is_day == true) {
+  } else if (is_welcome == false && is_welcome1 == false && is_welcome2 == false && is_welcome3 == false && is_day == true) {
     fill(0, 0, 0);
+    textFont(font1);
+    textAlign(CENTER, CENTER);
     text("6am", amX, amY); //these will be just below the time sliders
-    text("6pm", pmX, pmY);
+    text("5pm", pmX, pmY);
     text("12pm", cx, cy + 70);
-  } else if (is_welcome == false && is_night == true) {
+  } else if (is_welcome == false && is_welcome1 == false && is_welcome2 == false && is_welcome3 == false && is_night == true) {
     fill(255, 255, 255);
+    textFont(font1);
+    textAlign(CENTER, CENTER);
     text("6pm", amX, amY-50); //swap these values for nightime
-    text("6am", pmX, pmY-50);
+    text("5am", pmX, pmY-50);
     text("12am", cx, cy+20);
   }
 
@@ -294,41 +267,18 @@ void draw() {
   }
 }
 
-
-//void clockBackground() {
-//  fill(80);
-//  noStroke();
-//  ellipse(cx, cy, clockDiameter, clockDiameter);
-//  //pie chart
-//  stroke (255);
-//  strokeWeight (0.5);
-//  int numberOfElements = rVals.length;
-//  float angleSteps = TWO_PI / total;
-//  int i = 0;
-//  float currentAngle = 0;
-//  float startAngle = 0;
-
-//  while (i < numberOfElements) {
-//    currentAngle= angleSteps * rVals [i];
-//    arc (cx, cy, clockDiameter, clockDiameter, startAngle, startAngle+currentAngle);
-//    line (cx, cy, cx + cos(startAngle)*283, cy + sin(startAngle)*283);
-//    startAngle = startAngle + currentAngle;
-//    i += 1;
-//  }
-//}
-
 //Just keep these for now; alternative to pressing the buttons
 //It just doesn't change the active color
 void keyPressed() {
-  if (key == '1') {
-    bar(1);
-  } else if (key == '2') {
-    bar(2);
-  } else if (key == '3') {
-    bar(3);
-  } else if (key == '4') {
-    bar(4);
-  } else if (key == 'n') {
+  /*if (key == '1') {
+   bar(1);
+   } else if (key == '2') {
+   bar(2);
+   } else if (key == '3') {
+   bar(3);
+   } else if (key == '4') {
+   bar(4);
+   } else */  if (key == 'n') {
     is_night = true;
     is_day = false;
     println("it's night! ", is_night);
@@ -336,7 +286,7 @@ void keyPressed() {
     is_night = false;
     is_day = true;
     println("it's daylight! ", is_day);
-  } else {
-    bar(0);
+    /*} else {
+     bar(0);*/
   }
 }

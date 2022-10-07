@@ -1,5 +1,8 @@
+//Tables
+Table aut_temp_day;
+Table aut_temp_night;
+
 void autumn() {
-  //clockBackground();
   readAutSolarxy();
   
   //if (index < aut_solar_xy.getRowCount()) {

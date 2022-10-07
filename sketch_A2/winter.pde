@@ -1,5 +1,8 @@
+//Tables
+Table win_temp_day;
+Table win_temp_night;
+
 void winter() {
-  //clockBackground();
   readWinSolarxy();
 
   //if (index < win_solar_xy.getRowCount()) {
