@@ -18,15 +18,6 @@ FloatList winHumidNight;
 FloatList sprHumidDay;
 FloatList sprHumidNight;
 
-//'Heatmap' Colours
-color c1 = #ff0000;
-color c2 = #ffc400;
-color c3 = #dae023;
-color c4 = #98d03d;
-color c5 = #56d739;
-color c6 = #10df66;
-color c7 = #0ad5a3;
-color c8 = #00c6ff;
 //Summer Button Colours
 color col_s1;
 color col_s2;
@@ -787,6 +778,16 @@ void createBottomButtons() {
 //FUNCTIONS FOR HEAT MAP/BUTTON COLOURS
 //=== FUNCTION TO AUTO SELECT COLOURS ACC. TO RANGE OF VALUE ===
 color setColour(float value) {
+  //'Heatmap' Colours
+  color c1 = #ff0000;
+  color c2 = #ffc400;
+  color c3 = #dae023;
+  color c4 = #98d03d;
+  color c5 = #56d739;
+  color c6 = #10df66;
+  color c7 = #0ad5a3;
+  color c8 = #00c6ff;
+  
   color finalCol = color(0, 0, 0);
   if (value < 60) {
     finalCol = c1; //from;

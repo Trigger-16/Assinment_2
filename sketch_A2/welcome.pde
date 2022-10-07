@@ -1,113 +1,54 @@
-ControlP5 cp5_1;
-
 PImage moon_img;
 PImage stars_img;
 PImage clouds_img;
+PImage clouds_img2;
 
 Button home;
 Button solar;
 Button humid;
 Button temp;
 
-void createWelcomeBut() { // CREATE WELCOME BUTTONS IN setup()
-  //== images ==
-  moon_img = loadImage("moon.png"); // moon image
-  stars_img = loadImage("stars.png"); //stars image
-  clouds_img = loadImage("clouds.png"); //clouds image
-  imageMode(CENTER);
-  //== button settings ==
-  int buttonW = 200;
-  int buttonH = 50;
-  int buttonGap = (width-buttonW*4)/5; //value is 100
-  int buttonY = 700;
+int movingX=300;
 
-  solar = cp5_1.addButton("solarRadiation")
-    .setValue(0)
-    .setCaptionLabel("solar radiation")
-    .setPosition(buttonW + 2*buttonGap, buttonY)
-    .setSize(buttonW, buttonH)
-    .setColorBackground(peach)
-    .setColorForeground(lightPeach)
-    .setColorActive(lightPeach)
-    // .activateBy(ControlP5.RELEASED)
-    ;
-
-  humid = cp5_1.addButton("humidity")
-    .setValue(0)
-    .setPosition(2*buttonW + 3*buttonGap, buttonY)
-    .setSize(buttonW, buttonH)
-    .setColorBackground(peach)
-    .setColorForeground(lightPeach)
-    .setColorActive(lightPeach)
-    //.activateBy(ControlP5.RELEASED)
-    ;
-
-  temp = cp5_1.addButton("airTemperature")
-    .setValue(0)
-    .setCaptionLabel("air temperature")
-    .setPosition(3*buttonW + 4*buttonGap, buttonY)
-    .setSize(buttonW, buttonH)
-    .setColorBackground(peach)
-    .setColorForeground(lightPeach)
-    .setColorActive(lightPeach)
-    //.activateBy(ControlP5.RELEASED)
-    ;
-
-  //KEEP 'home' BUTTON ON THE BOTTOM. 
-  home = cp5_1.addButton("home")
-    .setValue(0)
-    .setPosition(buttonGap, buttonY)
-    .setSize(buttonW, buttonH)
-    .setColorBackground(peach)
-    .setColorForeground(lightPeach)
-    .setColorActive(lightPeach)
-    //.activateBy(ControlP5.RELEASED)
-    ;
-}
-
-void hideWelcomeBut() {
-  // when you click on season tabs, welcome page buttons disappear
-  cp5_1.getController("home").hide();
-  cp5_1.getController("solarRadiation").hide();
-  cp5_1.getController("humidity").hide();
-  cp5_1.getController("airTemperature").hide();
-}
-
-void showWelcomeBut() {
-  // when you click on welcome, the buttons reappear
-  cp5_1.getController("home").show();
-  cp5_1.getController("solarRadiation").show();
-  cp5_1.getController("humidity").show();
-  cp5_1.getController("airTemperature").show();
-}
 
 //=== HOME PAGE ===
 void welcome() {  //photos, text
+  imageMode(CENTER);
   textFont(font3);
   int x = 50;
-  int y = height/10 + 50;
+  int y = height/10 + 50;  
 
   if (is_welcome == true && is_night == true) {  
-    background(#1d3960);
+    background(nightSky);//(#1d3960);
     image(moon_img, width/2, height/2, width, height); // moon image
     image(stars_img, width/2, height/2, width, height); // stars image
-    image(clouds_img, width/2, height/2, width, height); // clouds image
+    //image(clouds_img, width/2, height/2+50, width, height); // clouds image
 
-    fill(255); //text colour
+    image(clouds_img2, movingX, height/2+50, width, height); // moving clouds
+    movingX++; 
+    //== text ==
     textAlign(LEFT);
-    text("Welcome!", x, y); 
-    text("Press 'd' and see what happens!", x, y+50);
+    text("Press 'd' and see what happens!", x, y+35);
   } else if (is_welcome == true && is_day == true) {
-    // @ CARMEN - CREATE A DAYTIME BACKGROUND HERE PLEASE :) - bec
-    //== settings ==
     background(daySky);
+    // @ CARMEN - CREATE A DAYTIME BACKGROUND HERE PLEASE :) - bec
 
     //== text ==
-    fill(255); //text colour
     textAlign(LEFT);
-    text("Welcome!", x, y); 
-    text("Press 'n' and see what happens!", x, y+50);
-  }
+    text("Press 'n' and see what happens!", x, y+35);
+  } 
+
+  fill(255); //text colour
+  textAlign(LEFT);
+  text("Welcome!", x, y);
+  textFont(font2);
+  text("Adriel Carino  13931908", x/2, height-x*2);
+  text("Carmen Ly      13547599", x/2, height-x*1.5);
+  text("Rebecca Lu     13560560", x/2, height-x);
+  text("Zijia Zhu          13473778", x/2, height-x*0.5);
+  textAlign(RIGHT);
+  text("31080 Interactive Media, Spring 2022", width-x/2, height-x*0.5);
+  // text("Spring 2022", width-x*4, height-(x/2.5));
 }
 //=== END HOME PAGE ===
 
@@ -117,6 +58,8 @@ void welcome1() {
   int y = 800;
 
   fill(peach);
+  textAlign(LEFT);
+  textFont(font3);
   text("Solar radiation is the electromagnetic radiation emitted by the sun and is measured", x, y); 
   text("by using the Pyranometer SR40.", x, y + 50);
 }
@@ -128,6 +71,8 @@ void welcome2() {
   int y = 800;
 
   fill(255);
+  textAlign(LEFT);
+  textFont(font3);
   text("Humidity is the amount of water vapor in the aire, measured from the range of", x, y); 
   text("0-100% Relative Humidity (RH).", x, y + 50);
 }
@@ -139,11 +84,83 @@ void welcome3() {
   int y = 800;
 
   fill(255);
+  textAlign(LEFT);
+  textFont(font3);
   text("Air temperature is the measure of thermal energy of molecules in the air above the", x, y); 
   text("Broadway Building rooftop, and is measured using the TA40 Series.", x, y + 50);
 }
 //=== END AIR TEMP PAGE ===
 
+//=== WELCOME BUTTONS ===
+void createWelcomeBut() { // CREATE WELCOME BUTTONS / IMAGES IN setup() (i.e. runs once)
+  //== images ==
+  moon_img = loadImage("moon.png"); // moon image
+  stars_img = loadImage("stars.png"); //stars image
+  clouds_img = loadImage("clouds.png"); //clouds image
+  clouds_img2 = loadImage("clouds2.png"); //clouds image; MOVING CLOUDS - BEC 
+  //== button settings ==
+  int buttonW = 200;
+  int buttonH = 50;
+  int buttonGap = (width-buttonW*4)/5; //value is 100
+  int buttonY = 700;
+
+  solar = cp5.addButton("solarRadiation")
+    .setValue(0)
+    .setCaptionLabel("solar radiation")
+    .setPosition(buttonW + 2*buttonGap, buttonY)
+    .setSize(buttonW, buttonH)
+    .setColorBackground(peach)
+    .setColorForeground(lightPeach)
+    .setColorActive(lightPeach)
+    .setFont(font2)
+    ;
+
+  humid = cp5.addButton("humidity")
+    .setValue(0)
+    .setPosition(2*buttonW + 3*buttonGap, buttonY)
+    .setSize(buttonW, buttonH)
+    .setColorBackground(peach)
+    .setColorForeground(lightPeach)
+    .setColorActive(lightPeach)
+    .setFont(font2)
+    ;
+
+  temp = cp5.addButton("airTemperature")
+    .setValue(0)
+    .setCaptionLabel("air temperature")
+    .setPosition(3*buttonW + 4*buttonGap, buttonY)
+    .setSize(buttonW, buttonH)
+    .setColorBackground(peach)
+    .setColorForeground(lightPeach)
+    .setColorActive(lightPeach)
+    .setFont(font2)
+    ;
+
+  //KEEP 'home' BUTTON ON THE BOTTOM. 
+  home = cp5.addButton("home")
+    .setValue(0)
+    .setPosition(buttonGap, buttonY)
+    .setSize(buttonW, buttonH)
+    .setColorBackground(peach)
+    .setColorForeground(lightPeach)
+    .setColorActive(lightPeach)
+    .setFont(font2)
+    ;
+}
+
+void hideWelcomeBut() { // when you click on season tabs, welcome page buttons disappear
+  home.hide();
+  solar.hide();
+  humid.hide();
+  temp.hide();
+}
+
+void showWelcomeBut() { // when you click on welcome, the buttons reappear  
+  home.show();
+  solar.show();
+  humid.show();
+  temp.show();
+}
 
 //=== BUTTON EVENTS === 
 // function home will receive changes from controller with name home etc..

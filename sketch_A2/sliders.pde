@@ -8,14 +8,39 @@ color background = color(255, 60);
 //slider settings
 int sliderHeight = 100;
 int sliderWidth = 1300;
-int timeSum = 6;//panning between day and night, so only 12 hours 
-int timeAut = 6;//panning between day and night, so only 12 hours 
-int timeWin = 6;//panning between day and night, so only 12 hours 
-int timeSpr = 6;//panning between day and night, so only 12 hours 
+int timeSum = 7;//panning between day and night, so only 12 hours 
+int timeAut = 7;//panning between day and night, so only 12 hours 
+int timeWin = 7;//panning between day and night, so only 12 hours 
+int timeSpr = 7;//panning between day and night, so only 12 hours 
 
+Slider timesum;
+Slider timeaut;
+Slider timewin;
+Slider timespr;
+
+//=== HELPER FUNCTION ===
+void slidText() {
+  if (is_welcome == false && is_welcome1 == false && is_welcome2 == false && is_welcome3 == false && is_day == true) {
+    //== time sliders miscellaneous ==
+    fill(0);
+    textFont(font1);
+    textAlign(CENTER, CENTER);
+    text("6am", amX, am_pmY); //these will be just below the time sliders
+    text("5pm", pmX, am_pmY);
+    text("12pm", cx+50, am_pmY);
+  } else if (is_welcome == false && is_welcome1 == false && is_welcome2 == false && is_welcome3 == false && is_night == true) {
+    fill(255);
+    textFont(font1);
+    textAlign(CENTER, CENTER);
+    text("6pm", amX, am_pmY-50); //swap these values for nightime
+    text("5am", pmX, am_pmY-50);
+    text("12am", cx+50, am_pmY-50);
+  }
+}
+//=== END HELPER FUNCTION ===
 //=== CREATE SLIDERS ===
 void timeSumSlider() {
-  cp5.addSlider("timeSum")
+  timesum = cp5.addSlider("timeSum")
     .setPosition(0, cy)
     .setRange(1, 12)
     .setSize(sliderWidth, sliderHeight)
@@ -25,13 +50,12 @@ void timeSumSlider() {
     .setColorForeground(foreground)
     .setColorActive(foregroundActive)
     ;
-  cp5.getController("timeSum").getValueLabel().hide();//.align(ControlP5.LEFT, ControlP5.TOP_OUTSIDE).setPaddingX(5);
-  cp5.getController("timeSum").getCaptionLabel().hide();//.align(ControlP5.RIGHT, ControlP5.TOP_OUTSIDE).setPaddingX(5);
-  cp5.getController("timeSum").hide();
+  timesum.getValueLabel().hide();//.align(ControlP5.LEFT, ControlP5.TOP_OUTSIDE).setPaddingX(5);
+  timesum.getCaptionLabel().hide();//.align(ControlP5.RIGHT, ControlP5.TOP_OUTSIDE).setPaddingX(5);
 }
 
 void timeAutSlider() {
-  cp5.addSlider("timeAut")
+  timeaut = cp5.addSlider("timeAut")
     .setPosition(0, cy)
     .setRange(1, 12)
     .setSize(sliderWidth, sliderHeight)
@@ -41,13 +65,12 @@ void timeAutSlider() {
     .setColorForeground(foreground)
     .setColorActive(foregroundActive)
     ;
-  cp5.getController("timeAut").getValueLabel().hide();//.align(ControlP5.LEFT, ControlP5.TOP_OUTSIDE).setPaddingX(5);
-  cp5.getController("timeAut").getCaptionLabel().hide();//.align(ControlP5.RIGHT, ControlP5.TOP_OUTSIDE).setPaddingX(5);
-  cp5.getController("timeAut").hide();
+  timeaut.getValueLabel().hide();//.align(ControlP5.LEFT, ControlP5.TOP_OUTSIDE).setPaddingX(5);
+  timeaut.getCaptionLabel().hide();//.align(ControlP5.RIGHT, ControlP5.TOP_OUTSIDE).setPaddingX(5);
 }
 
 void timeWinSlider() {
-  cp5.addSlider("timeWin")
+  timewin = cp5.addSlider("timeWin")
     .setPosition(0, cy)
     .setRange(1, 12)
     .setSize(sliderWidth, sliderHeight)
@@ -57,13 +80,12 @@ void timeWinSlider() {
     .setColorForeground(foreground)
     .setColorActive(foregroundActive)
     ;
-  cp5.getController("timeWin").getValueLabel().hide();//.align(ControlP5.LEFT, ControlP5.TOP_OUTSIDE).setPaddingX(5);
-  cp5.getController("timeWin").getCaptionLabel().hide();//.align(ControlP5.RIGHT, ControlP5.TOP_OUTSIDE).setPaddingX(5);
-  cp5.getController("timeWin").hide();
+  timewin.getValueLabel().hide();//.align(ControlP5.LEFT, ControlP5.TOP_OUTSIDE).setPaddingX(5);
+  timewin.getCaptionLabel().hide();//.align(ControlP5.RIGHT, ControlP5.TOP_OUTSIDE).setPaddingX(5);
 }
 
 void timeSprSlider() {
-  cp5.addSlider("timeSpr")
+  timespr = cp5.addSlider("timeSpr")
     .setPosition(0, cy)
     .setRange(1, 12)
     .setSize(sliderWidth, sliderHeight)
@@ -73,44 +95,43 @@ void timeSprSlider() {
     .setColorForeground(foreground)
     .setColorActive(foregroundActive)
     ;
-  cp5.getController("timeSpr").getValueLabel().hide();//.align(ControlP5.LEFT, ControlP5.TOP_OUTSIDE).setPaddingX(5);
-  cp5.getController("timeSpr").getCaptionLabel().hide();//.align(ControlP5.RIGHT, ControlP5.TOP_OUTSIDE).setPaddingX(5);
-  cp5.getController("timeSpr").hide();
+  timespr.getValueLabel().hide();//.align(ControlP5.LEFT, ControlP5.TOP_OUTSIDE).setPaddingX(5);
+  timespr.getCaptionLabel().hide();//.align(ControlP5.RIGHT, ControlP5.TOP_OUTSIDE).setPaddingX(5);
 }
 
 
 //=== FUNCTIONS TO TOGGLE ON/OFF SLIDERS ===
 void hideTimeSliders() {
-  cp5.getController("timeSum").hide();
-  cp5.getController("timeAut").hide();
-  cp5.getController("timeWin").hide();
-  cp5.getController("timeSpr").hide();
+  timesum.hide();
+  timeaut.hide();
+  timewin.hide();
+  timespr.hide();
 }
 
 void showSumSlid() {
-  cp5.getController("timeSum").show();
-  cp5.getController("timeAut").hide();
-  cp5.getController("timeWin").hide();
-  cp5.getController("timeSpr").hide();
+  timesum.show();
+  timeaut.hide();
+  timewin.hide();
+  timespr.hide();
 }
 
 void showAutSlid() {
-  cp5.getController("timeSum").hide();
-  cp5.getController("timeAut").show();
-  cp5.getController("timeWin").hide();
-  cp5.getController("timeSpr").hide();
+  timesum.hide();
+  timeaut.show();
+  timewin.hide();
+  timespr.hide();
 }
 
 void showWinSlid() {
-  cp5.getController("timeSum").hide();
-  cp5.getController("timeAut").hide();
-  cp5.getController("timeWin").show();
-  cp5.getController("timeSpr").hide();
+  timesum.hide();
+  timeaut.hide();
+  timewin.show();
+  timespr.hide();
 }
 
 void showSprSlid() {
-  cp5.getController("timeSum").hide();
-  cp5.getController("timeAut").hide();
-  cp5.getController("timeWin").hide();
-  cp5.getController("timeSpr").show();
+  timesum.hide();
+  timeaut.hide();
+  timewin.hide();
+  timespr.show();
 }

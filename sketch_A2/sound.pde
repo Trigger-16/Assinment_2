@@ -1,13 +1,27 @@
 //utilise sound and air temperature data
 int soundRectH = 198; 
-int soundRectCY = cy + sliderHeight + (soundRectH/2); //NOTE: soundRectX = cx;
-int offset = width/7;
+int soundRectCY; //NOTE: soundRectX = cx;
+int offset;
 
 void soundRect() {
+  soundRectCY = cy + sliderHeight + (soundRectH/2);
   //Background
   fill(0, 207, 252);
   noStroke();
   rect(0, cy+sliderHeight, width, soundRectH);
+
+  fill(0);
+  pushMatrix();
+  stroke(20);
+  strokeWeight(1);
+  line(0, soundRectCY, width, soundRectCY);
+  //Text (27 deg celsius)
+  textFont(font2);
+  float angle1 = radians(270);
+  translate(amX/4, soundRectCY);
+  rotate(angle1);
+  text("27°C", 0, 0); 
+  popMatrix();
 }
 
 
@@ -20,7 +34,7 @@ color setTempColour(float value) {
   color b = lerpColor(from, to, 0.4);
   color c = lerpColor(from, to, 0.6);
   color d = lerpColor(from, to, 0.8);
-  
+
   if (value < 24) {
     finalCol = from;
   } else if (24 < value && value < 26) {

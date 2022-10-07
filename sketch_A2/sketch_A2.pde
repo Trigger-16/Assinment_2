@@ -1,18 +1,16 @@
 /* 31080 Interactive Media, Spring 2022
  * === Contributors ===
- * Rebecca Lu [13560560]
+ * Rebecca Lu (13560560)
  * Zijia Zhu (13473778)
  * Carmen Ly (13547599)
  * Adriel Carino (13931908)
  *
  * === Image sources ===
- * - spring tree: https://static.vecteezy.com/system/resources/previews/011/027/775/non_2x/hand-drawn-tree-watercolor-illustration-free-png.png
- * - autumn tree: https://static.vecteezy.com/system/resources/previews/011/027/801/non_2x/autumn-tree-watercolor-illustration-free-png.png
- * - flower: https://static.vecteezy.com/system/resources/previews/001/190/232/non_2x/flower-png.png
+ - flower: https://static.vecteezy.com/system/resources/previews/001/190/232/non_2x/flower-png.png
  * - sun: https://static.vecteezy.com/system/resources/previews/001/189/223/non_2x/sun-png.png
  * - leaf: https://static.vecteezy.com/system/resources/previews/009/342/562/non_2x/autumn-leaf-clipart-design-illustration-free-png.png
  * - snowflake: https://static.vecteezy.com/system/resources/previews/001/194/635/non_2x/snowflake-png.png
- * Sound Credits
+ * === Sound Credits ===
  * - "Bird Whistling, Robin, Single, 13.wav" by InspectorJ (www.jshaw.co.uk) of Freesound.org
  *
  * === Github ===
@@ -57,13 +55,14 @@ color lightTaro = color(225, 204, 252);
 color deepBlue = color(31, 38, 54);
 color lightBlue = color(34, 229, 253);
 color lighterBlue = color(34, 229, 253, 50);
-color nightSky = color(0, 90, 119);
+color nightSky = color(29, 57, 96); //color(0, 90, 119);
 color daySky = color(158, 217, 237);
 //Sounds
 SoundFile sum_sound;
 SoundFile aut_sound;
 SoundFile win_sound;
 SoundFile spr_sound;
+SoundFile jazz_loop;
 float amp;
 //CP5
 ButtonBar b;
@@ -71,7 +70,7 @@ ButtonBar b;
 int cx, cy; //centre x, y
 int top_cx, top_cy; //top section, centre x, y
 int amX = 50; //x & y position for time slider labels
-int pmX, amY, pmY;
+int pmX, am_pmY;
 //Loading CSV/data
 int index = 0; //this is the index to iterate through datasets
 
@@ -82,21 +81,19 @@ void setup() {
   //===INITIALISE SETTINGS ===
   ac = new AudioContext();
   cp5 = new ControlP5(this);   //ControlFont font = new ControlFont(font1); // Initialise Font Settings
-  cp5_1 = new ControlP5(this);  //ControlP5 used in welcome. changed the name of this so it doesn't get confused with the other cp5
   //== fonts ==
   font1 = createFont("Lato-Regular.ttf", 36);
   font2 = createFont("Lato-Regular.ttf", 20);
   font3 = createFont("Lato-Regular.ttf", 30);
   cp5.setFont(font1);
-  cp5_1.setFont(font2);
   //== variables ==
   cx = width / 2; //centre x pos
   cy = (height+height/11) / 2; //centre y pos
   top_cx = cx; //centre x pos of the top rectangle
   top_cy = cy/2; //centre y pos of the top rectangle
-  pmX = width - 50; //x position for time slider labels
-  amY = cy + 70; //y position for time slider labels
-  pmY = cy + 70;
+  pmX = width - amX; //x position for time slider labels
+  am_pmY = cy + 70; //y position for time slider labels
+  offset = width/12; //offset for airTemp data points
   //===END SETTINGS ===
 
   //=== LOAD TABLES ===
@@ -141,6 +138,8 @@ void setup() {
   spr_sound = new SoundFile(this, "spring_bird.wav");
   sum_sound.amp(0.6); //normalise sound files volumes
   spr_sound.amp(0.3);
+  jazz_loop = new SoundFile(this, "jazz-loop.wav");
+  jazz_loop.loop();
   //=== END SOUND FILES ===
 
   //=== BUTTON BAR & WELCOME BUTTONS ===
@@ -153,6 +152,11 @@ void setup() {
   timeAutSlider();
   timeWinSlider();
   timeSprSlider();
+  //scrollbar with slider for air temp/sound
+  sum_hsb = new HScrollbar(0, cy, width, 100, 5);
+  aut_hsb = new HScrollbar(0, cy, width, 100, 5);
+  win_hsb = new HScrollbar(0, cy, width, 100, 5);
+  spr_hsb = new HScrollbar(0, cy, width, 100, 5);
   //=== END SLIDERS ===
 
   //=== BOTTOM STRIP BUTTONS (HUMIDITY) ==
@@ -162,21 +166,23 @@ void setup() {
   sprDayCols();
   createBottomButtons();
   //=== END BOTTOM STRIP BUTTONS ===
-  //debug(b); //checks
-
-  //=== ACTIVATE WELCOME BUTTONS ===
-  home.activateBy(ControlP5.RELEASED);
-  solar.activateBy(ControlP5.RELEASED);
-  humid.activateBy(ControlP5.RELEASED);
-  temp.activateBy(ControlP5.RELEASED);
-  //=== END ACTIVATE WELCOME BUTTONS ===
 }
 
 void draw() {
   if (is_night == true) {
     background(nightSky);
+    sumNightCols();   //changes colours of bottom buttons ('heatmap')
+    autNightCols();
+    winNightCols();
+    sprNightCols();
+    setButCols();
   } else if (is_day == true) {
     background(daySky);
+    sumDayCols();
+    autDayCols();
+    winDayCols();
+    sprDayCols();
+    setButCols();
   }
 
   if (is_welcome == true) { //HOME
@@ -196,34 +202,40 @@ void draw() {
     welcome3();
     hideTimeSliders();
     hideAllButtons();
+
+    //antipicating that we will have to edit below here or add a
+    //function here to toggle sound for airtemp w the scrollbar
   } else if (is_summer == true) {
-    showSumSlid();
-    showSumBut();
-    hideWelcomeBut();
+    showSumSlid(); //slider
+    showSumBut(); //humid buttons
+    hideWelcomeBut(); 
     soundRect();
     summer();
+    sumHSB();    //scroll bar
   } else if (is_autumn == true) {
-    showAutSlid();
-    showAutBut();
+    showAutSlid(); //slider
+    showAutBut(); //humid buttons
     hideWelcomeBut();
     soundRect();
     autumn();
+    autHSB(); //scroll bar
   } else if (is_winter == true) {
-    showWinSlid();
-    showWinBut();
+    showWinSlid(); //slider
+    showWinBut(); //humid buttons
     hideWelcomeBut();
     soundRect();
     winter();
+    winHSB(); //scroll bar
   } else if (is_spring == true) {
-    showSprSlid();
-    showSprBut();
+    showSprSlid(); //slider
+    showSprBut(); //humid buttons
     hideWelcomeBut();
     soundRect();
     spring();
   }
 
   //=== KEEP ALL OF THESE AT THE BOTTOM OF THE draw() FUNCTION ===
-  //=== IMGS ===
+  //== images ==
   if (sun_img != null && is_summer == true) {
     image(sun_img, width-100, height/10+80, width/10.2, height/8); //image(sun_img, cx, cy, width/5, height/4);
   } else if (leaf_img != null && is_autumn  == true) {
@@ -233,52 +245,22 @@ void draw() {
   } else if (flower_img != null && is_spring  == true) {
     image(flower_img, width-100, height/10+80, width/10, height/8); //image(flower_img, cx, cy, width/5, height/4);
   }
-  //=== END IMGS ===
-  if (is_welcome) {
-  } else if (is_welcome == false && is_welcome1 == false && is_welcome2 == false && is_welcome3 == false && is_day == true) {
-    fill(0, 0, 0);
-    textFont(font1);
-    textAlign(CENTER, CENTER);
-    text("6am", amX, amY); //these will be just below the time sliders
-    text("5pm", pmX, pmY);
-    text("12pm", cx, cy + 70);
-  } else if (is_welcome == false && is_welcome1 == false && is_welcome2 == false && is_welcome3 == false && is_night == true) {
-    fill(255, 255, 255);
-    textFont(font1);
-    textAlign(CENTER, CENTER);
-    text("6pm", amX, amY-50); //swap these values for nightime
-    text("5am", pmX, pmY-50);
-    text("12am", cx, cy+20);
-  }
 
-  //=== CHANGES COLOUR OF BOTTOM BUTTONS===
-  if (is_night == true) {
-    sumNightCols();
-    autNightCols();
-    winNightCols();
-    sprNightCols();
-    setButCols();
-  } else if (is_day == true) {
-    sumDayCols();
-    autDayCols();
-    winDayCols();
-    sprDayCols();
-    setButCols();
-  }
+  slidText();
 }
 
 //Just keep these for now; alternative to pressing the buttons
 //It just doesn't change the active color
 void keyPressed() {
-  /*if (key == '1') {
-   bar(1);
-   } else if (key == '2') {
-   bar(2);
-   } else if (key == '3') {
-   bar(3);
-   } else if (key == '4') {
-   bar(4);
-   } else */  if (key == 'n') {
+  if (key == '1') {
+    bar(1);
+  } else if (key == '2') {
+    bar(2);
+  } else if (key == '3') {
+    bar(3);
+  } else if (key == '4') {
+    bar(4);
+  } else  if (key == 'n') {
     is_night = true;
     is_day = false;
     println("it's night! ", is_night);
@@ -286,7 +268,7 @@ void keyPressed() {
     is_night = false;
     is_day = true;
     println("it's daylight! ", is_day);
-    /*} else {
-     bar(0);*/
+  } else {
+    bar(0);
   }
 }

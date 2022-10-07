@@ -4,7 +4,6 @@ Table sum_temp_night;
 
 void summer() {
   //readSumSolarxy();
-
   if (is_night == true  && is_summer == true) {
     drawSumNightTemp();
   } else if (is_day == true && is_summer == true) {
@@ -12,6 +11,7 @@ void summer() {
   }
 }
 
+//=== SOLAR RADIATION ===
 void readSumSolarxy() {
   if (index < sum_solar_xy.getRowCount()) {
     //=== DO SOMETHING WITH DATA ===
@@ -21,9 +21,10 @@ void readSumSolarxy() {
     index++;
   }
 }
+//=== END SOLAR RADIATION ===
 
-
-//=== SUMMER DAY DATA ===
+//=== AIR TEMPERATURE ===
+// == day data ==
 void readSumDayTemp() {
   if (index < sum_temp_day.getRowCount()) {
     println("day temp data point: ", index, " | ", sum_temp_day.getFloat(index, 1));
@@ -40,11 +41,11 @@ void drawSumDayTemp() {
     float circleRadius = value; //sum_temp_day.getFloat(i, 1);
     //float mapped = map(circleRadius, 0, 30, 0, soundRectH/3);
     //circle(50+(offset*i)+(i*95), soundRectCY+50+(offset*circleRadius), mapped);
-    circle(50+(offset*i)+(i*95), soundRectCY+50+(offset*circleRadius), circleRadius);
+    circle(offset/2+(i*offset), soundRectCY-(soundRectH/3)+(circleRadius*2.5), circleRadius);
     //=== END SOMETHING WITH DATA ===
   }
 }
-//=== SUMMER NIGHT DATA ===
+// == night data ==
 void readSumNightTemp() {
   if (index < sum_temp_night.getRowCount()) {
     println("night temp data point: ", index, " | ", sum_temp_night.getFloat(index, 1));
@@ -60,7 +61,8 @@ void drawSumNightTemp() {
     float circleRadius = value;//sum_temp_night.getFloat(i, 1);
     //float mapped = map(circleRadius, 0, 30, 0, soundRectH/3);
     //circle(50+(offset*i)+(i*95), soundRectCY+50+(offset*circleRadius), mapped);
-    circle(50+(offset*i)+(i*95), soundRectCY+50+(offset*circleRadius), circleRadius);
+    circle(offset/2+(i*offset), soundRectCY-(soundRectH/3)+(circleRadius*2.5), circleRadius);
     //=== END SOMETHING WITH DATA ===
   }
 }
+//=== END AIR TEMPERATURE ===
