@@ -46,7 +46,7 @@ PImage flower_img;
 boolean is_summer, is_autumn, is_winter, is_spring;
 boolean is_welcome = true; 
 boolean is_day = true;
-boolean is_night;
+boolean is_night = false;
 //Colours
 color peach = color(255, 155, 155);
 color lightPeach = color(245, 191, 191);
@@ -199,13 +199,23 @@ void draw() {
     showWelcomeBut();
     hideTimeSliders();
     hideAllButtons();
-  } else if (is_summer == true) {
+  } else if (is_summer == true && is_night == true) {
     summer();
     showSumSlid();
     showSumBut();
     hideWelcomeBut();
     soundRect();
-  } else if (is_autumn == true) {
+
+    moon();
+  } else if (is_summer == true && is_day == true) {
+    summer();
+    showSumSlid();
+    showSumBut();
+    hideWelcomeBut();
+    soundRect();
+
+    sun();
+  }else if (is_autumn == true) {
     autumn();
     showAutSlid();
     showAutBut();
@@ -291,15 +301,7 @@ void draw() {
 //Just keep these for now; alternative to pressing the buttons 
 //It just doesn't change the active color
 void keyPressed() {
-  if (key == '1') {
-    bar(1);
-  } else if (key == '2') {
-    bar(2);
-  } else if (key == '3') {
-    bar(3);
-  } else if (key == '4') {
-    bar(4);
-  } else if (key == 'n') {
+  if (key == 'n') {  
     is_night = true;
     is_day = false;
     println("it's night! ", is_night);
