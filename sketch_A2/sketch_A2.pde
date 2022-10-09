@@ -190,23 +190,13 @@ void draw() {
     showWelcomeBut();
     hideTimeSliders();
     hideAllButtons();
-  } else if (is_summer == true && is_night == true) {
+  } else if (is_summer == true) {
     summer();
     showSumSlid();
     showSumBut();
     hideWelcomeBut();
     soundRect();
-
-    moon();
-  } else if (is_summer == true && is_day == true) {
-    summer();
-    showSumSlid();
-    showSumBut();
-    hideWelcomeBut();
-    soundRect();
-
-    sun();
-  }else if (is_autumn == true) {
+  } else if (is_autumn == true) {
     autumn();
     autHSB(); //scroll bar
   } else if (is_winter == true) {
