@@ -232,6 +232,7 @@ void draw() {
     hideWelcomeBut();
     soundRect();
     spring();
+    sprHSB();
   }
 
   //=== KEEP ALL OF THESE AT THE BOTTOM OF THE draw() FUNCTION ===
