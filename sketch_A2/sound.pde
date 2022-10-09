@@ -5,23 +5,26 @@ int offset;
 
 void soundRect() {
   soundRectCY = cy + sliderHeight + (soundRectH/2);
+  airtempTxt_X = 25;
+  airtempTxt_upperY = soundRectCY - (soundRectH/2.25);
+  airtempTxt_lowerY = soundRectCY + (soundRectH/2.45);
   //Background
   fill(0, 207, 252);
   noStroke();
   rect(0, cy+sliderHeight, width, soundRectH);
 
-  fill(0);
-  pushMatrix();
-  stroke(20);
-  strokeWeight(1);
-  line(0, soundRectCY, width, soundRectCY);
-  //Text (27 deg celsius)
-  textFont(font2);
-  float angle1 = radians(270);
-  translate(amX/4, soundRectCY);
-  rotate(angle1);
-  text("27°C", 0, 0); 
-  popMatrix();
+  //fill(0);
+  //pushMatrix();
+  //stroke(20);
+  //strokeWeight(1);
+  //line(0, soundRectCY, width, soundRectCY);
+  ////Text (27 deg celsius)
+  //textFont(font2);
+  //float angle1 = radians(270);
+  //translate(amX/4, soundRectCY);
+  //rotate(angle1);
+  //text("27°C", 0, 0); 
+  //popMatrix();
 }
 
 

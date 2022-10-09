@@ -1,9 +1,15 @@
 //Tables
 Table aut_temp_day;
 Table aut_temp_night;
+//FloatList
+FloatList autTempDay; 
+FloatList autTempNight;
+//Values for mapping temperature data
+float autDayTempMin, autDayTempMax; 
+float autNightTempMin, autNightTempMax; 
 
 void autumn() {
- // readAutSolarxy();
+  // readAutSolarxy();
 
   if (is_night == true  && is_autumn == true) {
     drawAutNightTemp();
@@ -23,41 +29,91 @@ void readAutSolarxy() {
 }
 
 //=== AIR TEMPERATURE ===
-// == day data ==
-void readAutDayTemp() {
-  if (index < aut_temp_day.getRowCount()) {
-    println("day temp data point: ", index, " | ", aut_temp_day.getFloat(index, 1));
-    index++;
+void readAutTemp() {
+  //Day data
+  autTempDay = new FloatList(); //create FloatList to acces .min() and .max() functions to map the circleY position 
+  for (int i = 0; i < aut_temp_day.getRowCount(); i++) {
+    float value =  aut_temp_day.getFloat(i, 1);
+    autTempDay.append(value);
   }
+  autDayTempMin = autTempDay.min();
+  autDayTempMax = autTempDay.max();
+  println("aut day temp min: ", autDayTempMin);
+  println("aut day temp max: ", autDayTempMax);
+
+  //Night data
+  autTempNight = new FloatList(); //create FloatList to acces .min() and .max() functions to map the circleY position 
+  for (int i = 0; i < aut_temp_night.getRowCount(); i++) {
+    float value =  aut_temp_night.getFloat(i, 1);
+    autTempNight.append(value);
+  }
+  autNightTempMin = autTempNight.min();
+  autNightTempMax = autTempNight.max();
+  println("aut night temp min: ", autNightTempMin);
+  println("aut night temp max: ", autNightTempMax);
+}
+// == day data ==
+void drawAutDayTemp() {
+  fill(0);
+
+  pushMatrix();
+  textFont(font2);
+  text((int(autDayTempMin) + "°C"), airtempTxt_X, airtempTxt_upperY);
+  text((int(autDayTempMax) + "°C"), airtempTxt_X, airtempTxt_lowerY);
+  strokeWeight(1);
+  stroke(20);
+  line(airtempTxt_X, airtempTxt_upperY+15, airtempTxt_X, airtempTxt_lowerY-15);
+  popMatrix();
+
+  for (int i = 0; i < autTempDay.size(); i++) {
+    float value = autTempDay.get(i);
+    float circleRadius = value; //sum_temp_day.getFloat(i, 1);
+    float circleX = offset/2 + (i*offset);
+    float mappedY = map(value, autDayTempMin, autDayTempMax, (soundRectCY - soundRectH/2 + 30), (soundRectCY + soundRectH/2 - 30));
+
+    fill(setTempColour(value));
+    noStroke();
+    circle(circleX, mappedY, circleRadius);
+  }
+
+  //=== WIP : NOT WORKING WELL ===
+  //for (int i = 1; i < autTempDay.size(); i++) {
+  //  float value = autTempDay.get((i-1));
+  //  float circleX = offset/2 + ((i-1)*offset);
+  //  float mappedY = map(value, autDayTempMin, autDayTempMax, (soundRectCY - soundRectH/2 + 30), (soundRectCY + soundRectH/2 - 30));
+
+  //  float nextVal = autTempDay.get(1);
+  //  float nextX = offset/2 + (i*offset);
+  //  float nextY = map(nextVal, autDayTempMin, autDayTempMax, (soundRectCY - soundRectH/2 + 30), (soundRectCY + soundRectH/2 - 30));
+    
+  //  stroke(20);
+  //  strokeWeight(1);
+  //  line(circleX, mappedY, nextX, nextY);
+  //}
 }
 
-void drawAutDayTemp() {
-  fill(255);
-  for (int i = 0; i < aut_temp_day.getRowCount(); i++) {
-    //=== DO SOMETHING WITH DATA ===
-    float value = aut_temp_day.getFloat(i, 1);
-    fill(setTempColour(value));
-    float circleRadius = value;
-    circle(offset/2+(i*offset), soundRectCY-(soundRectH/3)+(circleRadius*2.5), circleRadius);
-    //=== END SOMETHING WITH DATA ===
-  }
-}
 // == night data ==
-void readAutNightTemp() {
-  if (index < aut_temp_night.getRowCount()) {
-    println("night temp data point: ", index, " | ", aut_temp_night.getFloat(index, 1));
-    index++;
-  }
-}
 void drawAutNightTemp() {
   fill(0);
-  for (int i = 0; i < aut_temp_night.getRowCount(); i++) {
-    //=== DO SOMETHING WITH DATA ===
-    float value = aut_temp_night.getFloat(i, 1);
+
+  pushMatrix();
+  textFont(font2);
+  text((int(autNightTempMin) + "°C"), airtempTxt_X, airtempTxt_upperY);
+  text((int(autNightTempMax) + "°C"), airtempTxt_X, airtempTxt_lowerY);
+  strokeWeight(1);
+  stroke(20);
+  line(airtempTxt_X, airtempTxt_upperY+15, airtempTxt_X, airtempTxt_lowerY-15);
+  noStroke();
+  popMatrix();
+
+  for (int i = 0; i < autTempNight.size(); i++) {
+    float value = autTempNight.get(i);
+    float circleRadius = value; //sum_temp_day.getFloat(i, 1);
+    float circleX = offset/2 + (i*offset);
+    float mappedY = map(value, autNightTempMin, autNightTempMax, (soundRectCY - soundRectH/2 + 30), (soundRectCY + soundRectH/2 - 30));
+
     fill(setTempColour(value));
-    float circleRadius = value;
-    circle(offset/2+(i*offset), soundRectCY-(soundRectH/3)+(circleRadius*2.5), circleRadius);
-    //=== END SOMETHING WITH DATA ===
+    circle(circleX, mappedY, circleRadius);
   }
 }
 //=== END AIR TEMPERATURE ===

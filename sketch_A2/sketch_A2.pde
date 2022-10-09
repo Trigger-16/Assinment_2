@@ -71,6 +71,7 @@ int cx, cy; //centre x, y
 int top_cx, top_cy; //top section, centre x, y
 int amX = 50; //x & y position for time slider labels
 int pmX, am_pmY;
+float airtempTxt_X, airtempTxt_upperY, airtempTxt_lowerY;
 //Loading CSV/data
 int index = 0; //this is the index to iterate through datasets
 
@@ -157,6 +158,11 @@ void setup() {
   aut_hsb = new HScrollbar(0, cy, width, 100, 5);
   win_hsb = new HScrollbar(0, cy, width, 100, 5);
   spr_hsb = new HScrollbar(0, cy, width, 100, 5);
+  
+  readSumTemp();
+  readAutTemp();
+  readWinTemp();
+  readSprTemp();
   //=== END SLIDERS ===
 
   //=== BOTTOM STRIP BUTTONS (HUMIDITY) ==
