@@ -18,6 +18,8 @@ Slider timeaut;
 Slider timewin;
 Slider timespr;
 
+int sliderValue = 0;
+
 //=== HELPER FUNCTION ===
 void slidText() {
   if (is_welcome == false && is_welcome1 == false && is_welcome2 == false && is_welcome3 == false && is_day == true) {
@@ -42,7 +44,9 @@ void slidText() {
 void timeSumSlider() {
   timesum = cp5.addSlider("timeSum")
     .setPosition(0, cy)
-    .setRange(1, 12)
+    .setRange(0, 143)
+    .setValue(timeSum)
+    //.setNumberOfTickMarks(12)
     .setSize(sliderWidth, sliderHeight)
     //.setNumberOfTickMarks(12)
     .setSliderMode(Slider.FLEXIBLE) //can change to default value of 'Slider.FIX'

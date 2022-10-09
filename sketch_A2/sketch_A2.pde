@@ -211,7 +211,15 @@ void draw() {
 
     //antipicating that we will have to edit below here or add a
     //function here to toggle sound for airtemp w the scrollbar
-  } else if (is_summer == true) {
+  } else if (is_summer == true && is_day == true) {
+    showSumSlid(); //slider
+    showSumBut(); //humid buttons
+    hideWelcomeBut(); 
+    soundRect();
+    summer();
+    sumHSB();    //scroll bar
+    drawSumSun();
+  } else if (is_summer == true && is_night == true) {
     showSumSlid(); //slider
     showSumBut(); //humid buttons
     hideWelcomeBut(); 
