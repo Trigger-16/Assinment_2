@@ -262,7 +262,7 @@ void draw() {
     soundRect();
     winter();
     winHSB(); //scroll bar
-    //drawWinSun();
+    drawWinSun();
     //  playSound(winTempDay);
   } else if (is_winter == true && is_night == true) {
     showWinSlid(); //slider
@@ -271,7 +271,7 @@ void draw() {
     soundRect();
     winter();
     winHSB(); //scroll bar
-    //drawWinMoon();
+    drawWinMoon();
     //   playSound(winTempNight);
 
     //=== START SPRING ===
