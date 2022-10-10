@@ -73,7 +73,7 @@ void welcome2() {
   fill(255);
   textAlign(LEFT);
   textFont(font3);
-  text("Humidity is the amount of water vapor in the aire, measured from the range of", x, y); 
+  text("Humidity is the amount of water vapor in the air, measured from the range of", x, y); 
   text("0-100% Relative Humidity (RH).", x, y + 50);
 }
 //=== END HUMIDITY PAGE ===

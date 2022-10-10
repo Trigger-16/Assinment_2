@@ -16,20 +16,11 @@ void soundRect() {
 
 //=== PLAY SOUND FOR AIR TEMP ===
 void playSound(float circleX, float circleRadius) {
-  //for (int i = 0; i < tempList.size(); i++) {
-  //  float value = tempList.get(i);
-  //  float circleRadius = value; //sum_temp_day.getFloat(i, 1);
-  //  circleX = offset/2 + (i*offset);
-
-  if (circleX - circleRadius < linePos && linePos < circleX + circleRadius && test.isPlaying() == false && mousePressed == true && played == false) {
+  float circleX_Bound1 = circleX - circleRadius + 10;
+  float circleX_Bound2 = circleX + circleRadius - 10;
+  if (circleX_Bound1 < linePos && linePos < circleX_Bound2 && test.isPlaying() == false && mousePressed == true) {
     test.play();
-    played = true;
-  //} else if (circleX - circleRadius > linePos) {
-  //  played = false;
-  //} else if (linePos > circleX + circleRadius) {
-  //  played = false;
   }
-  //NEED TO TRIGGER played = false SOMEHOW
 }
 
 //=== END PLAY SOUND FOR AIR TEMP ===

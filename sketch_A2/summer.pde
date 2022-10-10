@@ -7,8 +7,6 @@ FloatList sumTempNight;
 //Values for mapping temperature data
 float sumDayTempMin, sumDayTempMax; 
 float sumNightTempMin, sumNightTempMax; 
-//Bool for sound trigger
-boolean played;
 
 void summer() {
   //readSumSolarxy();
