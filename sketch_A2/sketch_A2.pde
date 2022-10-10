@@ -282,7 +282,7 @@ void draw() {
     soundRect();
     spring();
     sprHSB();
-    //drawSprSun();
+    drawSprSun();
     //   playSound(sprTempDay);
   } else if (is_spring == true && is_night == true) {
     showSprSlid(); //slider
@@ -291,7 +291,7 @@ void draw() {
     soundRect();
     spring();
     sprHSB();
-    //drawSprMoon();
+    drawSprMoon();
     //  playSound(sprTempNight);
   }
 
