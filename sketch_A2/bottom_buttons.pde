@@ -71,6 +71,8 @@ color col_sp10;
 color col_sp11;
 color col_sp12;
 
+int n;
+
 //=== READ HUMIDITY DATA === humidity data will be used to colour the buttons in a 'heat map' fashion
 void readHumidity() {
   //== READING AND STORING SUMMER VALUES ==
@@ -120,6 +122,7 @@ void sumBottomButtons() {
   int buttonH = height/8;
 
   cp5.addButton("sum1")
+    .setValue(0)
     .setCaptionLabel(" ")
     .setPosition(0, height-buttonH)
     .setSize(buttonW, buttonH)
@@ -787,7 +790,7 @@ color setColour(float value) {
   color c6 = #10df66;
   color c7 = #0ad5a3;
   color c8 = #00c6ff;
-  
+
   color finalCol = color(0, 0, 0);
   if (value < 60) {
     finalCol = c1; //from;
@@ -983,3 +986,48 @@ void setButCols() {
   cp5.get(Button.class, "spr11").setColorBackground(col_sp11);
   cp5.get(Button.class, "spr12").setColorBackground(col_sp12);
 }
+
+//=== BUTTON EVENTS .. ===
+public void controlEvent(ControlEvent theEvent) {
+  println(theEvent.getController().getName());
+}
+//== summer ==
+public void sum1(int theValue) {
+  n = 0;
+  if (is_night == true) {
+    showDetails(n, sumHumidNight, sumTempNight);
+  } else if (is_day == true) {
+    showDetails(n, sumHumidDay, sumTempDay);
+  }
+}
+public void sum2() {
+}
+public void sum3() {
+}
+public void sum4() {
+}
+public void sum5() {
+}
+public void sum6() {
+}
+public void sum7() {
+}
+public void sum8() {
+}
+public void sum9() {
+}
+public void sum10() {
+}
+public void sum11() {
+}
+public void sum12() {
+}
+
+//== autumn ==
+
+//== winter ==
+
+//== spring ==
+
+
+//=== END BUTTON EVENTS ===

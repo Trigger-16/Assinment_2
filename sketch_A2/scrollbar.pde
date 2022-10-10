@@ -21,8 +21,8 @@ void sumHSB() {
 }
 
 void autHSB() {
-  stroke(20);
-  strokeWeight(1);
+  stroke(50, 50, 50, 20);
+  strokeWeight(10);
   linePos = aut_hsb.getPos();
   line(linePos, cy+sliderHeight, linePos, cy+sliderHeight+soundRectH);
   aut_hsb.update();
@@ -30,8 +30,8 @@ void autHSB() {
 }
 
 void winHSB() {
-  stroke(20);
-  strokeWeight(1);
+  stroke(50, 50, 50, 20);
+  strokeWeight(10);
   linePos = win_hsb.getPos();
   line(linePos, cy+sliderHeight, linePos, cy+sliderHeight+soundRectH);
   win_hsb.update();
@@ -39,8 +39,8 @@ void winHSB() {
 }
 
 void sprHSB() {
-  stroke(20);
-  strokeWeight(1);
+  stroke(50, 50, 50, 20);
+  strokeWeight(10);
   linePos = spr_hsb.getPos();
   line(linePos, cy+sliderHeight, linePos, cy+sliderHeight+soundRectH);
   spr_hsb.update();

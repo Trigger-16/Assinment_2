@@ -310,6 +310,20 @@ void draw() {
   slidText();
 }
 
+//FUNCTION USED TO SHOW ALL SENSOR DATA DETAILS AFTER PRESSING HUMIDITY BUTTON
+void showDetails(int n, FloatList humidList, FloatList tempList) {
+  //get details
+  float humidVal = int(humidList.get(n));
+  float tempVal = int(tempList.get(n));
+
+  //show details
+  fill(0); //text colour
+  textAlign(LEFT);
+  textFont(font2);
+  text("Humidity: " + humidVal, 10, top_cy);
+  text("Air Temperature: " + tempVal, 10, top_cy + 50);
+}
+
 //Just keep these for now; alternative to pressing the buttons
 //It just doesn't change the active color
 void keyPressed() {
