@@ -22,7 +22,28 @@ void drawSumSun() {
     ellipse(xP, yP, radius, radius);
   }
   counter++;
-  println("timeSum = " + timeSum);
+}
+
+void drawSumMoon() {
+    readSumRadiation();
+
+  for (int i = 0; i < 360; i+=5) {
+    //set the x and y position of the circle
+    float xP = cos(radians(i)) * 50 + width / 2;
+    float yP = sin(radians(i)) *100 + height / 3 - height / 80;
+
+    float radius = sin(radians(counter+i )) * 200;
+    //use absulate value because the sin might be negitive sometimes
+    radius = abs(radius);
+
+    float col1 = map(i, 0, 360, 0, 150);
+    float col2 = map(summerRadiation6pmTo6am.get(timeSum), summerRadiation6pmTo6am.min(), summerRadiation6pmTo6am.max(), 180, 255);
+    float col3 = map(i, 0, 360, 150, 247);
+    noStroke();
+    fill(col1, col2, col3);
+    ellipse(xP, yP, radius, radius);
+  }
+  counter++;
 }
 
 void readSumRadiation() {

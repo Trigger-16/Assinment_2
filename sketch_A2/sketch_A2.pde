@@ -231,7 +231,7 @@ void draw() {
     soundRect();
     summer();
     sumHSB();    //scroll bar
-    //drawSumMoon();
+    drawSumMoon();
     //  playSound(sumTempNight);
 
     //=== START AUTUMN ===
@@ -329,7 +329,7 @@ void keyPressed() {
     is_night = false;
     is_day = true;
     println("it's daylight! ", is_day);
-  //} else {
-  //  bar(0);
+    //} else {
+    //  bar(0);
   }
 }
