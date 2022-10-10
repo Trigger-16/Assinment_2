@@ -7,11 +7,14 @@ HScrollbar aut_hsb;
 HScrollbar win_hsb;
 HScrollbar spr_hsb;
 
+float circleX;
+float linePos;
+
 //=== FUNCTIONS FOR LINE THAT FOLLOWS SCROLLBAR / SLIDER ===
 void sumHSB() {
-  stroke(20);
-  strokeWeight(1);
-  float linePos = sum_hsb.getPos();
+  stroke(50, 50, 50, 20);
+  strokeWeight(10);
+  linePos = sum_hsb.getPos();
   line(linePos, cy+sliderHeight, linePos, cy+sliderHeight+soundRectH);
   sum_hsb.update();
   sum_hsb.display();
@@ -20,7 +23,7 @@ void sumHSB() {
 void autHSB() {
   stroke(20);
   strokeWeight(1);
-  float linePos = aut_hsb.getPos();
+  linePos = aut_hsb.getPos();
   line(linePos, cy+sliderHeight, linePos, cy+sliderHeight+soundRectH);
   aut_hsb.update();
   aut_hsb.display();
@@ -29,7 +32,7 @@ void autHSB() {
 void winHSB() {
   stroke(20);
   strokeWeight(1);
-  float linePos = win_hsb.getPos();
+  linePos = win_hsb.getPos();
   line(linePos, cy+sliderHeight, linePos, cy+sliderHeight+soundRectH);
   win_hsb.update();
   win_hsb.display();
@@ -38,7 +41,7 @@ void winHSB() {
 void sprHSB() {
   stroke(20);
   strokeWeight(1);
-  float linePos = spr_hsb.getPos();
+  linePos = spr_hsb.getPos();
   line(linePos, cy+sliderHeight, linePos, cy+sliderHeight+soundRectH);
   spr_hsb.update();
   spr_hsb.display();
@@ -56,18 +59,18 @@ class HScrollbar {
   boolean locked;
   float ratio;
 
-  HScrollbar (float xp, float yp, int sw, int sh, int l) {
+  HScrollbar (float xp, float yp, int sw, int sh) {//, int l) {
     swidth = sw; //= 1300
     sheight = sh; //= 100
     int widthtoheight = sw - sh; // = 100
     ratio = (float)sw / (float)widthtoheight; //= 1300/1200 = 1.08
     xpos = xp;
     ypos = yp;//-sheight/2; //= cy - 50
-    spos = xpos + swidth/2 - sheight/2; // = 0 + 750 - 50 = 700
+    spos = xpos + swidth/2;// - sheight/2; // = 0 + 750 - 50 = 700
     newspos = spos; 
     sposMin = xpos;
-    sposMax = xpos + swidth - sheight; //= 0 + 1300 - 100 = 1200
-    loose = l;
+    sposMax = xpos + swidth;// - sheight; //= 0 + 1300 - 100 = 1200
+    // loose = l;
   }
 
   void update() {
@@ -83,10 +86,11 @@ class HScrollbar {
       locked = false;
     }
     if (locked) {
-      newspos = constrain(mouseX-sheight/2, sposMin, sposMax);
+      //newspos = constrain(mouseX-sheight/2, sposMin, sposMax);
+      newspos = constrain(mouseX, sposMin, sposMax);
     }
     if (abs(newspos - spos) > 1) {
-      spos = spos + (newspos-spos)/loose;
+      spos = spos + (newspos-spos);///loose;
     }
   }
 
@@ -112,11 +116,11 @@ class HScrollbar {
     } else {
       fill(102, 102, 102);
     }
-    rect(spos, ypos, sheight, sheight); //scrollbar draggy controller thing
+    rect(spos, ypos, 10, sheight);// sheight, sheight); //scrollbar draggy controller thing
   }
 
   float getPos() {  // Convert spos to be values between 0 and the total width of the scrollbar
-    return spos * ratio;
+    return spos + 5;// * ratio;
   }
 }
 //=== END SCROLLBAR CLASS ==-

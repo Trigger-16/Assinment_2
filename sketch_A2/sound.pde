@@ -12,21 +12,27 @@ void soundRect() {
   fill(0, 207, 252);
   noStroke();
   rect(0, cy+sliderHeight, width, soundRectH);
-
-  //fill(0);
-  //pushMatrix();
-  //stroke(20);
-  //strokeWeight(1);
-  //line(0, soundRectCY, width, soundRectCY);
-  ////Text (27 deg celsius)
-  //textFont(font2);
-  //float angle1 = radians(270);
-  //translate(amX/4, soundRectCY);
-  //rotate(angle1);
-  //text("27°C", 0, 0); 
-  //popMatrix();
 }
 
+//=== PLAY SOUND FOR AIR TEMP ===
+void playSound(float circleX, float circleRadius) {
+  //for (int i = 0; i < tempList.size(); i++) {
+  //  float value = tempList.get(i);
+  //  float circleRadius = value; //sum_temp_day.getFloat(i, 1);
+  //  circleX = offset/2 + (i*offset);
+
+  if (circleX - circleRadius < linePos && linePos < circleX + circleRadius && test.isPlaying() == false && mousePressed == true && played == false) {
+    test.play();
+    played = true;
+  //} else if (circleX - circleRadius > linePos) {
+  //  played = false;
+  //} else if (linePos > circleX + circleRadius) {
+  //  played = false;
+  }
+  //NEED TO TRIGGER played = false SOMEHOW
+}
+
+//=== END PLAY SOUND FOR AIR TEMP ===
 
 //=== COLOUR PICKER FOR AIRTEMP === 
 color setTempColour(float value) {

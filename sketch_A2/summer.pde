@@ -7,6 +7,8 @@ FloatList sumTempNight;
 //Values for mapping temperature data
 float sumDayTempMin, sumDayTempMax; 
 float sumNightTempMin, sumNightTempMax; 
+//Bool for sound trigger
+boolean played;
 
 void summer() {
   //readSumSolarxy();
@@ -70,13 +72,16 @@ void drawSumDayTemp() {
   for (int i = 0; i < sumTempDay.size(); i++) {
     float value = sumTempDay.get(i);
     float circleRadius = value; //sum_temp_day.getFloat(i, 1);
-    float circleX = offset/2 + (i*offset);
+    circleX = offset/2 + (i*offset);
     float mappedY = map(value, sumDayTempMin, sumDayTempMax, (soundRectCY - soundRectH/2 + 30), (soundRectCY + soundRectH/2 - 30));
 
     fill(setTempColour(value));
     circle(circleX, mappedY, circleRadius);
+
+    playSound(circleX, circleRadius);
   }
 }
+
 // == night data ==
 void drawSumNightTemp() {
   fill(0);

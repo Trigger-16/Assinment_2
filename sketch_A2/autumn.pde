@@ -68,7 +68,7 @@ void drawAutDayTemp() {
   for (int i = 0; i < autTempDay.size(); i++) {
     float value = autTempDay.get(i);
     float circleRadius = value; //sum_temp_day.getFloat(i, 1);
-    float circleX = offset/2 + (i*offset);
+    circleX = offset/2 + (i*offset);
     float mappedY = map(value, autDayTempMin, autDayTempMax, (soundRectCY - soundRectH/2 + 30), (soundRectCY + soundRectH/2 - 30));
 
     fill(setTempColour(value));

@@ -70,7 +70,7 @@ void drawWinDayTemp() {
   for (int i = 0; i < winTempDay.size(); i++) {
     float value = winTempDay.get(i);
     float circleRadius = value; //sum_temp_day.getFloat(i, 1);
-    float circleX = offset/2 + (i*offset);
+    circleX = offset/2 + (i*offset);
     float mappedY = map(value, winDayTempMin, winDayTempMax, (soundRectCY - soundRectH/2 + 30), (soundRectCY + soundRectH/2 - 30));
 
     fill(setTempColour(value));

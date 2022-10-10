@@ -18,12 +18,12 @@
  */
 
 //=== INITIALISE GLOBAL VARIABLES ===
-import beads.*;
+//import beads.*;
 import processing.sound.*;
 import java.util.Arrays;
 import controlP5.*;
 
-AudioContext ac;
+//AudioContext ac;
 ControlP5 cp5;
 
 //Tables
@@ -63,7 +63,7 @@ SoundFile aut_sound;
 SoundFile win_sound;
 SoundFile spr_sound;
 SoundFile jazz_loop;
-float amp;
+SoundFile test;
 //CP5
 ButtonBar b;
 //Variables
@@ -80,7 +80,7 @@ int index = 0; //this is the index to iterate through datasets
 void setup() {
   size(1300, 900);
   //===INITIALISE SETTINGS ===
-  ac = new AudioContext();
+  //ac = new AudioContext();
   cp5 = new ControlP5(this);   //ControlFont font = new ControlFont(font1); // Initialise Font Settings
   //== fonts ==
   font1 = createFont("Lato-Regular.ttf", 36);
@@ -122,6 +122,8 @@ void setup() {
   spr_humid_night = loadTable("Humidity_Spring_Night.csv", "csv");
 
   readHumidity(); //this must be very early in the code. do not remove this line
+  //== solar radiation ==
+  readSumRadiation();
   //=== END LOAD TABLES ===
 
   //=== LOAD IMAGES ===
@@ -141,6 +143,9 @@ void setup() {
   spr_sound.amp(0.3);
   jazz_loop = new SoundFile(this, "jazz-loop.wav");
   jazz_loop.loop();
+
+  test = new SoundFile(this, "drum.wav");
+  test.amp(0.9);
   //=== END SOUND FILES ===
 
   //=== BUTTON BAR & WELCOME BUTTONS ===
@@ -154,11 +159,11 @@ void setup() {
   timeWinSlider();
   timeSprSlider();
   //scrollbar with slider for air temp/sound
-  sum_hsb = new HScrollbar(0, cy, width, 100, 5);
-  aut_hsb = new HScrollbar(0, cy, width, 100, 5);
-  win_hsb = new HScrollbar(0, cy, width, 100, 5);
-  spr_hsb = new HScrollbar(0, cy, width, 100, 5);
-  
+  sum_hsb = new HScrollbar(0, cy, width, 100);//, 5);
+  aut_hsb = new HScrollbar(0, cy, width, 100);//, 5);
+  win_hsb = new HScrollbar(0, cy, width, 100);//, 5);
+  spr_hsb = new HScrollbar(0, cy, width, 100);//, 5);
+
   readSumTemp();
   readAutTemp();
   readWinTemp();
@@ -209,8 +214,7 @@ void draw() {
     hideTimeSliders();
     hideAllButtons();
 
-    //antipicating that we will have to edit below here or add a
-    //function here to toggle sound for airtemp w the scrollbar
+    //=== START SUMMER ===
   } else if (is_summer == true && is_day == true) {
     showSumSlid(); //slider
     showSumBut(); //humid buttons
@@ -219,6 +223,7 @@ void draw() {
     summer();
     sumHSB();    //scroll bar
     drawSumSun();
+    //  playSound(sumTempDay);
   } else if (is_summer == true && is_night == true) {
     showSumSlid(); //slider
     showSumBut(); //humid buttons
@@ -226,27 +231,68 @@ void draw() {
     soundRect();
     summer();
     sumHSB();    //scroll bar
-  } else if (is_autumn == true) {
+    //drawSumMoon();
+    //  playSound(sumTempNight);
+
+    //=== START AUTUMN ===
+  } else if (is_autumn == true && is_day == true) {
     showAutSlid(); //slider
     showAutBut(); //humid buttons
     hideWelcomeBut();
     soundRect();
     autumn();
     autHSB(); //scroll bar
-  } else if (is_winter == true) {
+    //drawAutSun();
+    //   playSound(autTempDay);
+  } else if (is_autumn == true && is_night == true) {
+    showAutSlid(); //slider
+    showAutBut(); //humid buttons
+    hideWelcomeBut();
+    soundRect();
+    autumn();
+    autHSB(); //scroll bar
+    //drawAutMoon();
+    //  playSound(autTempNight);
+
+    //=== START WINTER ===
+  } else if (is_winter == true && is_day == true) {
     showWinSlid(); //slider
     showWinBut(); //humid buttons
     hideWelcomeBut();
     soundRect();
     winter();
     winHSB(); //scroll bar
-  } else if (is_spring == true) {
+    //drawWinSun();
+    //  playSound(winTempDay);
+  } else if (is_winter == true && is_night == true) {
+    showWinSlid(); //slider
+    showWinBut(); //humid buttons
+    hideWelcomeBut();
+    soundRect();
+    winter();
+    winHSB(); //scroll bar
+    //drawWinMoon();
+    //   playSound(winTempNight);
+
+    //=== START SPRING ===
+  } else if (is_spring == true && is_day == true) {
     showSprSlid(); //slider
     showSprBut(); //humid buttons
     hideWelcomeBut();
     soundRect();
     spring();
     sprHSB();
+    //drawSprSun();
+    //   playSound(sprTempDay);
+  } else if (is_spring == true && is_night == true) {
+    showSprSlid(); //slider
+    showSprBut(); //humid buttons
+    hideWelcomeBut();
+    soundRect();
+    spring();
+    sprHSB();
+    //drawSprMoon();
+    //  playSound(sprTempNight);
   }
 
   //=== KEEP ALL OF THESE AT THE BOTTOM OF THE draw() FUNCTION ===
@@ -283,7 +329,7 @@ void keyPressed() {
     is_night = false;
     is_day = true;
     println("it's daylight! ", is_day);
-  } else {
-    bar(0);
+  //} else {
+  //  bar(0);
   }
 }
