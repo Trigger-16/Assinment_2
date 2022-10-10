@@ -61,7 +61,8 @@ void timeSumSlider() {
 void timeAutSlider() {
   timeaut = cp5.addSlider("timeAut")
     .setPosition(0, cy)
-    .setRange(1, 12)
+    .setRange(0, 142)
+    .setValue(timeAut)
     .setSize(sliderWidth, sliderHeight)
     //.setNumberOfTickMarks(12)
     .setSliderMode(Slider.FLEXIBLE) //can change to default value of 'Slider.FIX'
@@ -76,7 +77,8 @@ void timeAutSlider() {
 void timeWinSlider() {
   timewin = cp5.addSlider("timeWin")
     .setPosition(0, cy)
-    .setRange(1, 12)
+    .setRange(0, 142)
+    .setValue(timeAut)
     .setSize(sliderWidth, sliderHeight)
     //.setNumberOfTickMarks(12)
     .setSliderMode(Slider.FLEXIBLE) //can change to default value of 'Slider.FIX'

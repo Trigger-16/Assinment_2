@@ -242,7 +242,7 @@ void draw() {
     soundRect();
     autumn();
     autHSB(); //scroll bar
-    //drawAutSun();
+    drawAutSun();
     //   playSound(autTempDay);
   } else if (is_autumn == true && is_night == true) {
     showAutSlid(); //slider
@@ -251,7 +251,7 @@ void draw() {
     soundRect();
     autumn();
     autHSB(); //scroll bar
-    //drawAutMoon();
+    drawAutMoon();
     //  playSound(autTempNight);
 
     //=== START WINTER ===
