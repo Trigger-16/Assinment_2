@@ -1,4 +1,4 @@
-//Tables //<>// //<>//
+//Tables //<>// //<>// //<>//
 Table sum_humid_day ;
 Table sum_humid_night;
 Table aut_humid_day;
@@ -159,9 +159,6 @@ void sumBottomButtons() {
     .setColorBackground(col_s4)
     .setColorForeground(lightBlue)
     .setColorActive(lighterBlue)
-    //.setColorBackground(deepBlue)
-    //.setColorForeground(lightBlue)
-    //.setColorActive(lighterBlue)
     ;
 
   cp5.addButton("sum5")
