@@ -11,7 +11,7 @@ void createButtonBar() {
 }
 
 void bar(int n) {
-  println("bar clicked, item-value:", n);
+//  println("bar clicked, item-value:", n);
   if (n == 1) {
     is_summer = true;
     is_autumn = false;

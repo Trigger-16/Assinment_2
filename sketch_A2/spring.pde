@@ -73,6 +73,8 @@ void drawSprDayTemp() {
 
     fill(setTempColour(value));
     circle(circleX, mappedY, circleRadius);
+    
+    playSound(circleX, circleRadius);
   }
 }
 // == night data ==
@@ -97,6 +99,8 @@ void drawSprNightTemp() {
 
     fill(setTempColour(value));
     circle(circleX, mappedY, circleRadius);
+    
+    playSound(circleX, circleRadius);
   }
 }
 //=== END AIR TEMPERATURE ===

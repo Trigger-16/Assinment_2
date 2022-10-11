@@ -74,6 +74,8 @@ void drawAutDayTemp() {
     fill(setTempColour(value));
     noStroke();
     circle(circleX, mappedY, circleRadius);
+    
+    playSound(circleX, circleRadius);
   }
 
   //=== WIP : NOT WORKING WELL ===
@@ -114,6 +116,8 @@ void drawAutNightTemp() {
 
     fill(setTempColour(value));
     circle(circleX, mappedY, circleRadius);
+    
+    playSound(circleX, circleRadius);
   }
 }
 //=== END AIR TEMPERATURE ===

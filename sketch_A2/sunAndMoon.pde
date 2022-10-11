@@ -12,7 +12,7 @@ int counter = 0;
 
 //Summer Sun
 void drawSumSun() {
-  readSumRadiation();
+  //readSumRadiation(); //--> commented this out, because I've put it in the setup() in sketch_A2 tab
 
   for (int i = 0; i < 360; i+=5) {
     //set the x and y position of the circle
@@ -107,7 +107,7 @@ void drawSprSun() {
 
 //Summer Moon
 void drawSumMoon() {
-    readSumRadiation();
+  //readSumRadiation(); //--> commented this out, because I've put it in the setup() in sketch_A2 tab
 
   for (int i = 0; i < 360; i+=5) {
     //set the x and y position of the circle
