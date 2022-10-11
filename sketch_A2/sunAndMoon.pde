@@ -35,7 +35,7 @@ void drawSumSun() {
 
 //Autumn Sun
 void drawAutSun() {
-  readAutRadiation();
+  //readAutRadiation();
 
   for (int i = 0; i < 360; i+=5) {
     //set the x and y position of the circle
@@ -58,7 +58,7 @@ void drawAutSun() {
 
 //Winter Sun
 void drawWinSun() {
-  readWinRadiation();
+  //readWinRadiation();
 
   for (int i = 0; i < 360; i+=5) {
     //set the x and y position of the circle
@@ -81,7 +81,7 @@ void drawWinSun() {
 
 //Spring Sun
 void drawSprSun() {
-  readSprRadiation();
+  //readSprRadiation();
 
   for (int i = 0; i < 360; i+=5) {
     //set the x and y position of the circle
@@ -130,7 +130,7 @@ void drawSumMoon() {
 
 //Autumn Moon
 void drawAutMoon() {
-    readAutRadiation();
+  // readAutRadiation();
 
   for (int i = 0; i < 360; i+=5) {
     //set the x and y position of the circle
@@ -153,7 +153,7 @@ void drawAutMoon() {
 
 //Winter Moon
 void drawWinMoon() {
-    readWinRadiation();
+  //readWinRadiation();
 
   for (int i = 0; i < 360; i+=5) {
     //set the x and y position of the circle
@@ -176,7 +176,7 @@ void drawWinMoon() {
 
 //Spring Moon
 void drawSprMoon() {
-    readSprRadiation();
+  //readSprRadiation();
 
   for (int i = 0; i < 360; i+=5) {
     //set the x and y position of the circle

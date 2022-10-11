@@ -9,21 +9,10 @@ float sprDayTempMin, sprDayTempMax;
 float sprNightTempMin, sprNightTempMax; 
 
 void spring() {
-  //readSprSolarxy();
   if (is_night == true  && is_spring == true) {
     drawSprNightTemp();
   } else if (is_day == true && is_spring == true) {
     drawSprDayTemp();
-  }
-}
-
-void readSprSolarxy() {
-  if (index < spr_solar_xy.getRowCount()) {
-    //=== DO SOMETHING WITH DATA ===
-
-    //=== END SOMETHING WITH DATA ===
-    println("data point: ", index, " | ", spr_solar_xy.getFloat(index, 1));
-    index++;
   }
 }
 

@@ -9,25 +9,12 @@ float sumDayTempMin, sumDayTempMax;
 float sumNightTempMin, sumNightTempMax; 
 
 void summer() {
-  //readSumSolarxy();
   if (is_night == true  && is_summer == true) {
     drawSumNightTemp();
   } else if (is_day == true && is_summer == true) {
     drawSumDayTemp();
   }
 }
-
-//=== SOLAR RADIATION ===
-void readSumSolarxy() {
-  if (index < sum_solar_xy.getRowCount()) {
-    //=== DO SOMETHING WITH DATA ===
-
-    //=== END SOMETHING WITH DATA ===
-    println("solar data point: ", index, " | ", sum_solar_xy.getFloat(index, 1));
-    index++;
-  }
-}
-//=== END SOLAR RADIATION ===
 
 //=== AIR TEMPERATURE ===
 void readSumTemp() {

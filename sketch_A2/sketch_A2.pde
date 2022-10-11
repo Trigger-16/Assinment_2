@@ -126,6 +126,9 @@ void setup() {
   readHumidity(); //this must be very early in the code. do not remove this line
   //== solar radiation ==
   readSumRadiation();
+  readAutRadiation();
+  readWinRadiation();
+  readSprRadiation();
   //=== END LOAD TABLES ===
 
   //=== LOAD IMAGES ===
@@ -148,9 +151,9 @@ void setup() {
 
   test = new SoundFile(this, "drum.wav");
   test.amp(0.9);
-  
+
   mouseClick = new SoundFile(this, "ClickingSound.wav");
-  
+
   //=== END SOUND FILES ===
 
   //=== BUTTON BAR & WELCOME BUTTONS ===
@@ -316,10 +319,12 @@ void draw() {
 }
 
 //FUNCTION USED TO SHOW ALL SENSOR DATA DETAILS AFTER PRESSING HUMIDITY BUTTON
-void showDetails(int n, FloatList humidList, FloatList tempList) {
+int humidVal;
+int tempVal;
+void showDetails() {//int n, FloatList humidList, FloatList tempList) {
   //get details
-  float humidVal = int(humidList.get(n));
-  float tempVal = int(tempList.get(n));
+  //  humidVal = int(humidList.get(n));
+  //  tempVal = int(tempList.get(n));
 
   //show details
   fill(0); //text colour

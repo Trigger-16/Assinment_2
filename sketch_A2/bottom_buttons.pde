@@ -124,6 +124,7 @@ color col_sp12;
 
 int n;
 
+String string;
 //=== READ HUMIDITY DATA === humidity data will be used to colour the buttons in a 'heat map' fashion
 void readHumidity() {
   //== READING AND STORING SUMMER VALUES ==
@@ -182,6 +183,20 @@ void sumBottomButtons() {
     .setColorForeground(lightBlue)
     .setColorActive(lighterBlue)
     ;
+  s1.onRelease(new CallbackListener() { // add the Callback Listener to the button 
+    public void controlEvent(CallbackEvent theEvent) {
+      // specify whatever you want to happen here
+      if (is_summer == true && is_day == true) {
+        humidVal = int(sumHumidDay.get(0));
+        tempVal = int(sumTempDay.get(0));
+      } else if (is_summer == true && is_day == true) {
+        humidVal = int(sumHumidNight.get(0));
+        tempVal = int(sumTempNight.get(0));
+      }
+      println("callback for s1 " );
+    }
+  }
+  );
 
   s2 = cp5.addButton("sum2")
     .setCaptionLabel(" ")
@@ -671,6 +686,59 @@ void sprBottomButtons() {
 }
 //=== END CREATE BUTTONS ===
 
+//=== BUTTON EVENTS .. ===
+public void controlEvent(ControlEvent theEvent) {
+  println(theEvent.getController().getName());
+}
+
+//EXAMPLE
+//b.onMove(new CallbackListener() {
+//  public void controlEvent(CallbackEvent ev) {
+//    ButtonBar bar = (ButtonBar)ev.getController();
+//    println("hovered! ", bar.hover()); //prints to command when hovering on buttons
+//  }
+//}
+//== summer ==
+//void sum1() {
+//  if (is_summer == true && is_day == true) {
+//    humidVal = int(sumHumidDay.get(0));
+//    tempVal = int(sumTempDay.get(0));
+//  } else if (is_summer == true && is_day == true) {
+//    humidVal = int(sumHumidNight.get(0));
+//    tempVal = int(sumTempNight.get(0));
+//  }
+//}
+void s2() {
+}
+void s3() {
+}
+void s4() {
+}
+void s5() {
+}
+void s6() {
+}
+void s7() {
+}
+void s8() {
+}
+void s9() {
+}
+void s10() {
+}
+void s11() {
+}
+void s12() {
+}
+//== autumn ==
+
+//== winter ==
+
+//== spring ==
+
+
+//=== END BUTTON EVENTS ===
+
 //=== FUNCTIONS TO TOGGLE ON/OFF BUTTONS FOR EACH TAB ===
 void hideAllButtons() {
   hideSumButtons();
@@ -979,8 +1047,7 @@ void sprNightCols() {
 }
 //===END DAY / NIGHT COLOURS ===
 
-void setButCols() {
-  //FUNCTION TO SET ALL COLOURS OF BUTTNS
+void setButCols() { //FUNCTION TO SET ALL COLOURS OF BUTTNS
   //Summer
   cp5.get(Button.class, "sum1").setColorBackground(col_s1);
   cp5.get(Button.class, "sum2").setColorBackground(col_s2);
@@ -1034,49 +1101,3 @@ void setButCols() {
   cp5.get(Button.class, "spr11").setColorBackground(col_sp11);
   cp5.get(Button.class, "spr12").setColorBackground(col_sp12);
 }
-
-//=== BUTTON EVENTS .. ===
-public void controlEvent(ControlEvent theEvent) {
-  println(theEvent.getController().getName());
-}
-
-//EXAMPLE
-//b.onMove(new CallbackListener() {
-//  public void controlEvent(CallbackEvent ev) {
-//    ButtonBar bar = (ButtonBar)ev.getController();
-//    println("hovered! ", bar.hover()); //prints to command when hovering on buttons
-//  }
-//}
-//== summer ==
-void s1() {
-}
-void s2() {
-}
-void s3() {
-}
-void s4() {
-}
-void s5() {
-}
-void s6() {
-}
-void s7() {
-}
-void s8() {
-}
-void s9() {
-}
-void s10() {
-}
-void s11() {
-}
-void s12() {
-}
-//== autumn ==
-
-//== winter ==
-
-//== spring ==
-
-
-//=== END BUTTON EVENTS ===

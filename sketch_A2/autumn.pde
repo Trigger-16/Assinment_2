@@ -9,22 +9,10 @@ float autDayTempMin, autDayTempMax;
 float autNightTempMin, autNightTempMax; 
 
 void autumn() {
-  // readAutSolarxy();
-
   if (is_night == true  && is_autumn == true) {
     drawAutNightTemp();
   } else if (is_day == true && is_autumn == true) {
     drawAutDayTemp();
-  }
-}
-
-void readAutSolarxy() {
-  if (index < aut_solar_xy.getRowCount()) {
-    //=== DO SOMETHING WITH DATA ===
-
-    //=== END SOMETHING WITH DATA ===
-    println("data point: ", index, " | ", aut_solar_xy.getFloat(index, 1));
-    index++;
   }
 }
 

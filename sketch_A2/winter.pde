@@ -8,24 +8,11 @@ FloatList winTempNight;
 float winDayTempMin, winDayTempMax; 
 float winNightTempMin, winNightTempMax; 
 
-
 void winter() {
-  //readWinSolarxy();
-
   if (is_night == true  && is_winter == true) {
     drawWinNightTemp();
   } else if (is_day == true && is_winter == true) {
     drawWinDayTemp();
-  }
-}
-
-void readWinSolarxy() {
-  if (index < win_solar_xy.getRowCount()) {
-    //=== DO SOMETHING WITH DATA ===
-
-    //=== END SOMETHING WITH DATA ===
-    println("data point: ", index, " | ", win_solar_xy.getFloat(index, 1));
-    index++;
   }
 }
 
