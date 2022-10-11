@@ -65,6 +65,7 @@ SoundFile win_sound;
 SoundFile spr_sound;
 SoundFile jazz_loop;
 SoundFile test;
+SoundFile mouseClick;
 //CP5
 ButtonBar b;
 //Variables
@@ -147,6 +148,9 @@ void setup() {
 
   test = new SoundFile(this, "drum.wav");
   test.amp(0.9);
+  
+  mouseClick = new SoundFile(this, "ClickingSound.wav");
+  
   //=== END SOUND FILES ===
 
   //=== BUTTON BAR & WELCOME BUTTONS ===
