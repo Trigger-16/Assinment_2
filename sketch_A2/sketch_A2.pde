@@ -56,7 +56,8 @@ color deepBlue = color(31, 38, 54);
 color lightBlue = color(34, 229, 253);
 color lighterBlue = color(34, 229, 253, 50);
 color nightSky = color(29, 57, 96); //color(0, 90, 119);
-color daySky = color(158, 217, 237);
+color daySky = color(139, 198, 255);
+//color daySky = color(158, 217, 237);
 //Sounds
 SoundFile sum_sound;
 SoundFile aut_sound;

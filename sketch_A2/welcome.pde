@@ -2,6 +2,7 @@ PImage moon_img;
 PImage stars_img;
 PImage clouds_img;
 PImage clouds_img2;
+PImage sun_img2;
 
 Button home;
 Button solar;
@@ -23,15 +24,18 @@ void welcome() {  //photos, text
     image(moon_img, width/2, height/2, width, height); // moon image
     image(stars_img, width/2, height/2, width, height); // stars image
     //image(clouds_img, width/2, height/2+50, width, height); // clouds image
-
     image(clouds_img2, movingX, height/2+50, width, height); // moving clouds
-    movingX++; 
+    movingX++;                                               // moving clouds
     //== text ==
     textAlign(LEFT);
     text("Press 'd' and see what happens!", x, y+35);
   } else if (is_welcome == true && is_day == true) {
     background(daySky);
     // @ CARMEN - CREATE A DAYTIME BACKGROUND HERE PLEASE :) - bec
+
+    image(sun_img2, width/2, height/2.5, width/5, width/5); // sun image
+    image(clouds_img2, movingX, height/2+50, width, height); // moving clouds
+    movingX++;                                               // moving clouds
 
     //== text ==
     textAlign(LEFT);
@@ -56,7 +60,11 @@ void welcome() {  //photos, text
 void welcome1() {
   int x = 100;
   int y = 800;
-
+  //== background ==
+  color bg = color(254, 250, 234); 
+  fill(bg);
+  rect(0, 0, width, height);
+  //== end background ==
   fill(peach);
   textAlign(LEFT);
   textFont(font3);
@@ -65,24 +73,15 @@ void welcome1() {
 }
 //=== END SOLAR RADIATION PAGE ===
 
-//=== HUMIDITY PAGE ===
+//=== AIR TEMP PAGE ===
 void welcome2() {
   int x = 100;
   int y = 800;
-
-  fill(255);
-  textAlign(LEFT);
-  textFont(font3);
-  text("Humidity is the amount of water vapor in the air, measured from the range of", x, y); 
-  text("0-100% Relative Humidity (RH).", x, y + 50);
-}
-//=== END HUMIDITY PAGE ===
-
-//=== AIR TEMP PAGE ===
-void welcome3() {
-  int x = 100;
-  int y = 800;
-
+  //== background ==
+  color bg = color(125, 158, 203); 
+  fill(bg);
+  rect(0, 0, width, height);
+  //== end background ==
   fill(255);
   textAlign(LEFT);
   textFont(font3);
@@ -91,6 +90,23 @@ void welcome3() {
 }
 //=== END AIR TEMP PAGE ===
 
+//=== HUMIDITY PAGE ===
+void welcome3() {
+  int x = 100;
+  int y = 800;
+  //== background ==
+  color bg = color(254, 221, 182); 
+  fill(bg);
+  rect(0, 0, width, height);
+  //== end background ==
+  fill(100);
+  textAlign(LEFT);
+  textFont(font3);
+  text("Humidity is the amount of water vapor in the air, measured from the range of", x, y); 
+  text("0-100% Relative Humidity (RH).", x, y + 50);
+}
+//=== END HUMIDITY PAGE ===
+
 //=== WELCOME BUTTONS ===
 void createWelcomeBut() { // CREATE WELCOME BUTTONS / IMAGES IN setup() (i.e. runs once)
   //== images ==
@@ -98,6 +114,7 @@ void createWelcomeBut() { // CREATE WELCOME BUTTONS / IMAGES IN setup() (i.e. ru
   stars_img = loadImage("stars.png"); //stars image
   clouds_img = loadImage("clouds.png"); //clouds image
   clouds_img2 = loadImage("clouds2.png"); //clouds image; MOVING CLOUDS - BEC 
+  sun_img2 = loadImage("sun.png"); //sun image 
   //== button settings ==
   int buttonW = 200;
   int buttonH = 50;
@@ -115,8 +132,9 @@ void createWelcomeBut() { // CREATE WELCOME BUTTONS / IMAGES IN setup() (i.e. ru
     .setFont(font2)
     ;
 
-  humid = cp5.addButton("humidity")
+  temp = cp5.addButton("airTemperature")
     .setValue(0)
+    .setCaptionLabel("air temperature")
     .setPosition(2*buttonW + 3*buttonGap, buttonY)
     .setSize(buttonW, buttonH)
     .setColorBackground(peach)
@@ -125,9 +143,8 @@ void createWelcomeBut() { // CREATE WELCOME BUTTONS / IMAGES IN setup() (i.e. ru
     .setFont(font2)
     ;
 
-  temp = cp5.addButton("airTemperature")
+  humid = cp5.addButton("humidity")
     .setValue(0)
-    .setCaptionLabel("air temperature")
     .setPosition(3*buttonW + 4*buttonGap, buttonY)
     .setSize(buttonW, buttonH)
     .setColorBackground(peach)
@@ -151,15 +168,15 @@ void createWelcomeBut() { // CREATE WELCOME BUTTONS / IMAGES IN setup() (i.e. ru
 void hideWelcomeBut() { // when you click on season tabs, welcome page buttons disappear
   home.hide();
   solar.hide();
-  humid.hide();
   temp.hide();
+  humid.hide();
 }
 
 void showWelcomeBut() { // when you click on welcome, the buttons reappear  
   home.show();
   solar.show();
-  humid.show();
   temp.show();
+  humid.show();
 }
 
 //=== BUTTON EVENTS === 
@@ -178,18 +195,19 @@ void solarRadiation() {
   is_welcome2 = false;
   is_welcome3 = false;
 }
-void humidity() {
-  println("a button event from humidity: ");
+void airTemperature() {
+  println("a button event from airTemp: ");
   is_welcome = false;
   is_welcome1 = false;
   is_welcome2 = true;
   is_welcome3 = false;
 }
-void airTemperature() {
-  println("a button event from airTemp: ");
+void humidity() {
+  println("a button event from humidity: ");
   is_welcome = false;
   is_welcome1 = false;
   is_welcome2 = false;
   is_welcome3 = true;
 }
+
 //=== END BUTTON EVENTS ===

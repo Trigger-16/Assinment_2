@@ -1,12 +1,12 @@
 /*
 *  Example taken and edited from Processing Examples -> Topics -> GUI -> Scrollbar
  */
-
+//Scrollbars
 HScrollbar sum_hsb;
 HScrollbar aut_hsb;
 HScrollbar win_hsb;
 HScrollbar spr_hsb;
-
+//Universal variables
 float circleX;
 float linePos;
 
