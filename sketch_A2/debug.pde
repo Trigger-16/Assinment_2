@@ -5,10 +5,10 @@ void debug(ButtonBar b) {
   println("winter solar data: ", win_solar_xy.getRowCount());
   println("spring solar data: ", spr_solar_xy.getRowCount());
 
-  println("summer temp data: ", sum_temp_xy.getRowCount());
-  println("autumn temp data: ", aut_temp_xy.getRowCount());
-  println("winter temp data: ", win_temp_xy.getRowCount());
-  println("spring temp data: ", spr_temp_xy.getRowCount());
+  //println("summer temp data: ", sum_temp_xy.getRowCount());
+  //println("autumn temp data: ", aut_temp_xy.getRowCount());
+  //println("winter temp data: ", win_temp_xy.getRowCount());
+  //println("spring temp data: ", spr_temp_xy.getRowCount());
 
   //=== STORING HUMIDITY VALUES CORRECTLY ===
   //println("Summer day: ", sumHumidDay);//       use: sumHumidDay.get(0) to get SPECIFIC values
@@ -47,12 +47,12 @@ void debug(ButtonBar b) {
 }
 
 
-void readSumHumidDay() {
-  if (index < sum_humid_day.getRowCount()) {
-    //=== DO SOMETHING WITH DATA ===
+//void readSumHumidDay() {
+//  if (index < sum_humid_day.getRowCount()) {
+//    //=== DO SOMETHING WITH DATA ===
 
-    //=== END SOMETHING WITH DATA ===
-    println("humidity data point: ", index, " | ", sum_humid_day.getFloat(index, 1));
-    index++;
-  }
-}
+//    //=== END SOMETHING WITH DATA ===
+//    println("humidity data point: ", index, " | ", sum_humid_day.getFloat(index, 1));
+//    index++;
+//  }
+//}

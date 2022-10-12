@@ -1,5 +1,5 @@
-//Tables //<>//
-Table sum_humid_day ; //<>//
+//Tables //<>// //<>// //<>//
+Table sum_humid_day ;
 Table sum_humid_night;
 Table aut_humid_day;
 Table aut_humid_night;
@@ -7,7 +7,6 @@ Table win_humid_day;
 Table win_humid_night;
 Table spr_humid_day;
 Table spr_humid_night;
-
 //FloatLists of humidity values
 FloatList sumHumidDay;
 FloatList sumHumidNight;
@@ -17,16 +16,59 @@ FloatList winHumidDay;
 FloatList winHumidNight;
 FloatList sprHumidDay;
 FloatList sprHumidNight;
-
-//'Heatmap' Colours
-color c1 = #ff0000;
-color c2 = #ffc400;
-color c3 = #dae023;
-color c4 = #98d03d;
-color c5 = #56d739;
-color c6 = #10df66;
-color c7 = #0ad5a3;
-color c8 = #00c6ff;
+//Buttons
+//==summer
+Button s1;
+Button s2;
+Button s3;
+Button s4;
+Button s5;
+Button s6;
+Button s7;
+Button s8;
+Button s9;
+Button s10;
+Button s11;
+Button s12;
+//==autumn
+Button a1;
+Button a2;
+Button a3;
+Button a4;
+Button a5;
+Button a6;
+Button a7;
+Button a8;
+Button a9;
+Button a10;
+Button a11;
+Button a12;
+//==winter
+Button w1;
+Button w2;
+Button w3;
+Button w4;
+Button w5;
+Button w6;
+Button w7;
+Button w8;
+Button w9;
+Button w10;
+Button w11;
+Button w12;
+//==spring
+Button sp1;
+Button sp2;
+Button sp3;
+Button sp4;
+Button sp5;
+Button sp6;
+Button sp7;
+Button sp8;
+Button sp9;
+Button sp10;
+Button sp11;
+Button sp12;
 //Summer Button Colours
 color col_s1;
 color col_s2;
@@ -80,6 +122,9 @@ color col_sp10;
 color col_sp11;
 color col_sp12;
 
+int n;
+
+String string;
 //=== READ HUMIDITY DATA === humidity data will be used to colour the buttons in a 'heat map' fashion
 void readHumidity() {
   //== READING AND STORING SUMMER VALUES ==
@@ -128,7 +173,8 @@ void sumBottomButtons() {
   int buttonW = width/12;
   int buttonH = height/8;
 
-  cp5.addButton("sum1")
+  s1 = cp5.addButton("sum1")
+    .setValue(0)
     .setCaptionLabel(" ")
     .setPosition(0, height-buttonH)
     .setSize(buttonW, buttonH)
@@ -137,8 +183,22 @@ void sumBottomButtons() {
     .setColorForeground(lightBlue)
     .setColorActive(lighterBlue)
     ;
+  s1.onRelease(new CallbackListener() { // add the Callback Listener to the button 
+    public void controlEvent(CallbackEvent theEvent) {
+      // specify whatever you want to happen here
+      if (is_summer == true && is_day == true) {
+        humidVal = int(sumHumidDay.get(0));
+        tempVal = int(sumTempDay.get(0));
+      } else if (is_summer == true && is_day == true) {
+        humidVal = int(sumHumidNight.get(0));
+        tempVal = int(sumTempNight.get(0));
+      }
+      println("callback for s1 " );
+    }
+  }
+  );
 
-  cp5.addButton("sum2")
+  s2 = cp5.addButton("sum2")
     .setCaptionLabel(" ")
     .setPosition(width/12, height-buttonH)
     .setSize(buttonW, buttonH)
@@ -148,7 +208,7 @@ void sumBottomButtons() {
     .setColorActive(lighterBlue)
     ;
 
-  cp5.addButton("sum3")
+  s3 = cp5.addButton("sum3")
     .setCaptionLabel(" ")
     .setPosition((width/12)*2, height-buttonH)
     .setSize(buttonW, buttonH)
@@ -158,17 +218,16 @@ void sumBottomButtons() {
     .setColorActive(lighterBlue)
     ;
 
-  cp5.addButton("sum4")
+  s4 = cp5.addButton("sum4")
     .setCaptionLabel(" ")
     .setPosition((width/12)*3, height-buttonH)
     .setSize(buttonW, buttonH)
     .setColorBackground(col_s4)
-    //.setColorBackground(deepBlue)
     .setColorForeground(lightBlue)
     .setColorActive(lighterBlue)
     ;
 
-  cp5.addButton("sum5")
+  s5 =cp5.addButton("sum5")
     .setCaptionLabel(" ")
     .setPosition((width/12)*4, height-buttonH)
     .setSize(buttonW, buttonH)
@@ -178,7 +237,7 @@ void sumBottomButtons() {
     .setColorActive(lighterBlue)
     ;
 
-  cp5.addButton("sum6")
+  s6 =cp5.addButton("sum6")
     .setCaptionLabel(" ")
     .setPosition((width/12)*5, height-buttonH)
     .setSize(buttonW, buttonH)
@@ -188,7 +247,7 @@ void sumBottomButtons() {
     .setColorActive(lighterBlue)
     ;
 
-  cp5.addButton("sum7")
+  s7 =cp5.addButton("sum7")
     .setCaptionLabel(" ")
     .setPosition((width/12)*6, height-buttonH)
     .setSize(buttonW, buttonH)
@@ -198,7 +257,7 @@ void sumBottomButtons() {
     .setColorActive(lighterBlue)
     ;
 
-  cp5.addButton("sum8")
+  s8 =cp5.addButton("sum8")
     .setCaptionLabel(" ")
     .setPosition((width/12)*7, height-buttonH)
     .setSize(buttonW, buttonH)
@@ -208,7 +267,7 @@ void sumBottomButtons() {
     .setColorActive(lighterBlue)
     ;
 
-  cp5.addButton("sum9")
+  s9 =cp5.addButton("sum9")
     .setCaptionLabel(" ")
     .setPosition((width/12)*8, height-buttonH)
     .setSize(buttonW, buttonH)
@@ -218,7 +277,7 @@ void sumBottomButtons() {
     .setColorActive(lighterBlue)
     ;
 
-  cp5.addButton("sum10")
+  s10 = cp5.addButton("sum10")
     .setCaptionLabel(" ")
     .setPosition((width/12)*9, height-buttonH)
     .setSize(buttonW, buttonH)
@@ -228,7 +287,7 @@ void sumBottomButtons() {
     .setColorActive(lighterBlue)
     ;
 
-  cp5.addButton("sum11")
+  s11 = cp5.addButton("sum11")
     .setCaptionLabel(" ")
     .setPosition((width/12)*10, height-buttonH)
     .setSize(buttonW, buttonH)
@@ -238,10 +297,10 @@ void sumBottomButtons() {
     .setColorActive(lighterBlue)
     ;
 
-  cp5.addButton("sum12")
+  s12 = cp5.addButton("sum12")
     .setCaptionLabel(" ")
     .setPosition((width/12)*11, height-buttonH)
-    .setSize(buttonW, buttonH)
+    .setSize(buttonW+15, buttonH)
     .setColorBackground(col_s12)
     //.setColorBackground(deepBlue)
     .setColorForeground(lightBlue)
@@ -253,7 +312,7 @@ void autBottomButtons() {
   int buttonW = width/12;
   int buttonH = height/8;
 
-  cp5.addButton("aut1")
+  a1 = cp5.addButton("aut1")
     .setCaptionLabel(" ")
     .setPosition(0, height-buttonH)
     .setSize(buttonW, buttonH)
@@ -263,7 +322,7 @@ void autBottomButtons() {
     .setColorActive(lighterBlue)
     ;
 
-  cp5.addButton("aut2")
+  a2 = cp5.addButton("aut2")
     .setCaptionLabel(" ")
     .setPosition(width/12, height-buttonH)
     .setSize(buttonW, buttonH)
@@ -273,7 +332,7 @@ void autBottomButtons() {
     .setColorActive(lighterBlue)
     ;
 
-  cp5.addButton("aut3")
+  a3 = cp5.addButton("aut3")
     .setCaptionLabel(" ")
     .setPosition((width/12)*2, height-buttonH)
     .setSize(buttonW, buttonH)
@@ -283,7 +342,7 @@ void autBottomButtons() {
     .setColorActive(lighterBlue)
     ;
 
-  cp5.addButton("aut4")
+  a4 = cp5.addButton("aut4")
     .setCaptionLabel(" ")
     .setPosition((width/12)*3, height-buttonH)
     .setSize(buttonW, buttonH)
@@ -293,7 +352,7 @@ void autBottomButtons() {
     .setColorActive(lighterBlue)
     ;
 
-  cp5.addButton("aut5")
+  a5 = cp5.addButton("aut5")
     .setCaptionLabel(" ")
     .setPosition((width/12)*4, height-buttonH)
     .setSize(buttonW, buttonH)
@@ -303,7 +362,7 @@ void autBottomButtons() {
     .setColorActive(lighterBlue)
     ;
 
-  cp5.addButton("aut6")
+  a6 = cp5.addButton("aut6")
     .setCaptionLabel(" ")
     .setPosition((width/12)*5, height-buttonH)
     .setSize(buttonW, buttonH)
@@ -313,7 +372,7 @@ void autBottomButtons() {
     .setColorActive(lighterBlue)
     ;
 
-  cp5.addButton("aut7")
+  a7 = cp5.addButton("aut7")
     .setCaptionLabel(" ")
     .setPosition((width/12)*6, height-buttonH)
     .setSize(buttonW, buttonH)
@@ -323,7 +382,7 @@ void autBottomButtons() {
     .setColorActive(lighterBlue)
     ;
 
-  cp5.addButton("aut8")
+  a8 = cp5.addButton("aut8")
     .setCaptionLabel(" ")
     .setPosition((width/12)*7, height-buttonH)
     .setSize(buttonW, buttonH)
@@ -333,7 +392,7 @@ void autBottomButtons() {
     .setColorActive(lighterBlue)
     ;
 
-  cp5.addButton("aut9")
+  a9 = cp5.addButton("aut9")
     .setCaptionLabel(" ")
     .setPosition((width/12)*8, height-buttonH)
     .setSize(buttonW, buttonH)
@@ -343,7 +402,7 @@ void autBottomButtons() {
     .setColorActive(lighterBlue)
     ;
 
-  cp5.addButton("aut10")
+  a10 = cp5.addButton("aut10")
     .setCaptionLabel(" ")
     .setPosition((width/12)*9, height-buttonH)
     .setSize(buttonW, buttonH)
@@ -353,7 +412,7 @@ void autBottomButtons() {
     .setColorActive(lighterBlue)
     ;
 
-  cp5.addButton("aut11")
+  a11 = cp5.addButton("aut11")
     .setCaptionLabel(" ")
     .setPosition((width/12)*10, height-buttonH)
     .setSize(buttonW, buttonH)
@@ -363,10 +422,10 @@ void autBottomButtons() {
     .setColorActive(lighterBlue)
     ;
 
-  cp5.addButton("aut12")
+  a12 = cp5.addButton("aut12")
     .setCaptionLabel(" ")
     .setPosition((width/12)*11, height-buttonH)
-    .setSize(buttonW, buttonH)
+    .setSize(buttonW+15, buttonH)
     .setColorBackground(col_a12)
     //.setColorBackground(deepBlue)
     .setColorForeground(lightBlue)
@@ -378,7 +437,7 @@ void winBottomButtons() {
   int buttonW = width/12;
   int buttonH = height/8;
 
-  cp5.addButton("win1")
+  w1 = cp5.addButton("win1")
     .setCaptionLabel(" ")
     //.setValue(0)
     .setPosition(0, height-buttonH)
@@ -389,7 +448,7 @@ void winBottomButtons() {
     .setColorActive(lighterBlue)
     ;
 
-  cp5.addButton("win2")
+  w2 = cp5.addButton("win2")
     .setCaptionLabel(" ")
     .setPosition(width/12, height-buttonH)
     .setSize(buttonW, buttonH)
@@ -399,7 +458,7 @@ void winBottomButtons() {
     .setColorActive(lighterBlue)
     ;
 
-  cp5.addButton("win3")
+  w3 = cp5.addButton("win3")
     .setCaptionLabel(" ")
     .setPosition((width/12)*2, height-buttonH)
     .setSize(buttonW, buttonH)
@@ -409,7 +468,7 @@ void winBottomButtons() {
     .setColorActive(lighterBlue)
     ;
 
-  cp5.addButton("win4")
+  w4 = cp5.addButton("win4")
     .setCaptionLabel(" ")
     .setPosition((width/12)*3, height-buttonH)
     .setSize(buttonW, buttonH)
@@ -419,7 +478,7 @@ void winBottomButtons() {
     .setColorActive(lighterBlue)
     ;
 
-  cp5.addButton("win5")
+  w5 = cp5.addButton("win5")
     .setCaptionLabel(" ")
     .setPosition((width/12)*4, height-buttonH)
     .setSize(buttonW, buttonH)
@@ -429,7 +488,7 @@ void winBottomButtons() {
     .setColorActive(lighterBlue)
     ;
 
-  cp5.addButton("win6")
+  w6 = cp5.addButton("win6")
     .setCaptionLabel(" ")
     .setPosition((width/12)*5, height-buttonH)
     .setSize(buttonW, buttonH)
@@ -439,7 +498,7 @@ void winBottomButtons() {
     .setColorActive(lighterBlue)
     ;
 
-  cp5.addButton("win7")
+  w7 = cp5.addButton("win7")
     .setCaptionLabel(" ")
     .setPosition((width/12)*6, height-buttonH)
     .setSize(buttonW, buttonH)
@@ -449,7 +508,7 @@ void winBottomButtons() {
     .setColorActive(lighterBlue)
     ;
 
-  cp5.addButton("win8")
+  w8 = cp5.addButton("win8")
     .setCaptionLabel(" ")
     .setPosition((width/12)*7, height-buttonH)
     .setSize(buttonW, buttonH)
@@ -459,7 +518,7 @@ void winBottomButtons() {
     .setColorActive(lighterBlue)
     ;
 
-  cp5.addButton("win9")
+  w9 = cp5.addButton("win9")
     .setCaptionLabel(" ")
     .setPosition((width/12)*8, height-buttonH)
     .setSize(buttonW, buttonH)
@@ -469,7 +528,7 @@ void winBottomButtons() {
     .setColorActive(lighterBlue)
     ;
 
-  cp5.addButton("win10")
+  w10 = cp5.addButton("win10")
     .setCaptionLabel(" ")
     .setPosition((width/12)*9, height-buttonH)
     .setSize(buttonW, buttonH)
@@ -479,7 +538,7 @@ void winBottomButtons() {
     .setColorActive(lighterBlue)
     ;
 
-  cp5.addButton("win11")
+  w11 = cp5.addButton("win11")
     .setCaptionLabel(" ")
     .setPosition((width/12)*10, height-buttonH)
     .setSize(buttonW, buttonH)
@@ -489,10 +548,10 @@ void winBottomButtons() {
     .setColorActive(lighterBlue)
     ;
 
-  cp5.addButton("win12")
+  w12 = cp5.addButton("win12")
     .setCaptionLabel(" ")
     .setPosition((width/12)*11, height-buttonH)
-    .setSize(buttonW, buttonH)
+    .setSize(buttonW+15, buttonH)
     .setColorBackground(col_w12)
     //.setColorBackground(deepBlue)
     .setColorForeground(lightBlue)
@@ -504,7 +563,7 @@ void sprBottomButtons() {
   int buttonW = width/12;
   int buttonH = height/8;
 
-  cp5.addButton("spr1")
+  sp1 = cp5.addButton("spr1")
     .setCaptionLabel(" ")
     //.setValue(0)
     .setPosition(0, height-buttonH)
@@ -515,7 +574,7 @@ void sprBottomButtons() {
     .setColorActive(lighterBlue)
     ;
 
-  cp5.addButton("spr2")
+  sp2 = cp5.addButton("spr2")
     .setCaptionLabel(" ")
     .setPosition(width/12, height-buttonH)
     .setSize(buttonW, buttonH)
@@ -525,7 +584,7 @@ void sprBottomButtons() {
     .setColorActive(lighterBlue)
     ;
 
-  cp5.addButton("spr3")
+  sp3 = cp5.addButton("spr3")
     .setCaptionLabel(" ")
     .setPosition((width/12)*2, height-buttonH)
     .setSize(buttonW, buttonH)
@@ -535,7 +594,7 @@ void sprBottomButtons() {
     .setColorActive(lighterBlue)
     ;
 
-  cp5.addButton("spr4")
+  sp4 = cp5.addButton("spr4")
     .setCaptionLabel(" ")
     .setPosition((width/12)*3, height-buttonH)
     .setSize(buttonW, buttonH)
@@ -545,7 +604,7 @@ void sprBottomButtons() {
     .setColorActive(lighterBlue)
     ;
 
-  cp5.addButton("spr5")
+  sp5 = cp5.addButton("spr5")
     .setCaptionLabel(" ")
     .setPosition((width/12)*4, height-buttonH)
     .setSize(buttonW, buttonH)
@@ -555,7 +614,7 @@ void sprBottomButtons() {
     .setColorActive(lighterBlue)
     ;
 
-  cp5.addButton("spr6")
+  sp6 = cp5.addButton("spr6")
     .setCaptionLabel(" ")
     .setPosition((width/12)*5, height-buttonH)
     .setSize(buttonW, buttonH)
@@ -565,7 +624,7 @@ void sprBottomButtons() {
     .setColorActive(lighterBlue)
     ;
 
-  cp5.addButton("spr7")
+  sp7 = cp5.addButton("spr7")
     .setCaptionLabel(" ")
     .setPosition((width/12)*6, height-buttonH)
     .setSize(buttonW, buttonH)
@@ -575,7 +634,7 @@ void sprBottomButtons() {
     .setColorActive(lighterBlue)
     ;
 
-  cp5.addButton("spr8")
+  sp8 = cp5.addButton("spr8")
     .setCaptionLabel(" ")
     .setPosition((width/12)*7, height-buttonH)
     .setSize(buttonW, buttonH)
@@ -585,7 +644,7 @@ void sprBottomButtons() {
     .setColorActive(lighterBlue)
     ;
 
-  cp5.addButton("spr9")
+  sp9 = cp5.addButton("spr9")
     .setCaptionLabel(" ")
     .setPosition((width/12)*8, height-buttonH)
     .setSize(buttonW, buttonH)
@@ -595,7 +654,7 @@ void sprBottomButtons() {
     .setColorActive(lighterBlue)
     ;
 
-  cp5.addButton("spr10")
+  sp10 = cp5.addButton("spr10")
     .setCaptionLabel(" ")
     .setPosition((width/12)*9, height-buttonH)
     .setSize(buttonW, buttonH)
@@ -605,7 +664,7 @@ void sprBottomButtons() {
     .setColorActive(lighterBlue)
     ;
 
-  cp5.addButton("spr11")
+  sp11 = cp5.addButton("spr11")
     .setCaptionLabel(" ")
     .setPosition((width/12)*10, height-buttonH)
     .setSize(buttonW, buttonH)
@@ -615,10 +674,10 @@ void sprBottomButtons() {
     .setColorActive(lighterBlue)
     ;
 
-  cp5.addButton("spr12")
+  sp12 = cp5.addButton("spr12")
     .setCaptionLabel(" ")
     .setPosition((width/12)*11, height-buttonH)
-    .setSize(buttonW, buttonH)
+    .setSize(buttonW+15, buttonH)
     .setColorBackground(col_sp12)
     //.setColorBackground(deepBlue)
     .setColorForeground(lightBlue)
@@ -626,6 +685,59 @@ void sprBottomButtons() {
     ;
 }
 //=== END CREATE BUTTONS ===
+
+//=== BUTTON EVENTS .. ===
+public void controlEvent(ControlEvent theEvent) {
+  println(theEvent.getController().getName());
+}
+
+//EXAMPLE
+//b.onMove(new CallbackListener() {
+//  public void controlEvent(CallbackEvent ev) {
+//    ButtonBar bar = (ButtonBar)ev.getController();
+//    println("hovered! ", bar.hover()); //prints to command when hovering on buttons
+//  }
+//}
+//== summer ==
+//void sum1() {
+//  if (is_summer == true && is_day == true) {
+//    humidVal = int(sumHumidDay.get(0));
+//    tempVal = int(sumTempDay.get(0));
+//  } else if (is_summer == true && is_day == true) {
+//    humidVal = int(sumHumidNight.get(0));
+//    tempVal = int(sumTempNight.get(0));
+//  }
+//}
+void s2() {
+}
+void s3() {
+}
+void s4() {
+}
+void s5() {
+}
+void s6() {
+}
+void s7() {
+}
+void s8() {
+}
+void s9() {
+}
+void s10() {
+}
+void s11() {
+}
+void s12() {
+}
+//== autumn ==
+
+//== winter ==
+
+//== spring ==
+
+
+//=== END BUTTON EVENTS ===
 
 //=== FUNCTIONS TO TOGGLE ON/OFF BUTTONS FOR EACH TAB ===
 void hideAllButtons() {
@@ -657,118 +769,118 @@ void showSprBut() {
 
 //=== HIDE BUTTONS ===
 void hideSumButtons() {
-  cp5.getController("sum1").hide();
-  cp5.getController("sum2").hide();
-  cp5.getController("sum3").hide();
-  cp5.getController("sum4").hide();
-  cp5.getController("sum5").hide();
-  cp5.getController("sum6").hide();
-  cp5.getController("sum7").hide();
-  cp5.getController("sum8").hide();
-  cp5.getController("sum9").hide();
-  cp5.getController("sum10").hide();
-  cp5.getController("sum11").hide();
-  cp5.getController("sum12").hide();
+  s1.hide();
+  s2.hide();
+  s3.hide();
+  s4.hide();
+  s5.hide();
+  s6.hide();
+  s7.hide();
+  s8.hide();
+  s9.hide();
+  s10.hide();
+  s11.hide();
+  s12.hide();
 }
 void hideAutButtons() {
-  cp5.getController("aut1").hide();
-  cp5.getController("aut2").hide();
-  cp5.getController("aut3").hide();
-  cp5.getController("aut4").hide();
-  cp5.getController("aut5").hide();
-  cp5.getController("aut6").hide();
-  cp5.getController("aut7").hide();
-  cp5.getController("aut8").hide();
-  cp5.getController("aut9").hide();
-  cp5.getController("aut10").hide();
-  cp5.getController("aut11").hide();
-  cp5.getController("aut12").hide();
+  a1.hide();
+  a2.hide();
+  a3.hide();
+  a4.hide();
+  a5.hide();
+  a6.hide();
+  a7.hide();
+  a8.hide();
+  a9.hide();
+  a10.hide();
+  a11.hide();
+  a12.hide();
 }
 void hideWinButtons() {
-  cp5.getController("win1").hide();
-  cp5.getController("win2").hide();
-  cp5.getController("win3").hide();
-  cp5.getController("win4").hide();
-  cp5.getController("win5").hide();
-  cp5.getController("win6").hide();
-  cp5.getController("win7").hide();
-  cp5.getController("win8").hide();
-  cp5.getController("win9").hide();
-  cp5.getController("win10").hide();
-  cp5.getController("win11").hide();
-  cp5.getController("win12").hide();
+  w1.hide();
+  w2.hide();
+  w3.hide();
+  w4.hide();
+  w5.hide();
+  w6.hide();
+  w7.hide();
+  w8.hide();
+  w9.hide();
+  w10.hide();
+  w11.hide();
+  w12.hide();
 }
 void hideSprButtons() {
-  cp5.getController("spr1").hide();
-  cp5.getController("spr2").hide();
-  cp5.getController("spr3").hide();
-  cp5.getController("spr4").hide();
-  cp5.getController("spr5").hide();
-  cp5.getController("spr6").hide();
-  cp5.getController("spr7").hide();
-  cp5.getController("spr8").hide();
-  cp5.getController("spr9").hide();
-  cp5.getController("spr10").hide();
-  cp5.getController("spr11").hide();
-  cp5.getController("spr12").hide();
+  sp1.hide();
+  sp2.hide();
+  sp3.hide();
+  sp4.hide();
+  sp5.hide();
+  sp6.hide();
+  sp7.hide();
+  sp8.hide();
+  sp9.hide();
+  sp10.hide();
+  sp11.hide();
+  sp12.hide();
 }
 //=== END HIDE BUTTONS ===
 //=== SHOW BUTTONS ===
 void showSumButtons() {
-  cp5.getController("sum1").show();
-  cp5.getController("sum2").show();
-  cp5.getController("sum3").show();
-  cp5.getController("sum4").show();
-  cp5.getController("sum5").show();
-  cp5.getController("sum6").show();
-  cp5.getController("sum7").show();
-  cp5.getController("sum8").show();
-  cp5.getController("sum9").show();
-  cp5.getController("sum10").show();
-  cp5.getController("sum11").show();
-  cp5.getController("sum12").show();
+  s1.show();
+  s2.show();
+  s3.show();
+  s4.show();
+  s5.show();
+  s6.show();
+  s7.show();
+  s8.show();
+  s9.show();
+  s10.show();
+  s11.show();
+  s12.show();
 }
 void showAutButtons() {
-  cp5.getController("aut1").show();
-  cp5.getController("aut2").show();
-  cp5.getController("aut3").show();
-  cp5.getController("aut4").show();
-  cp5.getController("aut5").show();
-  cp5.getController("aut6").show();
-  cp5.getController("aut7").show();
-  cp5.getController("aut8").show();
-  cp5.getController("aut9").show();
-  cp5.getController("aut10").show();
-  cp5.getController("aut11").show();
-  cp5.getController("aut12").show();
+  a1.show();
+  a2.show();
+  a3.show();
+  a4.show();
+  a5.show();
+  a6.show();
+  a7.show();
+  a8.show();
+  a9.show();
+  a10.show();
+  a11.show();
+  a12.show();
 }
 void showWinButtons() {
-  cp5.getController("win1").show();
-  cp5.getController("win2").show();
-  cp5.getController("win3").show();
-  cp5.getController("win4").show();
-  cp5.getController("win5").show();
-  cp5.getController("win6").show();
-  cp5.getController("win7").show();
-  cp5.getController("win8").show();
-  cp5.getController("win9").show();
-  cp5.getController("win10").show();
-  cp5.getController("win11").show();
-  cp5.getController("win12").show();
+  w1.show();
+  w2.show();
+  w3.show();
+  w4.show();
+  w5.show();
+  w6.show();
+  w7.show();
+  w8.show();
+  w9.show();
+  w10.show();
+  w11.show();
+  w12.show();
 }
 void showSprButtons() {
-  cp5.getController("spr1").show();
-  cp5.getController("spr2").show();
-  cp5.getController("spr3").show();
-  cp5.getController("spr4").show();
-  cp5.getController("spr5").show();
-  cp5.getController("spr6").show();
-  cp5.getController("spr7").show();
-  cp5.getController("spr8").show();
-  cp5.getController("spr9").show();
-  cp5.getController("spr10").show();
-  cp5.getController("spr11").show();
-  cp5.getController("spr12").show();
+  sp1.show();
+  sp2.show();
+  sp3.show();
+  sp4.show();
+  sp5.show();
+  sp6.show();
+  sp7.show();
+  sp8.show();
+  sp9.show();
+  sp10.show();
+  sp11.show();
+  sp12.show();
 }
 //=== END SHOW BUTTONS ===
 
@@ -785,6 +897,16 @@ void createBottomButtons() {
 //FUNCTIONS FOR HEAT MAP/BUTTON COLOURS
 //=== FUNCTION TO AUTO SELECT COLOURS ACC. TO RANGE OF VALUE ===
 color setColour(float value) {
+  //'Heatmap' Colours
+  color c1 = #ff0000;
+  color c2 = #ffc400;
+  color c3 = #dae023;
+  color c4 = #98d03d;
+  color c5 = #56d739;
+  color c6 = #10df66;
+  color c7 = #0ad5a3;
+  color c8 = #00c6ff;
+
   color finalCol = color(0, 0, 0);
   if (value < 60) {
     finalCol = c1; //from;
@@ -925,8 +1047,7 @@ void sprNightCols() {
 }
 //===END DAY / NIGHT COLOURS ===
 
-void setButCols() {
-  //FUNCTION TO SET ALL COLOURS OF BUTTNS
+void setButCols() { //FUNCTION TO SET ALL COLOURS OF BUTTNS
   //Summer
   cp5.get(Button.class, "sum1").setColorBackground(col_s1);
   cp5.get(Button.class, "sum2").setColorBackground(col_s2);
