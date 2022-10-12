@@ -11,11 +11,17 @@ float winNightTempMin, winNightTempMax;
 void winter() {
   if (is_night == true  && is_winter == true) {
     drawWinNightTemp();
+    image(stars_img, width/2, height/2, width, height); // stars image
+    image(clouds_img2, movingX, height/2+50, width, height); // moving clouds
+    movingX++;
   } else if (is_day == true && is_winter == true) {
     drawWinDayTemp();
+    image(clouds_img2, movingX, height/2+50, width, height); // moving clouds
+    movingX++; 
   }
 }
 
+    
 //=== AIR TEMPERATURE ===
 void readWinTemp() {
   //Day data

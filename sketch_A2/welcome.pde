@@ -6,12 +6,14 @@ PImage sun_img2;
 PImage solar_img;
 PImage humidity_img;
 
+
 Button home;
 Button solar;
 Button humid;
 Button temp;
 
 int movingX=300;
+
 
 //=== HOME PAGE ===
 void welcome() {  //photos, text
@@ -32,9 +34,12 @@ void welcome() {  //photos, text
     text("Press 'd' and see what happens!", x, y+35);
   } else if (is_welcome == true && is_day == true) {
     background(daySky);
+    // @ CARMEN - CREATE A DAYTIME BACKGROUND HERE PLEASE :) - bec
+
     image(sun_img2, width/2, height/2.5, width/5, width/5); // sun image
     image(clouds_img2, movingX, height/2+50, width, height); // moving clouds
     movingX++;                                               // moving clouds
+
     //== text ==
     textAlign(LEFT);
     text("Press 'n' and see what happens!", x, y+35);
@@ -62,8 +67,9 @@ void welcome1() {
   color bg = color(254, 250, 234); 
   fill(bg);
   rect(0, 0, width, height);
-  //== end background ==
   image(solar_img, width/2, height/2, width, height);
+
+  //== end background ==
   fill(peach);
   textAlign(LEFT);
   textFont(font3);
@@ -81,7 +87,9 @@ void welcome2() {
   fill(bg);
   rect(0, 0, width, height);
   //== end background ==
-  image(clouds_img, width/2, height/2, width, height);
+  //image(clouds_img, width/2, height/2, width, height);
+  image(clouds_img2, movingX, height/2+50, width, height); // moving clouds
+  movingX++; 
   fill(255);
   textAlign(LEFT);
   textFont(font3);
@@ -100,6 +108,7 @@ void welcome3() {
   rect(0, 0, width, height);
   //== end background ==
   image(humidity_img, width/2, height/2, width, height); 
+                         
   fill(100);
   textAlign(LEFT);
   textFont(font3);
@@ -113,11 +122,12 @@ void createWelcomeBut() { // CREATE WELCOME BUTTONS / IMAGES IN setup() (i.e. ru
   //== images ==
   moon_img = loadImage("moon.png"); // moon image
   stars_img = loadImage("stars.png"); //stars image
-  clouds_img = loadImage("clouds.png"); //clouds image
-  clouds_img2 = loadImage("clouds2.png"); //clouds image; MOVING CLOUDS - BEC 
+  clouds_img = loadImage("cloudss.png"); //clouds image
+  clouds_img2 = loadImage("movingclouds.png"); //clouds image; MOVING CLOUDS - BEC 
   sun_img2 = loadImage("sun.png"); //sun image 
   solar_img = loadImage("solar.png"); // solar radiation 
   humidity_img = loadImage("humidity.png");
+  imageMode(CENTER);
   //== button settings ==
   int buttonW = 200;
   int buttonH = 50;

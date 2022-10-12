@@ -11,10 +11,16 @@ float sprNightTempMin, sprNightTempMax;
 void spring() {
   if (is_night == true  && is_spring == true) {
     drawSprNightTemp();
+    image(stars_img, width/2, height/2, width, height); // stars image
+    image(clouds_img2, movingX, height/2+50, width, height); // moving clouds
+    movingX++;
   } else if (is_day == true && is_spring == true) {
     drawSprDayTemp();
+    image(clouds_img2, movingX, height/2+50, width, height); // moving clouds
+    movingX++; 
   }
 }
+
 
 //=== AIR TEMPERATURE ===
 void readSprTemp() {

@@ -11,8 +11,13 @@ float sumNightTempMin, sumNightTempMax;
 void summer() {
   if (is_night == true  && is_summer == true) {
     drawSumNightTemp();
+    image(stars_img, width/2, height/2, width, height); // stars image
+    image(clouds_img2, movingX, height/2+50, width, height); // moving clouds
+    movingX++;
   } else if (is_day == true && is_summer == true) {
     drawSumDayTemp();
+    image(clouds_img2, movingX, height/2+50, width, height); // moving clouds
+    movingX++; 
   }
 }
 
