@@ -6,7 +6,7 @@
  * Adriel Carino (13931908)
  *
  * === Image sources ===
- - flower: https://static.vecteezy.com/system/resources/previews/001/190/232/non_2x/flower-png.png
+ * - flower: https://static.vecteezy.com/system/resources/previews/001/190/232/non_2x/flower-png.png
  * - sun: https://static.vecteezy.com/system/resources/previews/001/189/223/non_2x/sun-png.png
  * - leaf: https://static.vecteezy.com/system/resources/previews/009/342/562/non_2x/autumn-leaf-clipart-design-illustration-free-png.png
  * - snowflake: https://static.vecteezy.com/system/resources/previews/001/194/635/non_2x/snowflake-png.png
