@@ -136,7 +136,6 @@ void setup() {
   leaf_img = loadImage("vecteezy_leaf.png");
   snowflake_img = loadImage("vecteezy_snowflake.png");
   flower_img = loadImage("vecteezy_flower.png");
-  imageMode(CENTER);
   //=== END LOAD IMAGES ===
 
   //=== LOAD SOUND FILES ===
@@ -305,6 +304,7 @@ void draw() {
 
   //=== KEEP ALL OF THESE AT THE BOTTOM OF THE draw() FUNCTION ===
   //== images ==
+  imageMode(CENTER);
   if (sun_img != null && is_summer == true) {
     image(sun_img, width-100, height/10+80, width/10.2, height/8); //image(sun_img, cx, cy, width/5, height/4);
   } else if (leaf_img != null && is_autumn  == true) {

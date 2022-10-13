@@ -1,10 +1,13 @@
 PImage moon_img;
 PImage stars_img;
 PImage clouds_img;
-PImage clouds_img2;
+PImage clouds_l;
+PImage clouds_r;
 PImage sun_img2;
 PImage solar_img;
 PImage humidity_img;
+PImage stars_l;
+PImage stars_r;
 
 
 Button home;
@@ -27,17 +30,15 @@ void welcome() {  //photos, text
     image(moon_img, width/2, height/2, width, height); // moon image
     image(stars_img, width/2, height/2, width, height); // stars image
     //image(clouds_img, width/2, height/2+50, width, height); // clouds image
-    image(clouds_img2, movingX, height/2+50, width, height); // moving clouds
+    image(clouds_img, movingX, height/2+50, width, height); // moving clouds
     movingX++;                                               // moving clouds
     //== text ==
     textAlign(LEFT);
     text("Press 'd' and see what happens!", x, y+35);
   } else if (is_welcome == true && is_day == true) {
     background(daySky);
-    // @ CARMEN - CREATE A DAYTIME BACKGROUND HERE PLEASE :) - bec
-
     image(sun_img2, width/2, height/2.5, width/5, width/5); // sun image
-    image(clouds_img2, movingX, height/2+50, width, height); // moving clouds
+    image(clouds_img, movingX, height/2+50, width, height); // moving clouds
     movingX++;                                               // moving clouds
 
     //== text ==
@@ -88,7 +89,7 @@ void welcome2() {
   rect(0, 0, width, height);
   //== end background ==
   //image(clouds_img, width/2, height/2, width, height);
-  image(clouds_img2, movingX, height/2+50, width, height); // moving clouds
+  image(clouds_img, movingX, height/2+50, width, height); // moving clouds
   movingX++; 
   fill(255);
   textAlign(LEFT);
@@ -108,7 +109,7 @@ void welcome3() {
   rect(0, 0, width, height);
   //== end background ==
   image(humidity_img, width/2, height/2, width, height); 
-                         
+
   fill(100);
   textAlign(LEFT);
   textFont(font3);
@@ -120,13 +121,18 @@ void welcome3() {
 //=== WELCOME BUTTONS ===
 void createWelcomeBut() { // CREATE WELCOME BUTTONS / IMAGES IN setup() (i.e. runs once)
   //== images ==
-  moon_img = loadImage("moon.png"); // moon image
-  stars_img = loadImage("stars.png"); //stars image
-  clouds_img = loadImage("cloudss.png"); //clouds image
-  clouds_img2 = loadImage("movingclouds.png"); //clouds image; MOVING CLOUDS - BEC 
+  moon_img = loadImage("moon_15.png"); // moon image
+  stars_img = loadImage("stars_15.png"); //stars image
+  stars_l = loadImage("stars_left.png"); //stars image
+  stars_r = loadImage("stars_right.png"); //stars image
+
+  clouds_img = loadImage("clouds_15.png"); //clouds image
+  clouds_l = loadImage("clouds_l.png"); //clouds image
+  clouds_r = loadImage("clouds_r.png"); //clouds image
+
   sun_img2 = loadImage("sun.png"); //sun image 
-  solar_img = loadImage("solar.png"); // solar radiation 
-  humidity_img = loadImage("humidity.png");
+  solar_img = loadImage("solar_15.png"); // solar radiation 
+  humidity_img = loadImage("humidity_15.png");
   imageMode(CENTER);
   //== button settings ==
   int buttonW = 200;
@@ -200,6 +206,7 @@ void home() {
   is_welcome1 = false;
   is_welcome2 = false;
   is_welcome3 = false;
+  movingX = 300;
 }
 void solarRadiation() {
   println("a button event from solarRadiation: ");
@@ -214,6 +221,7 @@ void airTemperature() {
   is_welcome1 = false;
   is_welcome2 = true;
   is_welcome3 = false;
+  movingX = 500;
 }
 void humidity() {
   println("a button event from humidity: ");

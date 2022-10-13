@@ -9,15 +9,15 @@ float sumDayTempMin, sumDayTempMax;
 float sumNightTempMin, sumNightTempMax; 
 
 void summer() {
+  imageMode(CORNER);
   if (is_night == true  && is_summer == true) {
     drawSumNightTemp();
-    image(stars_img, width/2, height/2, width, height); // stars image
-    image(clouds_img2, movingX, height/2+50, width, height); // moving clouds
-    movingX++;
+    image(stars_l, 0,0,(stars_l.width)+70,height);
+    image(stars_r,width-(stars_r.width+90),0,stars_r.width+90,height);
   } else if (is_day == true && is_summer == true) {
     drawSumDayTemp();
-    image(clouds_img2, movingX, height/2+50, width, height); // moving clouds
-    movingX++; 
+    image(clouds_r, -90,0,(clouds_r.width),height);
+    image(clouds_l,width-(clouds_l.width)+70,0,clouds_l.width+90,height);
   }
 }
 
