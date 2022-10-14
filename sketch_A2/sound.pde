@@ -19,7 +19,7 @@ void playSound(float circleX, float circleRadius) {
   float circleX_Bound1 = circleX - circleRadius + 10;
   float circleX_Bound2 = circleX + circleRadius - 10;
   if (circleX_Bound1 < linePos && linePos < circleX_Bound2 && test.isPlaying() == false && mousePressed == true) {
-    test.play();
+    mouseClick.play();
   }
 }
 
