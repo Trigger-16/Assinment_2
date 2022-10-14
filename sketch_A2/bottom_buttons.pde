@@ -1,4 +1,14 @@
-//Tables //<>// //<>//
+/* //<>//
+*   Note: we mapped these as individual buttons because we planned 
+*   for them to display something when pressed. however the buttons 
+*   did not work as expected, thus we just left them. 
+*   We would have made a loop and created rectangles if we knew that 
+*   our button functionality would not work. Unfortunately we didn't 
+*   have enough time to fully troubleshoot this :( 
+*
+*/
+
+//Tables //<>//
 Table sum_humid_day ; //<>// //<>//
 Table sum_humid_night;
 Table aut_humid_day;
@@ -133,9 +143,8 @@ void sumBottomButtons() {
     .setPosition(0, height-buttonH)
     .setSize(buttonW, buttonH)
     .setColorBackground(col_s1)
-    //.setColorBackground(deepBlue)
-    .setColorForeground(lightBlue)
-    .setColorActive(lighterBlue)
+    .setColorForeground(col_s1)
+    .setColorActive(col_s1)
     ;
 
   cp5.addButton("sum2")
@@ -143,9 +152,8 @@ void sumBottomButtons() {
     .setPosition(width/12, height-buttonH)
     .setSize(buttonW, buttonH)
     .setColorBackground(col_s2)
-    //.setColorBackground(deepBlue)
-    .setColorForeground(lightBlue)
-    .setColorActive(lighterBlue)
+    .setColorForeground(col_s2)
+    .setColorActive(col_s2)
     ;
 
   cp5.addButton("sum3")
@@ -153,9 +161,8 @@ void sumBottomButtons() {
     .setPosition((width/12)*2, height-buttonH)
     .setSize(buttonW, buttonH)
     .setColorBackground(col_s3)
-    //.setColorBackground(deepBlue)
-    .setColorForeground(lightBlue)
-    .setColorActive(lighterBlue)
+    .setColorForeground(col_s3)
+    .setColorActive(col_s3)
     ;
 
   cp5.addButton("sum4")
@@ -163,9 +170,8 @@ void sumBottomButtons() {
     .setPosition((width/12)*3, height-buttonH)
     .setSize(buttonW, buttonH)
     .setColorBackground(col_s4)
-    //.setColorBackground(deepBlue)
-    .setColorForeground(lightBlue)
-    .setColorActive(lighterBlue)
+    .setColorForeground(col_s4)
+    .setColorActive(col_s4)
     ;
 
   cp5.addButton("sum5")
@@ -173,9 +179,8 @@ void sumBottomButtons() {
     .setPosition((width/12)*4, height-buttonH)
     .setSize(buttonW, buttonH)
     .setColorBackground(col_s5)
-    //.setColorBackground(deepBlue)
-    .setColorForeground(lightBlue)
-    .setColorActive(lighterBlue)
+    .setColorForeground(col_s5)
+    .setColorActive(col_s5)
     ;
 
   cp5.addButton("sum6")
@@ -183,9 +188,8 @@ void sumBottomButtons() {
     .setPosition((width/12)*5, height-buttonH)
     .setSize(buttonW, buttonH)
     .setColorBackground(col_s6)
-    //.setColorBackground(deepBlue)
-    .setColorForeground(lightBlue)
-    .setColorActive(lighterBlue)
+    .setColorForeground(col_s6)
+    .setColorActive(col_s6)
     ;
 
   cp5.addButton("sum7")
@@ -193,9 +197,8 @@ void sumBottomButtons() {
     .setPosition((width/12)*6, height-buttonH)
     .setSize(buttonW, buttonH)
     .setColorBackground(col_s7)
-    //.setColorBackground(deepBlue)
-    .setColorForeground(lightBlue)
-    .setColorActive(lighterBlue)
+    .setColorForeground(col_s7)
+    .setColorActive(col_s7)
     ;
 
   cp5.addButton("sum8")
@@ -203,9 +206,8 @@ void sumBottomButtons() {
     .setPosition((width/12)*7, height-buttonH)
     .setSize(buttonW, buttonH)
     .setColorBackground(col_s8)
-    //.setColorBackground(deepBlue)
-    .setColorForeground(lightBlue)
-    .setColorActive(lighterBlue)
+    .setColorForeground(col_s8)
+    .setColorActive(col_s8)
     ;
 
   cp5.addButton("sum9")
@@ -213,9 +215,8 @@ void sumBottomButtons() {
     .setPosition((width/12)*8, height-buttonH)
     .setSize(buttonW, buttonH)
     .setColorBackground(col_s9)
-    //.setColorBackground(deepBlue)
-    .setColorForeground(lightBlue)
-    .setColorActive(lighterBlue)
+    .setColorForeground(col_s9)
+    .setColorActive(col_s9)
     ;
 
   cp5.addButton("sum10")
@@ -223,9 +224,8 @@ void sumBottomButtons() {
     .setPosition((width/12)*9, height-buttonH)
     .setSize(buttonW, buttonH)
     .setColorBackground(col_s10)
-    //.setColorBackground(deepBlue)
-    .setColorForeground(lightBlue)
-    .setColorActive(lighterBlue)
+    .setColorForeground(col_s10)
+    .setColorActive(col_s10)
     ;
 
   cp5.addButton("sum11")
@@ -233,9 +233,8 @@ void sumBottomButtons() {
     .setPosition((width/12)*10, height-buttonH)
     .setSize(buttonW, buttonH)
     .setColorBackground(col_s11)
-    //.setColorBackground(deepBlue)
-    .setColorForeground(lightBlue)
-    .setColorActive(lighterBlue)
+    .setColorForeground(col_s11)
+    .setColorActive(col_s11)
     ;
 
   cp5.addButton("sum12")
@@ -243,9 +242,8 @@ void sumBottomButtons() {
     .setPosition((width/12)*11, height-buttonH)
     .setSize(buttonW+15, buttonH)
     .setColorBackground(col_s12)
-    //.setColorBackground(deepBlue)
-    .setColorForeground(lightBlue)
-    .setColorActive(lighterBlue)
+    .setColorForeground(col_s12)
+    .setColorActive(col_s12)
     ;
 }
 
@@ -258,9 +256,8 @@ void autBottomButtons() {
     .setPosition(0, height-buttonH)
     .setSize(buttonW, buttonH)
     .setColorBackground(col_a1)
-    //.setColorBackground(deepBlue)
-    .setColorForeground(lightBlue)
-    .setColorActive(lighterBlue)
+    .setColorForeground(col_a1)
+    .setColorActive(col_a1)
     ;
 
   cp5.addButton("aut2")
@@ -268,9 +265,8 @@ void autBottomButtons() {
     .setPosition(width/12, height-buttonH)
     .setSize(buttonW, buttonH)
     .setColorBackground(col_a2)
-    //.setColorBackground(deepBlue)
-    .setColorForeground(lightBlue)
-    .setColorActive(lighterBlue)
+    .setColorForeground(col_a2)
+    .setColorActive(col_a2)
     ;
 
   cp5.addButton("aut3")
@@ -278,9 +274,8 @@ void autBottomButtons() {
     .setPosition((width/12)*2, height-buttonH)
     .setSize(buttonW, buttonH)
     .setColorBackground(col_a3)
-    //.setColorBackground(deepBlue)
-    .setColorForeground(lightBlue)
-    .setColorActive(lighterBlue)
+    .setColorForeground(col_a3)
+    .setColorActive(col_a3)
     ;
 
   cp5.addButton("aut4")
@@ -288,9 +283,8 @@ void autBottomButtons() {
     .setPosition((width/12)*3, height-buttonH)
     .setSize(buttonW, buttonH)
     .setColorBackground(col_a4)
-    //.setColorBackground(deepBlue)
-    .setColorForeground(lightBlue)
-    .setColorActive(lighterBlue)
+    .setColorForeground(col_a4)
+    .setColorActive(col_a4)
     ;
 
   cp5.addButton("aut5")
@@ -298,9 +292,8 @@ void autBottomButtons() {
     .setPosition((width/12)*4, height-buttonH)
     .setSize(buttonW, buttonH)
     .setColorBackground(col_a5)
-    //.setColorBackground(deepBlue)
-    .setColorForeground(lightBlue)
-    .setColorActive(lighterBlue)
+    .setColorForeground(col_a5)
+    .setColorActive(col_a5)
     ;
 
   cp5.addButton("aut6")
@@ -308,9 +301,8 @@ void autBottomButtons() {
     .setPosition((width/12)*5, height-buttonH)
     .setSize(buttonW, buttonH)
     .setColorBackground(col_a6)
-    //.setColorBackground(deepBlue)
-    .setColorForeground(lightBlue)
-    .setColorActive(lighterBlue)
+    .setColorForeground(col_a6)
+    .setColorActive(col_a6)
     ;
 
   cp5.addButton("aut7")
@@ -318,9 +310,8 @@ void autBottomButtons() {
     .setPosition((width/12)*6, height-buttonH)
     .setSize(buttonW, buttonH)
     .setColorBackground(col_a7)
-    //.setColorBackground(deepBlue)
-    .setColorForeground(lightBlue)
-    .setColorActive(lighterBlue)
+    .setColorForeground(col_a7)
+    .setColorActive(col_a7)
     ;
 
   cp5.addButton("aut8")
@@ -328,9 +319,8 @@ void autBottomButtons() {
     .setPosition((width/12)*7, height-buttonH)
     .setSize(buttonW, buttonH)
     .setColorBackground(col_a8)
-    //.setColorBackground(deepBlue)
-    .setColorForeground(lightBlue)
-    .setColorActive(lighterBlue)
+    .setColorForeground(col_a8)
+    .setColorActive(col_a8)
     ;
 
   cp5.addButton("aut9")
@@ -338,9 +328,8 @@ void autBottomButtons() {
     .setPosition((width/12)*8, height-buttonH)
     .setSize(buttonW, buttonH)
     .setColorBackground(col_a9)
-    //.setColorBackground(deepBlue)
-    .setColorForeground(lightBlue)
-    .setColorActive(lighterBlue)
+    .setColorForeground(col_a9)
+    .setColorActive(col_a9)
     ;
 
   cp5.addButton("aut10")
@@ -348,9 +337,8 @@ void autBottomButtons() {
     .setPosition((width/12)*9, height-buttonH)
     .setSize(buttonW, buttonH)
     .setColorBackground(col_a10)
-    //.setColorBackground(deepBlue)
-    .setColorForeground(lightBlue)
-    .setColorActive(lighterBlue)
+    .setColorForeground(col_a10)
+    .setColorActive(col_a10)
     ;
 
   cp5.addButton("aut11")
@@ -358,9 +346,8 @@ void autBottomButtons() {
     .setPosition((width/12)*10, height-buttonH)
     .setSize(buttonW, buttonH)
     .setColorBackground(col_a11)
-    //.setColorBackground(deepBlue)
-    .setColorForeground(lightBlue)
-    .setColorActive(lighterBlue)
+    .setColorForeground(col_a11)
+    .setColorActive(col_a11)
     ;
 
   cp5.addButton("aut12")
@@ -368,9 +355,8 @@ void autBottomButtons() {
     .setPosition((width/12)*11, height-buttonH)
     .setSize(buttonW+15, buttonH)
     .setColorBackground(col_a12)
-    //.setColorBackground(deepBlue)
-    .setColorForeground(lightBlue)
-    .setColorActive(lighterBlue)
+    .setColorForeground(col_a12)
+    .setColorActive(col_a12)
     ;
 }
 
@@ -384,9 +370,8 @@ void winBottomButtons() {
     .setPosition(0, height-buttonH)
     .setSize(buttonW, buttonH)
     .setColorBackground(col_w1)
-    //.setColorBackground(deepBlue)
-    .setColorForeground(lightBlue)
-    .setColorActive(lighterBlue)
+    .setColorForeground(col_w1)
+    .setColorActive(col_w1)
     ;
 
   cp5.addButton("win2")
@@ -394,9 +379,8 @@ void winBottomButtons() {
     .setPosition(width/12, height-buttonH)
     .setSize(buttonW, buttonH)
     .setColorBackground(col_w2)
-    //.setColorBackground(deepBlue)
-    .setColorForeground(lightBlue)
-    .setColorActive(lighterBlue)
+    .setColorForeground(col_w2)
+    .setColorActive(col_w2)
     ;
 
   cp5.addButton("win3")
@@ -404,9 +388,8 @@ void winBottomButtons() {
     .setPosition((width/12)*2, height-buttonH)
     .setSize(buttonW, buttonH)
     .setColorBackground(col_w3)
-    //.setColorBackground(deepBlue)
-    .setColorForeground(lightBlue)
-    .setColorActive(lighterBlue)
+    .setColorForeground(col_w3)
+    .setColorActive(col_w3)
     ;
 
   cp5.addButton("win4")
@@ -414,9 +397,8 @@ void winBottomButtons() {
     .setPosition((width/12)*3, height-buttonH)
     .setSize(buttonW, buttonH)
     .setColorBackground(col_w4)
-    //.setColorBackground(deepBlue)
-    .setColorForeground(lightBlue)
-    .setColorActive(lighterBlue)
+    .setColorForeground(col_w4)
+    .setColorActive(col_w4)
     ;
 
   cp5.addButton("win5")
@@ -424,9 +406,8 @@ void winBottomButtons() {
     .setPosition((width/12)*4, height-buttonH)
     .setSize(buttonW, buttonH)
     .setColorBackground(col_w5)
-    //.setColorBackground(deepBlue)
-    .setColorForeground(lightBlue)
-    .setColorActive(lighterBlue)
+    .setColorForeground(col_w5)
+    .setColorActive(col_w5)
     ;
 
   cp5.addButton("win6")
@@ -434,9 +415,8 @@ void winBottomButtons() {
     .setPosition((width/12)*5, height-buttonH)
     .setSize(buttonW, buttonH)
     .setColorBackground(col_w6)
-    //.setColorBackground(deepBlue)
-    .setColorForeground(lightBlue)
-    .setColorActive(lighterBlue)
+    .setColorForeground(col_w6)
+    .setColorActive(col_w6)
     ;
 
   cp5.addButton("win7")
@@ -444,9 +424,8 @@ void winBottomButtons() {
     .setPosition((width/12)*6, height-buttonH)
     .setSize(buttonW, buttonH)
     .setColorBackground(col_w7)
-    //.setColorBackground(deepBlue)
-    .setColorForeground(lightBlue)
-    .setColorActive(lighterBlue)
+    .setColorForeground(col_w7)
+    .setColorActive(col_w7)
     ;
 
   cp5.addButton("win8")
@@ -454,9 +433,8 @@ void winBottomButtons() {
     .setPosition((width/12)*7, height-buttonH)
     .setSize(buttonW, buttonH)
     .setColorBackground(col_w8)
-    //.setColorBackground(deepBlue)
-    .setColorForeground(lightBlue)
-    .setColorActive(lighterBlue)
+    .setColorForeground(col_w8)
+    .setColorActive(col_w8)
     ;
 
   cp5.addButton("win9")
@@ -464,9 +442,8 @@ void winBottomButtons() {
     .setPosition((width/12)*8, height-buttonH)
     .setSize(buttonW, buttonH)
     .setColorBackground(col_w9)
-    //.setColorBackground(deepBlue)
-    .setColorForeground(lightBlue)
-    .setColorActive(lighterBlue)
+    .setColorForeground(col_w9)
+    .setColorActive(col_w9)
     ;
 
   cp5.addButton("win10")
@@ -474,9 +451,8 @@ void winBottomButtons() {
     .setPosition((width/12)*9, height-buttonH)
     .setSize(buttonW, buttonH)
     .setColorBackground(col_w10)
-    //.setColorBackground(deepBlue)
-    .setColorForeground(lightBlue)
-    .setColorActive(lighterBlue)
+    .setColorForeground(col_w10)
+    .setColorActive(col_w10)
     ;
 
   cp5.addButton("win11")
@@ -484,9 +460,8 @@ void winBottomButtons() {
     .setPosition((width/12)*10, height-buttonH)
     .setSize(buttonW, buttonH)
     .setColorBackground(col_w11)
-    //.setColorBackground(deepBlue)
-    .setColorForeground(lightBlue)
-    .setColorActive(lighterBlue)
+    .setColorForeground(col_w11)
+    .setColorActive(col_w11)
     ;
 
   cp5.addButton("win12")
@@ -494,9 +469,8 @@ void winBottomButtons() {
     .setPosition((width/12)*11, height-buttonH)
     .setSize(buttonW+15, buttonH)
     .setColorBackground(col_w12)
-    //.setColorBackground(deepBlue)
-    .setColorForeground(lightBlue)
-    .setColorActive(lighterBlue)
+    .setColorForeground(col_w12)
+    .setColorActive(col_w12)
     ;
 }
 
@@ -510,9 +484,8 @@ void sprBottomButtons() {
     .setPosition(0, height-buttonH)
     .setSize(buttonW, buttonH)
     .setColorBackground(col_sp1)
-    //.setColorBackground(deepBlue)
-    .setColorForeground(lightBlue)
-    .setColorActive(lighterBlue)
+    .setColorForeground(col_sp1)
+    .setColorActive(col_sp1)
     ;
 
   cp5.addButton("spr2")
@@ -520,9 +493,8 @@ void sprBottomButtons() {
     .setPosition(width/12, height-buttonH)
     .setSize(buttonW, buttonH)
     .setColorBackground(col_sp2)
-    //.setColorBackground(deepBlue)
-    .setColorForeground(lightBlue)
-    .setColorActive(lighterBlue)
+    .setColorForeground(col_sp2)
+    .setColorActive(col_sp2)
     ;
 
   cp5.addButton("spr3")
@@ -530,9 +502,8 @@ void sprBottomButtons() {
     .setPosition((width/12)*2, height-buttonH)
     .setSize(buttonW, buttonH)
     .setColorBackground(col_sp3)
-    //.setColorBackground(deepBlue)
-    .setColorForeground(lightBlue)
-    .setColorActive(lighterBlue)
+    .setColorForeground(col_sp3)
+    .setColorActive(col_sp3)
     ;
 
   cp5.addButton("spr4")
@@ -540,9 +511,8 @@ void sprBottomButtons() {
     .setPosition((width/12)*3, height-buttonH)
     .setSize(buttonW, buttonH)
     .setColorBackground(col_sp4)
-    //.setColorBackground(deepBlue)
-    .setColorForeground(lightBlue)
-    .setColorActive(lighterBlue)
+    .setColorForeground(col_sp4)
+    .setColorActive(col_sp4)
     ;
 
   cp5.addButton("spr5")
@@ -550,9 +520,8 @@ void sprBottomButtons() {
     .setPosition((width/12)*4, height-buttonH)
     .setSize(buttonW, buttonH)
     .setColorBackground(col_sp5)
-    //.setColorBackground(deepBlue)
-    .setColorForeground(lightBlue)
-    .setColorActive(lighterBlue)
+    .setColorForeground(col_sp5)
+    .setColorActive(col_sp5)
     ;
 
   cp5.addButton("spr6")
@@ -560,9 +529,8 @@ void sprBottomButtons() {
     .setPosition((width/12)*5, height-buttonH)
     .setSize(buttonW, buttonH)
     .setColorBackground(col_sp6)
-    //.setColorBackground(deepBlue)
-    .setColorForeground(lightBlue)
-    .setColorActive(lighterBlue)
+    .setColorForeground(col_sp6)
+    .setColorActive(col_sp6)
     ;
 
   cp5.addButton("spr7")
@@ -570,9 +538,8 @@ void sprBottomButtons() {
     .setPosition((width/12)*6, height-buttonH)
     .setSize(buttonW, buttonH)
     .setColorBackground(col_sp7)
-    //.setColorBackground(deepBlue)
-    .setColorForeground(lightBlue)
-    .setColorActive(lighterBlue)
+    .setColorForeground(col_sp7)
+    .setColorActive(col_sp7)
     ;
 
   cp5.addButton("spr8")
@@ -580,9 +547,8 @@ void sprBottomButtons() {
     .setPosition((width/12)*7, height-buttonH)
     .setSize(buttonW, buttonH)
     .setColorBackground(col_sp8)
-    //.setColorBackground(deepBlue)
-    .setColorForeground(lightBlue)
-    .setColorActive(lighterBlue)
+    .setColorForeground(col_sp8)
+    .setColorActive(col_sp8)
     ;
 
   cp5.addButton("spr9")
@@ -590,9 +556,8 @@ void sprBottomButtons() {
     .setPosition((width/12)*8, height-buttonH)
     .setSize(buttonW, buttonH)
     .setColorBackground(col_sp9)
-    //.setColorBackground(deepBlue)
-    .setColorForeground(lightBlue)
-    .setColorActive(lighterBlue)
+    .setColorForeground(col_sp9)
+    .setColorActive(col_sp9)
     ;
 
   cp5.addButton("spr10")
@@ -600,9 +565,8 @@ void sprBottomButtons() {
     .setPosition((width/12)*9, height-buttonH)
     .setSize(buttonW, buttonH)
     .setColorBackground(col_sp10)
-    //.setColorBackground(deepBlue)
-    .setColorForeground(lightBlue)
-    .setColorActive(lighterBlue)
+    .setColorForeground(col_sp10)
+    .setColorActive(col_sp10)
     ;
 
   cp5.addButton("spr11")
@@ -610,9 +574,8 @@ void sprBottomButtons() {
     .setPosition((width/12)*10, height-buttonH)
     .setSize(buttonW, buttonH)
     .setColorBackground(col_sp11)
-    //.setColorBackground(deepBlue)
-    .setColorForeground(lightBlue)
-    .setColorActive(lighterBlue)
+    .setColorForeground(col_sp11)
+    .setColorActive(col_sp11)
     ;
 
   cp5.addButton("spr12")
@@ -620,9 +583,8 @@ void sprBottomButtons() {
     .setPosition((width/12)*11, height-buttonH)
     .setSize(buttonW+15, buttonH)
     .setColorBackground(col_sp12)
-    //.setColorBackground(deepBlue)
-    .setColorForeground(lightBlue)
-    .setColorActive(lighterBlue)
+    .setColorForeground(col_sp12)
+    .setColorActive(col_sp12)
     ;
 }
 //=== END CREATE BUTTONS ===

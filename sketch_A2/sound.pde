@@ -15,11 +15,32 @@ void soundRect() {
 }
 
 //=== PLAY SOUND FOR AIR TEMP ===
-void playSound(float circleX, float circleRadius) {
+void playSumSound(float circleX, float circleRadius) {
   float circleX_Bound1 = circleX - circleRadius + 10;
   float circleX_Bound2 = circleX + circleRadius - 10;
-  if (circleX_Bound1 < linePos && linePos < circleX_Bound2 && test.isPlaying() == false && mousePressed == true) {
-    mouseClick.play();
+  if (circleX_Bound1 < linePos && linePos < circleX_Bound2 && sum_temp_sound.isPlaying() == false && mousePressed == true) {
+    sum_temp_sound.play();
+  }
+}
+void playAutSound(float circleX, float circleRadius) {
+  float circleX_Bound1 = circleX - circleRadius + 10;
+  float circleX_Bound2 = circleX + circleRadius - 10;
+  if (circleX_Bound1 < linePos && linePos < circleX_Bound2 && aut_temp_sound.isPlaying() == false && mousePressed == true) {
+    aut_temp_sound.play();
+  }
+}
+void playWinSound(float circleX, float circleRadius) {
+  float circleX_Bound1 = circleX - circleRadius + 10;
+  float circleX_Bound2 = circleX + circleRadius - 10;
+  if (circleX_Bound1 < linePos && linePos < circleX_Bound2 && win_temp_sound.isPlaying() == false && mousePressed == true) {
+    win_temp_sound.play();
+  }
+}
+void playSprSound(float circleX, float circleRadius) {
+  float circleX_Bound1 = circleX - circleRadius + 10;
+  float circleX_Bound2 = circleX + circleRadius - 10;
+  if (circleX_Bound1 < linePos && linePos < circleX_Bound2 && spr_temp_sound.isPlaying() == false && mousePressed == true) {
+    spr_temp_sound.play();
   }
 }
 

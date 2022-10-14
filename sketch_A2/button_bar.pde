@@ -4,8 +4,8 @@ void createButtonBar() {
     .setSize(width, height/10)
     .addItems(split("welcome summer autumn winter spring", " "))
     //.setFont(p)  
-    .setColorBackground(taro)
-    .setColorForeground(lightTaro)
+    .setColorBackground(peach)
+    .setColorForeground(lightPeach)
     .setColorActive(lightPeach)
     ;
 }

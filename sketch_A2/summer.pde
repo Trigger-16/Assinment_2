@@ -68,7 +68,7 @@ void drawSumDayTemp() {
     fill(setTempColour(value));
     circle(circleX, mappedY, circleRadius);
 
-    playSound(circleX, circleRadius);
+    playSumSound(circleX, circleRadius);
   }
 }
 
@@ -95,7 +95,7 @@ void drawSumNightTemp() {
     fill(setTempColour(value));
     circle(circleX, mappedY, circleRadius);
 
-    playSound(circleX, circleRadius);
+    playSumSound(circleX, circleRadius);
   }
 }
 //=== END AIR TEMPERATURE ===

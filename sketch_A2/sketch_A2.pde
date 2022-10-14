@@ -64,8 +64,10 @@ SoundFile aut_sound;
 SoundFile win_sound;
 SoundFile spr_sound;
 SoundFile jazz_loop;
-SoundFile test;
-SoundFile mouseClick;
+SoundFile sum_temp_sound;
+SoundFile aut_temp_sound;
+SoundFile win_temp_sound;
+SoundFile spr_temp_sound;
 //CP5
 ButtonBar b;
 //Variables
@@ -148,10 +150,10 @@ void setup() {
   jazz_loop = new SoundFile(this, "jazz-loop.wav");
   jazz_loop.loop();
 
-  test = new SoundFile(this, "drum.wav");
-  test.amp(0.9);
-
-  mouseClick = new SoundFile(this, "ClickingSound.wav");
+  sum_temp_sound = new SoundFile(this, "SummerSound.wav");
+  aut_temp_sound = new SoundFile(this, "AutumnSound.wav");
+  win_temp_sound = new SoundFile(this, "WinterSound.wav");
+  spr_temp_sound = new SoundFile(this, "SpringSound.wav");
 
   //=== END SOUND FILES ===
 

@@ -69,7 +69,7 @@ void drawWinDayTemp() {
     fill(setTempColour(value));
     circle(circleX, mappedY, circleRadius);
 
-    playSound(circleX, circleRadius);
+    playWinSound(circleX, circleRadius);
   }
 }
 // == night data ==
@@ -95,7 +95,7 @@ void drawWinNightTemp() {
     fill(setTempColour(value));
     circle(circleX, mappedY, circleRadius);
 
-    playSound(circleX, circleRadius);
+    playWinSound(circleX, circleRadius);
   }
 }
 //=== END AIR TEMPERATURE ===
