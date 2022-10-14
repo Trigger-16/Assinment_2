@@ -38,7 +38,7 @@ void welcome() {  //photos, text
   } else if (is_welcome == true && is_day == true) {
     background(daySky);
     image(sun_img2, width/2, height/2.5, width/5, width/5); // sun image
-    image(clouds_img, movingX, height/2+50, width, height); // moving clouds
+    image(clouds_img, movingX, height/2+40, width, height); // moving clouds
     movingX++;                                               // moving clouds
 
     //== text ==
